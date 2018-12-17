@@ -84,7 +84,7 @@ Example use case:
 ```sh
 $ python3 seqgen.py -s 
 agtgtttgtgtctgcaatcccaagtttgtttgcgctgaaatatgcgatgctcaatgttatgatctgcgtactaagccgcagatcatagtgggaact 
--m sample_model.pkl -n 200 -v
+-m example_model.pkl -n 200 -v
 
 Calculating Scores..
 [=========================================================] 100% Time:  0:00:00
