@@ -68,6 +68,13 @@ def main():
             numeric_codons = [data.codon_to_n[item] for item in possible_codons]
             scores_of_codons_for_emission=[base_model.emissionprob_[new_path[i]][item]
                                            for item in numeric_codons]
+            #check for all zero values
+            if all(scores == 0 for scores in scores_of_codons_for_emission)== True:
+                raise ValueError("""Insufficient data to determine codon at this position. Using \
+                data from previous position.""")
+                scores_of_codons_for_emission=[base_model.emissionprob_[new_path[i]-1][item]
+                                           for item in numeric_codons]
+                
             choosen_codon_numeric.append(numeric_codons[
                 scores_of_codons_for_emission.index(max(scores_of_codons_for_emission))])
 
