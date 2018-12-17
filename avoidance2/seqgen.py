@@ -45,7 +45,7 @@ def main():
     base_model = joblib.load(m)
     pbar = progressbar.NullBar(min_value=0, max_value=None)
     if v == True:
-        print('\nCalculating Scores..')
+        print('\nGenerating sequences..')
         pbar = progressbar.ProgressBar(widgets=[progressbar.Bar('=', '[', ']'), ' ',
                                             progressbar.Percentage(), ' ',
                                             progressbar.ETA()], maxval=n) 
