@@ -51,7 +51,7 @@ def main():
     base_model = hmm.MultinomialHMM(n_components=n, n_iter=i, verbose = v)
     print('Training begins. This may take a while..')
     base_model.fit(X,lengths)
-    print('Training completed.\nModel dumped.')
+    print('Training completed.\nDumping model.')
     joblib.dump(base_model,mypath+'hmm_'+time.strftime("%Y%m%d-%H%M%S") + '.pkl')
 
 
