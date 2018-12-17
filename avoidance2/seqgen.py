@@ -77,7 +77,7 @@ def main():
         
         #print(synonymous_sequence,base_model.score(np.array(choosen_codon_numeric).reshape(-1,1)))
 
-        pbar.update(i)
+        pbar.update(seq)
     pbar.finish()
     progressbar.streams.flush()  
     
