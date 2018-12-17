@@ -14,7 +14,8 @@ This command installs the required dependencies.
 `-h` gives possible options.
 
 # Train
-Train takes a list of sequences in CSV and builds the model. 
+Train takes a list of sequences in CSV and builds the model. The built model is 
+exported as a python pickle (.pkl) file in 'results/hmm' subdirectory.
 
 Example use case with hidden states(`-n`)=2 and iterations (`-i`)=5
 
@@ -37,11 +38,11 @@ Model dumped.
 ```
 
 # Scores
-Scores outputs scores for given list of sequences given a model (`-m`). Note that
-scores != expression levels. They are just a measure of how likely the model
-is able to generate the given sequence. This is because the model gives higher
-scores to soething which it knows and lower scores to something which it doesn't 
-. 
+Scores outputs scores for given list of sequences given a model (`-m`) in .pkl
+format. Note that scores != expression levels. They are just a measure of how 
+likely the model is able to generate the given sequence. This is because the
+model gives higher scores to soething which it knows and lower scores to
+something which it doesn't. 
 
 It's a good idea to find the baseline scores of training set to get an idea
 of how much score is given by the model for 100% known sequences. If you check
