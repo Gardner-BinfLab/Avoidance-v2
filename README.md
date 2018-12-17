@@ -52,7 +52,7 @@ scores closer to the baseline scores. If you give something different, the
 scores will be lower.
 
 This means, the model can generate similar sequences in the neighbourhood of the
-highly expressed sequences. However, similarity doesn't gurantee equal
+training sequences. However, similarity doesn't gurantee equal
 expression and thus the generated sequences need to be checked. 
 
 Also, note that for a model trained on highly expressed sequences,
