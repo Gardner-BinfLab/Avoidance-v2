@@ -88,7 +88,7 @@ def create_mapping(codons_list,*argv):
     
     for val in argv:
         if val not in ('encode','decode'):
-            return ValueError("agrs must be either 'encode' or 'decode' only.")
+            raise ValueError("agrs must be either 'encode' or 'decode' only.")
             break
         if val == 'encode':
             return codon_to_n
