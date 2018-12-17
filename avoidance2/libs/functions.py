@@ -40,7 +40,7 @@ def codon_splitter(sequences,n, verbose = False):
     """
     pbar = progressbar.NullBar(min_value=0, max_value=None)
     if verbose == True:
-        print('Seperating codons..')
+        print('Separating codons..')
         pbar = progressbar.ProgressBar(widgets=[progressbar.Bar('=', '[', ']'), ' ',
                                             progressbar.Percentage(), ' ',
                                             progressbar.ETA()], maxval=len(sequences))
