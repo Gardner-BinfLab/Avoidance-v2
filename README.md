@@ -61,7 +61,7 @@ scores to those "unknown" sequences with poor  expressions.
 
 Example use case:
 ```sh
-$ python3 score.py -f /home/bikash/Downloads/train_set.pkl  -m sample_model.pkl -v
+$ python3 score.py -f /home/bikash/Downloads/train_set.pkl  -m example_model.pkl -v
 
 Seperating codons..
 [=========================================================] 100% Time:  0:00:00
