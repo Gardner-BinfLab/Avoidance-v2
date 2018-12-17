@@ -4,7 +4,7 @@ Alpha release
 
 
 # Install dependencies 
-Requires Python3.
+Requires `Python3`.
 
 This command installs the required dependencies.
 
@@ -12,7 +12,10 @@ This command installs the required dependencies.
 
 
 # Manual
-`-h` gives possible options.
+  - `-h` gives possible options.
+  - `-v` highly recommended (for checking progress at some lengthy steps)
+  - An example model is included and some training sequences are in test folder.
+
 
 # Train
 Train takes a list of sequences in CSV and builds the model. The built model is 
@@ -23,7 +26,7 @@ Example use case with hidden states(`-n`)=2 and iterations (`-i`)=5
 ```sh
 $ python3 train.py -f /home/bikash/Downloads/train_set_.csv -n 2 -i 5 -v
 Reading input sequence file..
-Seperating codons..
+Separating codons..
 [=========================================================] 100% Time:  0:00:00
 
 Initializing a model.
