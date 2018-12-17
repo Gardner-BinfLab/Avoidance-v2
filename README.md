@@ -87,7 +87,7 @@ $ python3 seqgen.py -s
 agtgtttgtgtctgcaatcccaagtttgtttgcgctgaaatatgcgatgctcaatgttatgatctgcgtactaagccgcagatcatagtgggaact 
 -m example_model.pkl -n 200 -v
 
-Calculating Scores..
+Generating sequences..
 [=========================================================] 100% Time:  0:00:00
 Exporting scores to csv..
 ```
