@@ -1,7 +1,6 @@
 import argparse
 import sys
 import os
-import pathlib
 import time
 import pandas as pd
 import progressbar
@@ -38,8 +37,12 @@ def check_arg(args=None):
 
 
 def main():
-    os.makedirs(os.path.join(pathlib.Path.cwd(),'results','syn_seq',''),exist_ok=True)
-    mypath = os.path.join(pathlib.Path.cwd(),'results','syn_seq','')
+    #os.makedirs(os.path.join(pathlib.Path.cwd(),'results','syn_seq',''),exist_ok=True)
+    mypath = os.path.join(os.getcwd(),'results','syn_seq','')
+    if os.path.exists(mypath)==True:
+        pass
+    else:
+        os.makedirs(os.path.join(os.getcwd(),'results','syn_seq',''))
 
 
     base_model = joblib.load(m)
