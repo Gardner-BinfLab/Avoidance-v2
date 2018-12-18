@@ -86,9 +86,7 @@ model and number of sequence to generate. -v option recommended.
 
 Example use case:
 ```console
-$ python3 seqgen.py -s 
-agtgtttgtgtctgcaatcccaagtttgtttgcgctgaaatatgcgatgctcaatgttatgatctgcgtactaagccgcagatcatagtgggaact 
--m example_model.pkl -n 200 -v
+$ python3 seqgen.py -s agtgttatcatagtgggaact -m example_model.pkl -n 200 -v
 
 Generating sequences..
 [=========================================================] 100% Time:  0:00:00
