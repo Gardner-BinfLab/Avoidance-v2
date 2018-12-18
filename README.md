@@ -4,7 +4,7 @@ Alpha release
 
 
 # Install dependencies 
-Requires `Python3+`.
+Requires `Python3.6+`.
 
 This command installs the required dependencies.
 
@@ -44,8 +44,8 @@ Model dumped.
 # Scores
 Scores outputs scores for given list of sequences given a model (`-m`) in .pkl
 format. Note that scores != expression levels. They are just a measure of how 
-likely the model is able to generate the given sequence. This is because the
-model gives higher scores to soething which it knows and lower scores to
+similar is the given sequence to the training sequence. This is because the
+model gives higher scores to something which it knows and lower scores to
 something which it doesn't. 
 
 It's a good idea to find the baseline scores of training set to get an idea
@@ -57,11 +57,6 @@ scores will be lower.
 This means, the model can generate similar sequences in the neighbourhood of the
 training sequences. However, similarity doesn't gurantee equal
 expression and thus the generated sequences need to be checked. 
-
-Also, note that for a model trained on highly expressed sequences,
-upon increasing number of hidden states, it seems to start giving higher scores 
-to "unknown" sequences, with higher expressions as well, while giving lower 
-scores to those "unknown" sequences with poor  expressions.
 
 
 Example use case:
@@ -79,6 +74,31 @@ Calculating Scores..
 Exporting scores to csv..
 ```
 
+Also, note that for a model trained on highly expressed sequences,
+upon increasing number of hidden states, it seems to start giving higher scores 
+to "unknown" sequences, with higher expressions as well, while giving lower 
+scores to those "unknown" sequences with poor  expressions.
+
+In the figure below red, teal and blue are "good","average" and "bad" sequences
+from the training set. The model was trained on "good" ones and it does not _know_ 
+the "average" and "bad" sequences. However, since they are from the same clusters, so 
+there are similarities between all of these sequences.
+
+![increasing hidden states](https://imgoat.com/uploads/8af86134b6/175627.png)
+
+Green, black and yellow  are "good","average" and "bad" sequences from the test set.
+The model _does_ _not_ _know_ any of them. Further, they are dissimilar to train
+set (beacuse of clustering done by CD-HIT). So we expect these _unknown_ _sequences_
+to give poor scores. The average and bad sequenecs have poor scores, but 
+surprisingly, with increased hidden states, the good sequences are scoring higher. 
+
+This means, the model is detecting good sequences from entirely different and 
+unknown sequences as well. (Not sure if this result is specific to our dataset.)
+
+This means we can expect the model to generate *some* very good sequences (green),
+even if it, for some reason, decides to give just the bad sequences (blue). 
+
+
 # Generate
 This generates sequences from given sequence. You have to specify the sequence,
 model and number of sequence to generate. -v option recommended.
@@ -86,7 +106,9 @@ model and number of sequence to generate. -v option recommended.
 
 Example use case:
 ```console
-$ python3 seqgen.py -s agtgttatcatagtgggaact -m example_model.pkl -n 200 -v
+$ python3 seqgen.py -s 
+agtgtttgtgtctgcaatcccaagtttgtttgcgctgaaatatgcgatgctcaatgttatgatctgcgtactaagccgcagatcatagtgggaact 
+-m example_model.pkl -n 200 -v
 
 Generating sequences..
 [=========================================================] 100% Time:  0:00:00
