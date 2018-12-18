@@ -4,7 +4,7 @@ Alpha release
 
 
 # Install dependencies 
-Requires ~~`Python3.6+`~~ `Python3.4+`. (f42daaa, c90ba69, ad6588c)
+Requires ~~`Python3.6+`~~ `Python3.4+`. (commits ad6588c, c90ba69, ad6588c)
 
 This command installs the required dependencies.
 
