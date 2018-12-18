@@ -1,7 +1,6 @@
 import argparse
 import sys
 import os
-import pathlib
 import pandas as pd
 import numpy as np
 import time
@@ -38,8 +37,12 @@ def main():
         print('Reading input sequence file..')
 
 
-    os.makedirs(os.path.join(pathlib.Path.cwd(),'results','hmm',''),exist_ok=True)
-    mypath = os.path.join(pathlib.Path.cwd(),'results','hmm','')
+    #os.makedirs(os.path.join(os.getcwd(),'results','hmm',''),exist_ok=True)
+    mypath = os.path.join(os.getcwd(),'results','hmm','')
+    if os.path.exists(mypath)==True:
+        pass
+    else:
+        os.makedirs(os.path.join(os.getcwd(),'results','hmm',''))
 
 
     df = pd.read_csv(f,skiprows=1,header=None)
