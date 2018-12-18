@@ -1,7 +1,6 @@
 import argparse
 import sys
 import os
-import pathlib
 import pandas as pd
 import numpy as np
 import time
@@ -33,8 +32,12 @@ def check_arg(args=None):
 
 
 def main():
-    os.makedirs(os.path.join(pathlib.Path.cwd(),'results','scores',''),exist_ok=True)
-    mypath =  os.path.join(pathlib.Path.cwd(),'results','scores','')
+    #os.makedirs(os.path.join(pathlib.Path.cwd(),'results','scores',''),exist_ok=True)
+    mypath = os.path.join(os.getcwd(),'results','scores','')
+    if os.path.exists(mypath)==True:
+        pass
+    else:
+        os.makedirs(os.path.join(os.getcwd(),'results','scores',''))
 
 
     df = pd.read_csv(f,skiprows=1,header=None)
