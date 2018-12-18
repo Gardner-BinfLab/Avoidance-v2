@@ -23,7 +23,7 @@ exported as a python pickle (.pkl) file in 'results/hmm' subdirectory.
 
 Example use case with hidden states(`-n`)=2 and iterations (`-i`)=5
 
-```sh
+```console
 $ python3 train.py -f /home/bikash/Downloads/train_set_.csv -n 2 -i 5 -v
 Reading input sequence file..
 Separating codons..
@@ -65,7 +65,7 @@ scores to those "unknown" sequences with poor  expressions.
 
 
 Example use case:
-```sh
+```console
 $ python3 score.py -f /home/bikash/Downloads/train_set.pkl  -m example_model.pkl -v
 
 Seperating codons..
@@ -85,7 +85,7 @@ model and number of sequence to generate. -v option recommended.
 
 
 Example use case:
-```sh
+```console
 $ python3 seqgen.py -s 
 agtgtttgtgtctgcaatcccaagtttgtttgcgctgaaatatgcgatgctcaatgttatgatctgcgtactaagccgcagatcatagtgggaact 
 -m example_model.pkl -n 200 -v
