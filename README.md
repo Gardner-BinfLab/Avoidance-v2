@@ -4,7 +4,7 @@ Alpha release
 
 
 # Install dependencies 
-Requires `Python3`.
+Requires `Python3.6+`.
 
 This command installs the required dependencies.
 
