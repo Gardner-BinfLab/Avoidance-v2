@@ -55,7 +55,7 @@ def main():
     print('Training begins. This may take a while..')
     base_model.fit(X,lengths)
     print('Training completed.\nDumping model.')
-    joblib.dump(base_model,mypath+'hmm_'+time.strftime("%Y%m%d-%H%M%S") + '.pkl')
+    joblib.dump(base_model,mypath+'hmm_'+str(n)+'_'+'states'+'_'+str(i)+'_'+'iter'+'_'+time.strftime("%Y%m%d-%H%M%S") + '.pkl')
 
 
 
