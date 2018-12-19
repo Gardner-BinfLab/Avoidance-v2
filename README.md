@@ -1,5 +1,6 @@
 # Avoidance2.0
-Alpha release 
+Alpha release.
+All changes will be made in testing branch and merged to master (this branch).
 
 
 
