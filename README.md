@@ -85,7 +85,7 @@ from the training set. The model was trained on "good" ones and it does not _kno
 the "average" and "bad" sequences. However, since they are from the same clusters, so 
 there are similarities between all of these sequences.
 
-![increasing hidden states](https://imgoat.com/uploads/6da2f590cd/176617.png)
+![increasing hidden states](https://imgoat.com/uploads/8af86134b6/175627.png)
 
 Green, black and yellow  are "good","average" and "bad" sequences from the test set.
 The model _does_ _not_ _know_ any of them. Further, they are dissimilar to train
