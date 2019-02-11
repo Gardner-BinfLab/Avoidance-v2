@@ -2,7 +2,7 @@
 ### Changelog
  - Major rewrite and refactoring. 
  - We now use the highly scalable Pandas dataframes instead of plain numpy arrays.
- - Useless dependencies removed
+ - Useless dependencies removed.
 
 
 
