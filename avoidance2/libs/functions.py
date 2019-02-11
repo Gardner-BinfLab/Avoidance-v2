@@ -69,6 +69,7 @@ def codons_to_df(sequences,length_to_train,trainall=False):
     '''
     codon_df = pd.DataFrame()
     index = 0
+    skipped = 0
     for sequence in sequences:
         try:
             length = sequence_length(sequence) if trainall==True or \
@@ -78,10 +79,17 @@ def codons_to_df(sequences,length_to_train,trainall=False):
             break
                   
         codon_list = splitter(sequence.lower().replace('u','t'),length)
-        for i in range(len(codon_list)):
-            codon_df.at[index,i]=codon_list[i]
+        stop = ['tag','taa','tga']
+        if bool(set(stop).intersection(codon_list[:len(codon_list)-1])) == False:
+            for i in range(len(codon_list)):
+                codon_df.at[index,i]=codon_list[i]
+            
+        else:
+            print('\nStop codon encountered somewhere before the last position.')
+            skipped += 1
         progress(index,len(sequences)-1)
         index += 1
+    print(skipped, 'sequence(s) were skipped because we encountered stop codons.')
 
     return codon_df
 
