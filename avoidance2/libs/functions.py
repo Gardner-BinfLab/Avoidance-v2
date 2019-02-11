@@ -6,16 +6,16 @@ from libs import data
 
 
 def progress(iteration, total):   
-    bars_string = int(float(iteration) / float(total-1) * 50.)
+    bars_string = int(float(iteration) / float(total) * 50.)
     sys.stdout.write(
         "\r[%-50s] %d%% (%s/%s)" % (
-            '='*bars_string, float(iteration) / float(total-1) * 100,
+            '='*bars_string, float(iteration) / float(total) * 100,
             iteration,
-            total-1
+            total
         ) 
     )
     sys.stdout.flush()
-    if iteration +1 == total:
+    if iteration == total:
         print('Finished!') 
 
 def sequence_length(seq):
@@ -116,6 +116,7 @@ def train(codon_df):
                 prob_df[i].loc[item]=probs.loc[item]
         progress(i,len(codon_df.columns)-1)    
     return prob_df
+
 
 
 
