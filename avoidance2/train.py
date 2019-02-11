@@ -1,68 +1,78 @@
-import argparse
 import sys
 import os
+import argparse
+import time
+import pickle
 import pandas as pd
 import numpy as np
-import time
-from sklearn.externals import joblib
-from hmmlearn import hmm
 from libs import functions
+
+
+def valid_file(param):
+    base, ext = os.path.splitext(param)
+    if ext.lower() not in ('.csv', '.fasta','.fa'):
+        raise argparse.ArgumentTypeError('File must have a csv or fasta extension')
+    return param
+
 
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Training script')
     parser.add_argument('-f', '--file',
+                        type=valid_file,
                         help='Training sequences in CSV. FASTA support coming soon!',
                         required='True')
-    parser.add_argument('-n',type=int,
-                        help='The number of hidden states to use. Defaults to 15',
-                        default='15',
-                        required='True')
-    parser.add_argument('-i',type=int,
-                        help='The number of iterations to perform for EM. Defaults to 500',
-                        default='500',
-                        required='True')
-    parser.add_argument('-v',
-                        help='Verbosity. Leave blank for no verbosity.',
+    parser.add_argument('-o', '--output',
+                        help='Output file name.',
+                        default = 'model')
+    parser.add_argument('-l','--length',
+                        type=int,
+                        help='we train upto this length in sequences. Default 96 nt',
+                        default = 96)
+    parser.add_argument('-a','--trainall',
+                        help='pass to train for whole length. Overrides previous arg if passed both',
                         action="store_true")
 
     results = parser.parse_args(args)
     return (results.file,
-            results.n,
-            results.i,
-            results.v)
-
+            results.output,
+            results.length,
+            results.trainall)
 
 def main():
-    if v == True:
-        print('Reading input sequence file..')
-
-
-    #os.makedirs(os.path.join(os.getcwd(),'results','hmm',''),exist_ok=True)
-    mypath = os.path.join(os.getcwd(),'results','hmm','')
+    
+    mypath = os.path.join(os.getcwd(),'results','model','')
     if os.path.exists(mypath)==True:
         pass
     else:
-        os.makedirs(os.path.join(os.getcwd(),'results','hmm',''))
+        os.makedirs(os.path.join(os.getcwd(),'results','model',''))
 
-
-    df = pd.read_csv(f,skiprows=1,header=None)
-    codon_list = functions.codon_splitter(df[0],3,v)
-    lengths = [len(codon_list[index]) for index in range(len(codon_list))]
-    codon_to_num = functions.create_mapping(codon_list,'encode')
-    num_to_codon = functions.create_mapping(codon_list,'decode')
-    X = functions.convert_to_hmm_data(codon_list,codon_to_num,v)
-    base_model = hmm.MultinomialHMM(n_components=n, n_iter=i, verbose = v)
-    print('Training begins. This may take a while..')
-    base_model.fit(X,lengths)
-    print('Training completed.\nDumping model.')
-    joblib.dump(base_model,mypath+'hmm_'+str(n)+'_'+'states'+'_'+str(i)+'_'+'iter'+'_'+time.strftime("%Y%m%d-%H%M%S") + '.pkl')
-
-
-
+    base,ext = os.path.splitext(f)
+    #if ext.lower in ('.fasta','.fa'):
+        
+    
+    
+    seq_df = pd.read_csv(f,skiprows=1,header=None)
+    print('Reading codons..')
+    codon_df = functions.codons_to_df(seq_df[0],l,a)
+    print('\nTraining started. It may take a while..')
+    print('\nZeroth order')
+    prob_df = functions.train(codon_df)
+    
+    #add an average column at the end
+    prob_df['mean'] = prob_df.mean(axis=1)
+    
+    
+    #print('\nOne') #nfirst order is overkill. So not doing it currently
+    #cond_prob_df = functions.calc_cond_prob(codon_df)
+    #results = [prob_df,cond_prob_df]
+    print('\nExporting model data to file..')
+    filename = mypath+str(o)+'_'+time.strftime("%Y%m%d-%H%M%S")+'.pkl'
+    with open(filename, "wb") as export_file:
+        pickle.dump(prob_df, export_file)
 
 
 if __name__ == '__main__':
-    f,n,i,v= check_arg(sys.argv[1:])
+    f,o,l,a= check_arg(sys.argv[1:])
     main()
 
 
