@@ -32,7 +32,7 @@ Reading codons..
 [===============                                   ] 30% (410/1333)
 Stop codon encountered somewhere before the last position.
 [==================================================] 100% (1333/1333)Finished!
-1  sequences were skipped because we encountered stop codons.
+1  sequence(s) were skipped because we encountered stop codons.
 
 Training started. It may take a while..
 
