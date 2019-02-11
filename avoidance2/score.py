@@ -60,21 +60,29 @@ def main():
         codons = functions.splitter(sequence,length)
         scores_df = pd.DataFrame(columns=['scores'],index=codons)
         back_scores_df = pd.DataFrame(columns=['scores'],index=codons)
-        for i in range(len(codons)):
+        stop = ['tag','taa','tga']
+        if bool(set(stop).intersection(codons[:len(codons)-1])) == False:
+            scores_df = pd.DataFrame(columns=['scores'],index=codons)
+            back_scores_df = pd.DataFrame(columns=['scores'],index=codons)
+            for i in range(len(codons)):
 
 
-            try:
-                if i < len(prob_data.columns)-1: #1 for average
-                    scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],i])[0]
-                    back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],i])[0]
-                else:
+                try:
+                    if i < len(prob_data.columns)-1: #1 for average
+                        scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],i])[0]
+                        back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],i])[0]
+                    else:
+                        scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'mean'])[0]
+                        back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'mean'])[0]
+
+
+                except RuntimeWarning: #catch for log zero error
                     scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'mean'])[0]
                     back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'mean'])[0]
-
-
-            except RuntimeWarning: #catch for log zero error
-                scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'mean'])[0]
-                back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'mean'])[0]
+        else:
+            print('\nStop codons encountered before the last position for sequence : ', seq)
+            pass
+        
 
 
         sequence_score.loc[seq,'scores'] = scores_df.sum()[0] - back_scores_df.sum()[0]          
@@ -96,4 +104,3 @@ if __name__ == '__main__':
     with open(b, "rb") as model_file:
         back_prob_data = pickle.load(model_file)
     main()
-
