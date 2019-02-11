@@ -29,11 +29,16 @@ in codons or just use flag `-a` to train over full length (not recommended).
 ```console
 $ python3 train.py -f /directory/train_set_.csv 
 Reading codons..
-[==================================================] 100% (13231/13231)
+[===============                                   ] 30% (410/1333)
+Stop codon encountered somewhere before the last position.
+[==================================================] 100% (1333/1333)Finished!
+1  sequences were skipped because we encountered stop codons.
+
 Training started. It may take a while..
 
 Zeroth order
-[==================================================] 100% (31/31)
+[==================================================] 100% (31/31)Finished!
+
 Exporting model data to file..
 
 ```
@@ -46,7 +51,8 @@ They can be built by training (above).
 Example use case:
 ```console
 $ python3 score.py -f /dir/test.csv -m /dir/foreground.pkl -b /dir/backgnd.pkl
-
+[===============                                   ] 30% (410/1334)
+Stop codons encountered before the last position for sequence :  411
 [================================================= ] 99% (1333/1334)
 Exporting results..
 
@@ -56,7 +62,7 @@ Exporting results..
 
 # Generate
 This generates sequences from given sequence. You have to specify the sequence,
-model and number of sequences to generate. 
+model and number of sequences to generate.
 
 
 Example use case:
