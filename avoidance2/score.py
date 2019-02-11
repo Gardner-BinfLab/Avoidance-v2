@@ -85,14 +85,14 @@ def main():
         
 
 
-        sequence_score.loc[seq,'scores'] = scores_df.sum()[0] - back_scores_df.sum()[0]          
+        #sequence_score.loc[seq,'scores'] = scores_df.sum()[0] - back_scores_df.sum()[0]          
         sequence_score.loc[seq,'scores_per_codon'] = scores_df.mean()[0] - back_scores_df.mean()[0] 
         functions.progress(seq,len(sequence_df))
 
 
     print('\nExporting results..')    
-    sequence_df['scores'] = sequence_score['scores']
-    sequence_df['scores_per_codon'] = sequence_score['scores_per_codon']
+    #sequence_df['scores'] = sequence_score['scores']
+    sequence_df['scores'] = sequence_score['scores_per_codon']
     sequence_df.to_csv(mypath+'_'+o+'_'+time.strftime("%Y%m%d-%H%M%S") + '.csv'
                       ,sep=',', encoding='utf-8', index=False)
 
@@ -104,3 +104,4 @@ if __name__ == '__main__':
     with open(b, "rb") as model_file:
         back_prob_data = pickle.load(model_file)
     main()
+
