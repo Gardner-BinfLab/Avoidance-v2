@@ -89,7 +89,9 @@ def codons_to_df(sequences,length_to_train,trainall=False):
             skipped += 1
         progress(index,len(sequences)-1)
         index += 1
-    print(skipped, 'sequence(s) were skipped because we encountered stop codons.')
+    if skipped > 0:
+        print(skipped, 'sequence(s) were skipped because we encountered stop codons.')
+    
 
     return codon_df
 
