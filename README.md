@@ -7,7 +7,7 @@
 
 
 # Install dependencies 
-Requires `Python3.6+`
+Requires ~`Python3.6+`~`Python3.4+`
 
 This command installs the required dependencies.
 
