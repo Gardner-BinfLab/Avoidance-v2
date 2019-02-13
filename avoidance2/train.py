@@ -47,11 +47,12 @@ def main():
         os.makedirs(os.path.join(os.getcwd(),'results','model',''))
 
     base,ext = os.path.splitext(f)
-    #if ext.lower in ('.fasta','.fa'):
+    if ext.lower in ('.fasta','.fa'):
+        seq_df = functions.fasta_to_dataframe(f)
+    else:
+        seq_df = pd.read_csv(f,skiprows=1,header=None)
         
     
-    
-    seq_df = pd.read_csv(f,skiprows=1,header=None)
     print('Reading codons..')
     codon_df = functions.codons_to_df(seq_df[0],l,a)
     print('\nTraining started. It may take a while..')
