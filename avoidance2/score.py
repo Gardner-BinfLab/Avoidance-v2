@@ -7,6 +7,11 @@ import numpy as np
 import pandas as pd
 from libs import functions
 
+def valid_file(param):
+    base, ext = os.path.splitext(param)
+    if ext.lower() not in ('.csv', '.fasta','.fa'):
+        raise argparse.ArgumentTypeError('File must have a csv or fasta extension')
+    return param
 
 
 
@@ -14,7 +19,8 @@ from libs import functions
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='This generates scores for given sequences.')
     parser.add_argument('-f', '--file',
-                        help='Sequences in CSV. FASTA support coming soon!',
+                        help='Sequences in CSV or FASTA',
+                        type=valid_file,
                         required='True')
     parser.add_argument('-m', '--model',
                         help='Trained model file in .pkl format.',
@@ -43,7 +49,16 @@ def main():
         pass
     else:
         os.makedirs(os.path.join(os.getcwd(),'results','scores',''))
-    
+
+        
+    base,ext = os.path.splitext(f)
+    if ext.lower in ('.fasta','.fa'):
+        sequence_df = functions.fasta_to_dataframe(f)
+    else:
+        sequence_df = pd.read_csv(f,skiprows=1,header=None)
+        
+        
+        
     #mask NaNs with mean
     for i in range(prob_data.shape[1]-1):
         prob_data[i].fillna(prob_data['mean'], inplace=True)
