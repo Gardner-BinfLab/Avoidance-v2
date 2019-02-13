@@ -50,23 +50,21 @@ def main():
     else:
         os.makedirs(os.path.join(os.getcwd(),'results','scores',''))
 
-        
-    base,ext = os.path.splitext(f)
-    if ext.lower in ('.fasta','.fa'):
-        sequence_df = functions.fasta_to_dataframe(f)
-    else:
-        sequence_df = pd.read_csv(f,skiprows=1,header=None)
-        
-        
-        
-    #mask NaNs with mean
+   
     for i in range(prob_data.shape[1]-1):
         prob_data[i].fillna(prob_data['mean'], inplace=True)
     for i in range(back_prob_data.shape[1]-1):
         back_prob_data[i].fillna(back_prob_data['mean'], inplace=True)
-    
-    sequence_df = pd.read_csv(f,skiprows=1,header=None)
-    sequence_score=pd.DataFrame(columns=['scores','scores_per_codon'],index=list(range(len(sequence_df))))
+
+
+    base,ext = os.path.splitext(f)
+    if ext.lower() in ['.fasta','.fa']:
+        sequence_df = functions.fasta_to_dataframe(f)
+    else:
+        sequence_df = pd.read_csv(f,skiprows=1,header=None)
+
+
+    sequence_score=pd.DataFrame(columns=['scores'],index=list(range(len(sequence_df))))
     length_to_score = max([len(sequence_df[0][i]) for i in range(len(sequence_df))]) #score for full length
     for seq in range(len(sequence_df)):
         sequence = sequence_df[0][seq].lower()
@@ -97,17 +95,12 @@ def main():
         else:
             print('\nStop codons encountered before the last position for sequence : ', seq)
             pass
-        
 
-
-        #sequence_score.loc[seq,'scores'] = scores_df.sum()[0] - back_scores_df.sum()[0]          
-        sequence_score.loc[seq,'scores_per_codon'] = scores_df.mean()[0] - back_scores_df.mean()[0] 
+        sequence_score.loc[seq,'scores'] = scores_df.mean()[0] - back_scores_df.mean()[0] 
         functions.progress(seq,len(sequence_df))
-
-
-    print('\nExporting results..')    
-    #sequence_df['scores'] = sequence_score['scores']
-    sequence_df['scores'] = sequence_score['scores_per_codon']
+    print('\nExporting results..')
+    sequence_df.index = sequence_score.index
+    sequence_df['scores'] = sequence_score['scores']
     sequence_df.to_csv(mypath+'_'+o+'_'+time.strftime("%Y%m%d-%H%M%S") + '.csv'
                       ,sep=',', encoding='utf-8', index=False)
 
