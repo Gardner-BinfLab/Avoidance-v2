@@ -19,7 +19,7 @@ def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Training script')
     parser.add_argument('-f', '--file',
                         type=valid_file,
-                        help='Training sequences in CSV. FASTA support coming soon!',
+                        help='Training sequences in CSV or FASTA.',
                         required='True')
     parser.add_argument('-o', '--output',
                         help='Output file name.',
