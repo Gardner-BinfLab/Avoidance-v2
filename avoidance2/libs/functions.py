@@ -40,7 +40,37 @@ def splitter(sequence,length):
     split_func = lambda sequence, n: [sequence[i:i+n] for\
                                     i in range(0, length, n)]
     return split_func(sequence,3)
- 
+
+
+def fasta_to_dataframe(input_file):
+    '''
+    convert fasta to pandas dataframe
+    '''
+    sequence_df = pd.DataFrame(columns==[1,0])
+    fasta = []
+    test = []
+    with open(input_file) as file:
+        for line in file:
+            line = line.strip()
+            if not line:
+               continue
+            if line.startswith(">"):
+                active_sequence_name = line[1:]
+                sequence_df.loc[line,1] = line[1:]
+                if active_sequence_name not in fasta:
+                    test.append(''.join(fasta))
+                    fasta = []
+                continue
+            sequence = line
+            fasta.append(sequence)
+    if fasta:
+        test.append(''.join(fasta))
+    for i, row in enumerate(test):
+        sequence_df[0][i-1] = row
+    return(sequence_df)
+
+
+
 
 def positionwise_codons(sequences,length_to_train,trainall=False):
     '''
@@ -75,7 +105,7 @@ def codons_to_df(sequences,length_to_train,trainall=False):
             length = sequence_length(sequence) if trainall==True or \
                      len(sequence)<length_to_train else length_to_train
         except TypeError:
-            print("something's wrong with the input sequences.\n")
+            print("Something's wrong with the input sequences.\n")
             break
                   
         codon_list = splitter(sequence.lower().replace('u','t'),length)
