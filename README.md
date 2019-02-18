@@ -20,7 +20,7 @@ This command installs the required dependencies.
 
 
 # Train
-Train takes a list of sequences in CSV and builds the model. The built model is 
+Train takes a list of sequences in .csv or .fasta and builds the model. The built model is 
 exported as a python pickle (.pkl) file in 'results/model' subdirectory.
 We train for 32 codons (96 nucleotides) by default but you can pass the length
 in codons or just use flag `-a` to train over full length (not recommended).
