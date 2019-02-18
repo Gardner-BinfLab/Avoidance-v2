@@ -26,7 +26,7 @@ def check_arg(args=None):
                         help='Trained model file in .pkl format.',
                         required='True')
     parser.add_argument('-b', '--background',
-                        help='Background model file in .pkl format.')
+                        help='Background model file in .pkl format. Default is uniform background.')
     parser.add_argument('-o', '--output',
                         help='Output file name',
                         default='scores')
