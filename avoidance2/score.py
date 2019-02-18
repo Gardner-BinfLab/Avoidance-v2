@@ -26,8 +26,7 @@ def check_arg(args=None):
                         help='Trained model file in .pkl format.',
                         required='True')
     parser.add_argument('-b', '--background',
-                        help='Background model file in .pkl format.',
-                        required='True')
+                        help='Background model file in .pkl format.')
     parser.add_argument('-o', '--output',
                         help='Output file name',
                         default='scores')
@@ -50,7 +49,7 @@ def main():
     else:
         os.makedirs(os.path.join(os.getcwd(),'results','scores',''))
 
-   
+   #mask NaNs with mean
     for i in range(prob_data.shape[1]-1):
         prob_data[i].fillna(prob_data['mean'], inplace=True)
     for i in range(back_prob_data.shape[1]-1):
@@ -63,45 +62,13 @@ def main():
     else:
         sequence_df = pd.read_csv(f,skiprows=1,header=None)
 
-
-    sequence_score=pd.DataFrame(columns=['scores'],index=list(range(len(sequence_df))))
-    length_to_score = max([len(sequence_df[0][i]) for i in range(len(sequence_df))]) #score for full length
-    for seq in range(len(sequence_df)):
-        sequence = sequence_df[0][seq].lower()
-        length = functions.sequence_length(sequence) if len(sequence)<length_to_score\
-                 else length_to_score
-        codons = functions.splitter(sequence,length)
-        scores_df = pd.DataFrame(columns=['scores'],index=codons)
-        back_scores_df = pd.DataFrame(columns=['scores'],index=codons)
-        stop = ['tag','taa','tga']
-        if bool(set(stop).intersection(codons[:len(codons)-1])) == False:
-            scores_df = pd.DataFrame(columns=['scores'],index=codons)
-            back_scores_df = pd.DataFrame(columns=['scores'],index=codons)
-            for i in range(len(codons)):
-
-
-                try:
-                    if i < len(prob_data.columns)-1: #1 for average
-                        scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],i])[0]
-                        back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],i])[0]
-                    else:
-                        scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'mean'])[0]
-                        back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'mean'])[0]
-
-
-                except RuntimeWarning: #catch for log zero error
-                    scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'mean'])[0]
-                    back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'mean'])[0]
-        else:
-            print('\nStop codons encountered before the last position for sequence : ', seq)
-            pass
-
-        sequence_score.loc[seq,'scores'] = scores_df.mean()[0] - back_scores_df.mean()[0] 
-        functions.progress(seq,len(sequence_df))
+        
+        
+    sequence_score = functions.score(sequence_df,prob_data,back_prob_data)
     print('\nExporting results..')
     sequence_df.index = sequence_score.index
     sequence_df['scores'] = sequence_score['scores']
-    sequence_df.to_csv(mypath+'_'+o+'_'+time.strftime("%Y%m%d-%H%M%S") + '.csv'
+    sequence_df.to_csv(mypath+o+'_'+time.strftime("%Y%m%d-%H%M%S") + '.csv'
                       ,sep=',', encoding='utf-8', index=False)
 
 
@@ -109,7 +76,12 @@ if __name__ == '__main__':
     f,m,b,o= check_arg(sys.argv[1:])
     with open(m, "rb") as model_file:
         prob_data = pickle.load(model_file)
-    with open(b, "rb") as model_file:
-        back_prob_data = pickle.load(model_file)
+    if b is None:
+        print('Using uniform background..')
+        back_prob_data = pd.DataFrame(1/prob_data.shape[0], index=prob_data.axes[0],\
+                                      columns=prob_data.columns)
+    else:
+        with open(b, "rb") as model_file:
+            back_prob_data = pickle.load(model_file)
     main()
 
