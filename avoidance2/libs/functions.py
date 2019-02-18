@@ -158,7 +158,43 @@ def train(codon_df):
     return prob_df
 
 
+def score(sequence_df,prob_data,back_prob_data):
+    '''
+    bitscore a list of sequences using a foreground and a background model
+    '''
+    sequence_score=pd.DataFrame(columns=['scores'],index=list(range(len(sequence_df))))
+    length_to_score = max([len(sequence_df[0][i]) for i in range(len(sequence_df))]) #score for full length
+    for seq in range(len(sequence_df)):
+        sequence = sequence_df[0][seq].lower()
+        length = sequence_length(sequence) if len(sequence)<length_to_score\
+                 else length_to_score
+        codons = splitter(sequence,length)
+        scores_df = pd.DataFrame(columns=['scores'],index=codons)
+        back_scores_df = pd.DataFrame(columns=['scores'],index=codons)
+        stop = ['tag','taa','tga']
+        if bool(set(stop).intersection(codons[:len(codons)-1])) == False:
+            scores_df = pd.DataFrame(columns=['scores'],index=codons)
+            back_scores_df = pd.DataFrame(columns=['scores'],index=codons)
+            for i in range(len(codons)):
+                try:
+                    if i < len(prob_data.columns)-1: #1 for average
+                        scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],i])[0]
+                        back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],i])[0]
+                    else:
+                        scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'mean'])[0]
+                        back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'mean'])[0]
 
 
+                except RuntimeWarning: #catch for log zero error
+                    scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'mean'])[0]
+                    back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'mean'])[0]
+        else:
+            print('\nStop codons encountered before the last position for sequence : ', seq)
+            pass
+
+        sequence_score.loc[seq,'scores'] = scores_df.sum()[0] - back_scores_df.sum()[0] 
+        progress(seq,len(sequence_df))
+        
+    return sequence_score
 
 
