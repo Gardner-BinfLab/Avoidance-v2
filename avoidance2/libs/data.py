@@ -88,10 +88,3 @@ codon2aa =  { 'aaa' : 'lys',
             'tag' : 'stop',
             'tga' : 'stop' }
 
-
-
-
-
-if __name__ == '__main__':
-    pass
-
