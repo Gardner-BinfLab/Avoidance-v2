@@ -62,6 +62,11 @@ def main():
     #add an average column at the end
     prob_df['mean'] = prob_df.mean(axis=1)
     
+    #normalize
+    for j in range(prob_df.shape[1]-1):
+        prob_df[j] = prob_df[j]/prob_df[j].sum()
+    prob_df['mean'] = prob_df/prob_df.sum()
+    
     
     #print('\nOne') #nfirst order is overkill. So not doing it currently
     #cond_prob_df = functions.calc_cond_prob(codon_df)
