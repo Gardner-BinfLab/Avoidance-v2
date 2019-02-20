@@ -40,6 +40,9 @@ def check_arg(args=None):
 
 def main():
     
+    #fix seed
+    np.random.seed(12345)
+    
     mypath = os.path.join(os.getcwd(),'results','model','')
     if os.path.exists(mypath)==True:
         pass
