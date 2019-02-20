@@ -42,6 +42,11 @@ def check_arg(args=None):
 
 
 def main():
+    
+    #fix seed
+    np.random.seed(12345)
+    
+    
     #os.makedirs(os.path.join(pathlib.Path.cwd(),'results','scores',''),exist_ok=True)
     mypath = os.path.join(os.getcwd(),'results','scores','')
     if os.path.exists(mypath)==True:
@@ -50,10 +55,10 @@ def main():
         os.makedirs(os.path.join(os.getcwd(),'results','scores',''))
 
    #mask NaNs with mean
-    for i in range(prob_data.shape[1]-1):
-        prob_data[i].fillna(prob_data['mean'], inplace=True)
-    for i in range(back_prob_data.shape[1]-1):
-        back_prob_data[i].fillna(back_prob_data['mean'], inplace=True)
+    #for i in range(prob_data.shape[1]-1):
+    #    prob_data[i].fillna(prob_data['mean'], inplace=True)
+    #for i in range(back_prob_data.shape[1]-1):
+    #    back_prob_data[i].fillna(back_prob_data['mean'], inplace=True)
 
 
     base,ext = os.path.splitext(f)
