@@ -3,6 +3,7 @@ import sys
 import pandas as pd
 import numpy as np
 from libs import data
+from numpy.random import choice
 
 
 def progress(iteration, total):   

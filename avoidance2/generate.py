@@ -64,7 +64,7 @@ def main():
                     except (IndexError,RuntimeWarning): #check if we are at the end
                         probs_of_codons_for_emission = prob_data.loc[possible_codons,'codon_prob']
             except (KeyError,RuntimeWarning): #for positions longer then in the probability table
-                probs_of_codons_for_emission = prob_data.loc[possible_codons,'mean']
+                probs_of_codons_for_emission = prob_data.loc[possible_codons,'codon_prob']
                 
                 
 
