@@ -62,13 +62,24 @@ def main():
     print('\nZeroth order')
     prob_df = functions.train(codon_df)
     
-    #add an average column at the end
-    prob_df['mean'] = prob_df.mean(axis=1)
+    #count number of codons
+    codons, counts = np.unique(codon_df.values,return_counts=True)
+    
+    #add an extra column at the end
+    prob_df['codon_prob'] = np.nan
+    
+    #fill with codon probs
+    for i in range(len(codons)):
+        prob_df['codon_prob'][codons[i]] = counts[i]/counts.sum()
+        
+        
+   #mask NaNs with codon probs
+    for i in range(prob_df.shape[1]-1):
+        prob_df[i].fillna(prob_df['codon_prob'], inplace=True)
     
     #normalize
     for j in range(prob_df.shape[1]-1):
         prob_df[j] = prob_df[j]/prob_df[j].sum()
-    prob_df['mean'] = prob_df/prob_df.sum()
     
     
     #print('\nOne') #nfirst order is overkill. So not doing it currently

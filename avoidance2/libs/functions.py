@@ -181,13 +181,13 @@ def score(sequence_df,prob_data,back_prob_data):
                         scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],i])[0]
                         back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],i])[0]
                     else:
-                        scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'mean'])[0]
-                        back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'mean'])[0]
+                        scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'codon_prob'])[0]
+                        back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'codon_prob'])[0]
 
 
                 except RuntimeWarning: #catch for log zero error
-                    scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'mean'])[0]
-                    back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'mean'])[0]
+                    scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'codon_prob'])[0]
+                    back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'codon_prob'])[0]
         else:
             print('\nStop codons encountered before the last position for sequence : ', seq)
             pass

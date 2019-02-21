@@ -54,12 +54,6 @@ def main():
     else:
         os.makedirs(os.path.join(os.getcwd(),'results','scores',''))
 
-   #mask NaNs with mean
-    #for i in range(prob_data.shape[1]-1):
-    #    prob_data[i].fillna(prob_data['mean'], inplace=True)
-    #for i in range(back_prob_data.shape[1]-1):
-    #    back_prob_data[i].fillna(back_prob_data['mean'], inplace=True)
-
 
     base,ext = os.path.splitext(f)
     if ext.lower() in ['.fasta','.fa']:
