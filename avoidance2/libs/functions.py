@@ -198,4 +198,44 @@ def score(sequence_df,prob_data,back_prob_data):
         
     return sequence_score
 
+from numpy.random import choice
+
+def mutate(sequence,prob_df):
+    codons = functions.splitter(sequence,30)
+    mutable_codon_position = choice(list(range(len(codons)))) #randomly choose pos to mutate
+    mutable_synonymous_codons = data.aa2codon[data.codon2aa[codons[mutable_codon_position]]]
+    
+    #with probs of codon as weights for random picking
+    probs_of_codons_for_emission = prob_df.loc[mutable_synonymous_codons,mutable_codon_position]
+    probs_sum = sum(probs_of_codons_for_emission)
+    mutated_codon = choice(mutable_synonymous_codons, p = [float(i)/probs_sum\
+                                                        for i in probs_of_codons_for_emission])
+    
+    
+    #without weights
+    #mutated_codon = random.choice(data.aa2codon[data.codon2aa[codons[mutable_codon_position]]])
+    new_seq = seq[:mutable_codon_position*3]+ mutated_codon + seq[mutable_codon_position*3+3:]
+    return new_seq
+
+
+
+def sim_anneal(sequence,niter=100):
+    utr='ggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacat'
+    seq = sequence[:30] 
+    temp = np.linspace(1,0.001,niter)
+    scurr = seq
+    sbest = seq
+    for i in range(niter):
+        T = temp[i]
+        snew = mutate(sbest,prob_data_core)
+        if rna_ss(utr[-30:]+ snew) >= rna_ss(utr[-30:] + scurr):
+                scurr = snew
+                if rna_ss(utr[-30:]+scurr)>=rna_ss(utr[-30:]+sbest):
+                    sbest = snew
+        elif np.exp(-(rna_ss(utr[-30:]+scurr)-rna_ss(utr[-30:]+snew))/T) <= np.random.rand(1)[0]:
+            scurr = snew
+        functions.progress(i,niter)
+    print('\nmfe is',rna_ss(utr[-30:]+sbest),sbest)
+    annealed_seq = sbest + sequence[30:]
+    return annealed_seq
 
