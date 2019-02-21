@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from libs import data
 from numpy.random import choice
-
+import RNA
 
 def progress(iteration, total):   
     bars_string = int(float(iteration) / float(total) * 50.)
@@ -198,7 +198,13 @@ def score(sequence_df,prob_data,back_prob_data):
         
     return sequence_score
 
-from numpy.random import choice
+
+
+
+def rna_ss(seq):
+    ss,mfe = RNA.fold(seq)
+    return mfe
+
 
 def mutate(sequence,prob_df):
     codons = functions.splitter(sequence,30)
