@@ -4,6 +4,7 @@ import argparse
 import pickle
 import time
 import pandas as pd
+import numpy as np
 from numpy.random import choice
 from libs import functions
 from libs import data
@@ -45,7 +46,9 @@ def main():
     
     
     
-    input_sequence = s.lower()
+    sequence = s.lower()
+    #remove start and end
+    input_sequence = sequence[3:-3]
     syn_sequences = []
     for seq in range(n):
         length = functions.sequence_length(input_sequence)
@@ -75,12 +78,12 @@ def main():
             #for random sequences
             #chain+=choice(prob_data.index,p=prob_data.loc[:,i])
 
-        syn_sequences.append(chain.upper())
+        syn_sequences.append(sequence.upper()[:3] + chain.upper() + sequence.upper()[-3:])
         functions.progress(seq,n)
     
     print("\nExporting sequences...")
     dataframe = pd.DataFrame(syn_sequences,columns=['synonymous_sequence'])
-    filename = mypath+'_' + o +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
+    filename = mypath + o +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
     dataframe.to_csv(filename,sep=',', encoding='utf-8', index=False) 
         
 
