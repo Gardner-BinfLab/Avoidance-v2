@@ -63,14 +63,17 @@ def main():
     prob_df = functions.train(codon_df)
     
     #count number of codons
-    codons, counts = np.unique(codon_df.values,return_counts=True)
+    counts = codon_df.apply(pd.value_counts)
+    total = counts.fillna(0).values.sum()
+
+
     
     #add an extra column at the end
     prob_df['codon_prob'] = np.nan
     
     #fill with codon probs
-    for i in range(len(codons)):
-        prob_df['codon_prob'][codons[i]] = counts[i]/counts.sum()
+    for i in range(len(counts.index)):
+        prob_df['codon_prob'][counts.index[i]] = counts.loc[counts.index[i]].sum()/total
         
         
    #mask NaNs with codon probs
