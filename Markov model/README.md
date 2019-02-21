@@ -44,16 +44,16 @@ Exporting model data to file..
 ```
 
 # Scores
-To score the sequences, you need to provide foreground and background model.
-They can be built by training (above).
+It calculates bitscores of seqence. You need to provide foreground and background model.
+if a background is not provided, it will automatically make and use a uniform background.
 
 
 Example use case:
 ```console
 $ python3 score.py -f /dir/test.csv -m /dir/foreground.pkl -b /dir/backgnd.pkl
-[===============                                   ] 30% (410/1334)
+[===============                                   ] 30% (410/1334)Finished!
 Stop codons encountered before the last position for sequence :  411
-[================================================= ] 99% (1333/1334)
+[================================================= ] 99% (1333/1334)Finished!
 Exporting results..
 
 ```
@@ -72,6 +72,6 @@ agtgtttgtgtctgcaatcccaagtttgtttgcgctgaaatatgcgatgctcaatgttatgatctgcgtactaagccgca
 -m example_model.pkl -n 200 
 
 Generating sequences..
-[=========================================================] 100% Time:  0:00:00
+[=========================================================] 100% (200/200)Finished!
 Exporting scores to csv..
 ```
