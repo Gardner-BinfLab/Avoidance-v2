@@ -210,7 +210,7 @@ def rna_ss(seq):
 
 
 def substitute_codon(sequence,prob_df,length = 30):
-    '''synonymously mutate sequence. The probability of codon from the model is used as a 
+    '''preform a synonymous codon substitution. The probability of codon from the model is used as a 
     weght to randomly pick the new codon.
     '''
     codons = functions.splitter(sequence,length)
