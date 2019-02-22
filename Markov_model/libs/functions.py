@@ -237,7 +237,7 @@ def mutate(sequence,prob_df,length = 30):
 
 def sim_anneal(sequence,prob_df,length = 30,niter=100):
     '''
-    preforms a simulated annealing to maximize the secondary structure of sequence
+    preforms a simulated annealing to maximize the mfe of sequence
     '''
     utr='ggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacat'
     seq = sequence[:length] 
