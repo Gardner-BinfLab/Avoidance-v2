@@ -1,0 +1,597 @@
+lcl|NC_012971.2_cds_WP_000365791.1_3890 [locus_tag=ECD_RS19090] [protein=transcriptional regulator] [protein_id=WP_000365791.1] [location=complement(3847169..3848062)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001054340.1_536 [locus_tag=ECD_RS02590] [protein=hypothetical protein] [protein_id=WP_001054340.1] [location=541061..541516] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_529 [locus_tag=ECD_RS02555] [protein=DNA N-6-adenine-methyltransferase] [pseudo=true] [partial=5'] [location=complement(536205..>536555)] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_WP_000570668.1_4001 [locus_tag=ECD_RS19680] [protein=translational GTPase TypA] [protein_id=WP_000570668.1] [location=3965105..3966928] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_072094239.1_1465 [locus_tag=ECD_RS07180] [protein=hypothetical protein] [protein_id=WP_072094239.1] [location=1408405..1408545] [gbkey=CDS]	ATC is not a start codon
+lcl|NC_012971.2_cds_WP_000247065.1_2539 [locus_tag=ECD_RS12410] [protein=DnaA inactivator Hda] [protein_id=WP_000247065.1] [location=complement(2482556..2483302)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001301119.1_4155 [locus_tag=ECD_RS20500] [protein=YjbF family lipoprotein] [protein_id=WP_001301119.1] [location=4143634..4144272] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001303651.1_2945 [locus_tag=ECD_RS14480] [protein=DUF2684 domain-containing protein] [protein_id=WP_001303651.1] [location=complement(2917257..2917508)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_061883665.1_2864 [locus_tag=ECD_RS14095] [protein=hypothetical protein] [protein_id=WP_061883665.1] [location=complement(2829057..2829650)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001033352.1_1284 [locus_tag=ECD_RS06305] [protein=sodium-independent anion transporter] [protein_id=WP_001033352.1] [location=complement(1247272..1248951)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000544359.1_2436 [locus_tag=ECD_RS11875] [protein=sensor histidine kinase] [protein_id=WP_000544359.1] [location=2376557..2378254] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_048339845.1_530 [locus_tag=ECD_RS02560] [protein=hypothetical protein] [protein_id=WP_048339845.1] [location=536564..536842] [gbkey=CDS]	ATC is not a start codon
+lcl|NC_012971.2_cds_WP_000214967.1_2979 [locus_tag=ECD_RS14645] [protein=KpsF/GutQ family sugar-phosphate isomerase] [protein_id=WP_000214967.1] [location=2945664..2946683] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001297479.1_1223 [locus_tag=ECD_RS06015] [protein=lysogenization protein HflD] [protein_id=WP_001297479.1] [location=complement(1195357..1195998)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000208242.1_4065 [locus_tag=ECD_RS20010] [protein=HslU--HslV peptidase proteolytic subunit] [protein_id=WP_000208242.1] [location=complement(4029680..4030210)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_012602912.1_4535 [locus_tag=ECD_RS22330] [protein=homoprotocatechuate degradation operon regulator HpaR] [protein_id=WP_012602912.1] [location=4509414..4509914] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4151 [locus_tag=ECD_RS25405] [protein=hypothetical protein] [pseudo=true] [location=4140628..4140929] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_1592 [locus_tag=ECD_RS24715] [protein=usher protein] [pseudo=true] [location=complement(1545546..1546984)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_2299 [locus_tag=ECD_RS25255] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=complement(<2235048..2235227)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_3262 [locus_tag=ECD_RS25325] [protein=hypothetical protein] [pseudo=true] [location=complement(3223076..3223302)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_695 [locus_tag=ECD_RS03380] [protein=type IV secretion protein Rhs] [pseudo=true] [partial=3'] [location=689457..>689765] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_000057022.1_1945 [locus_tag=ECD_RS09495] [protein=16S rRNA (cytosine(1407)-C(5))-methyltransferase RsmF] [protein_id=WP_000057022.1] [location=1865948..1867387] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4437 [locus_tag=ECD_RS21870] [protein=IS3 family transposase] [pseudo=true] [partial=5'] [location=<4422406..4423190] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_3420 [locus_tag=ECD_RS23955] [protein=endonuclease] [pseudo=true] [location=3361854..3361987] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000252397.1_1838 [locus_tag=ECD_RS08975] [protein=nucleotide excision repair endonuclease] [protein_id=WP_000252397.1] [location=1767928..1768815] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001303281.1_1503 [locus_tag=ECD_RS07365] [protein=hypothetical protein] [protein_id=WP_001303281.1] [location=complement(1452494..1452697)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1566 [locus_tag=ECD_RS23370] [protein=transposase] [pseudo=true] [partial=5'] [location=complement(1511696..>1511872)] [gbkey=CDS]	TAT is not a start codon
+lcl|NC_012971.2_cds_WP_001118052.1_227 [locus_tag=ECD_RS01130] [protein=amidohydrolase] [protein_id=WP_001118052.1] [location=complement(243993..244763)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1470 [locus_tag=ECD_RS25190] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=1412579..>1412758] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_4425 [locus_tag=ECD_RS25010] [protein=hypothetical protein] [pseudo=true] [location=4411623..4411846] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_4233 [locus_tag=ECD_RS24285] [protein=hypothetical protein] [pseudo=true] [location=complement(4220332..4220552)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001184045.1_1967 [locus_tag=ECD_RS09615] [protein=murein DD-endopeptidase MepM] [protein_id=WP_001184045.1] [location=complement(1886037..1887359)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000976400.1_837 [locus_tag=ECD_RS04110] [protein=secretion protein HlyD] [protein_id=WP_000976400.1] [location=complement(812966..813964)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_22 [locus_tag=ECD_RS24485] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=<23282..23389] [gbkey=CDS]	AAT is not a start codon
+lcl|NC_012971.2_cds_WP_001315281.1_299 [locus_tag=ECD_RS01455] [protein=DUF2877 domain-containing protein] [protein_id=WP_001315281.1] [location=305553..306416] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001312029.1_2665 [locus_tag=ECD_RS13045] [protein=hypothetical protein] [protein_id=WP_001312029.1] [location=complement(2617107..2617271)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000529317.1_1193 [locus_tag=ECD_RS05875] [protein=beta-N-acetylhexosaminidase] [protein_id=WP_000529317.1] [location=1166662..1167687] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3113 [locus_tag=ECD_RS23875] [protein=hypothetical protein] [pseudo=true] [location=complement(3082597..3082790)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_751 [gene=galM] [locus_tag=ECD_RS03690] [protein=galactose-1-epimerase] [pseudo=true] [partial=5'] [location=complement(746205..>746868)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000004473.1_3331 [locus_tag=ECD_RS16385] [protein=methionyl-tRNA formyltransferase] [protein_id=WP_000004473.1] [location=3295384..3296331] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4474 [locus_tag=ECD_RS22040] [protein=IS1 family transposase] [pseudo=true] [location=complement(4449951..4450648)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_3676 [locus_tag=ECD_RS24055] [protein=type IV secretion protein Rhs] [pseudo=true] [partial=3'] [location=3631786..>3631965] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_3425 [locus_tag=ECD_RS16840] [protein=IS1 family transposase] [pseudo=true] [location=complement(3365173..3365870)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_1554 [locus_tag=ECD_RS07605] [protein=hypothetical protein] [pseudo=true] [location=complement(1500065..1501395)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_652 [locus_tag=ECD_RS25105] [protein=IS150 protein InsAB] [pseudo=true] [location=642514..643883] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_1605 [locus_tag=ECD_RS23390] [protein=hypothetical protein] [pseudo=true] [location=1557047..1557247] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2041 [locus_tag=ECD_RS23530] [protein=hypothetical protein] [pseudo=true] [location=complement(1962766..1962976)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000031783.1_3384 [locus_tag=ECD_RS16645] [protein=translation elongation factor EF-Tu 1] [protein_id=WP_000031783.1] [location=complement(3329746..3330930)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001028965.1_716 [locus_tag=ECD_RS03480] [protein=fimbrial biogenesis outer membrane usher protein] [protein_id=WP_001028965.1] [location=complement(708289..710739)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_024191706.1_3168 [locus_tag=ECD_RS23900] [protein=hypothetical protein] [protein_id=WP_024191706.1] [location=3136221..3136406] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001301225.1_1069 [locus_tag=ECD_RS05255] [protein=YjbF family lipoprotein] [protein_id=WP_001301225.1] [location=complement(1053777..1054421)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001380722.1_3561 [locus_tag=ECD_RS17490] [protein=hypothetical protein] [protein_id=WP_001380722.1] [location=3510196..3510375] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001301326.1_358 [locus_tag=ECD_RS01735] [protein=alkaline phosphatase] [protein_id=WP_001301326.1] [location=366372..367787] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2144 [locus_tag=ECD_RS10480] [protein=IS1 family transposase] [pseudo=true] [location=2068587..2069284] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001295474.1_2543 [locus_tag=ECD_RS12425] [protein=phosphoribosylformylglycinamidine cyclo-ligase] [protein_id=WP_001295474.1] [location=2485678..2486715] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_009008424.1_3700 [locus_tag=ECD_RS24945] [protein=hypothetical protein] [protein_id=WP_009008424.1] [location=3654240..3654437] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2893 [locus_tag=ECD_RS14240] [protein=peptide chain release factor 2] [pseudo=true] [location=complement(2866044..2867142)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_1849 [locus_tag=ECD_RS09025] [protein=hypothetical protein] [pseudo=true] [location=1778529..1779169] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_2145 [locus_tag=ECD_RS10485] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=complement(<2069290..2069532)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_000076001.1_2549 [locus_tag=ECD_RS12455] [protein=DUF2633 domain-containing protein] [protein_id=WP_000076001.1] [location=2493770..2493961] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000844874.1_450 [locus_tag=ECD_RS02190] [protein=primosomal replication protein N''] [protein_id=WP_000844874.1] [location=complement(459331..459858)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1783 [locus_tag=ECD_RS08705] [protein=MFS transporter] [pseudo=true] [location=1715546..1716699] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001145183.1_3909 [locus_tag=ECD_RS19175] [protein=dTDP-fucosamine acetyltransferase] [protein_id=WP_001145183.1] [location=3864707..3865381] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_077251797.1_3925 [locus_tag=ECD_RS24160] [protein=hypothetical protein] [protein_id=WP_077251797.1] [location=complement(3884377..3884640)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4459 [locus_tag=ECD_RS24430] [protein=glyoxalase] [pseudo=true] [partial=3'] [location=complement(<4440402..4440515)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_001306924.1_297 [locus_tag=ECD_RS22855] [protein=hypothetical protein] [protein_id=WP_001306924.1] [location=304727..304960] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_071524601.1_3776 [locus_tag=ECD_RS24125] [protein=hypothetical protein] [protein_id=WP_071524601.1] [location=complement(3728357..3728545)] [gbkey=CDS]	ATA is not a start codon
+lcl|NC_012971.2_cds_2525 [gene=hycD] [locus_tag=ECD_RS25295] [protein=hydrogenase 3 membrane subunit] [pseudo=true] [location=2468336..2469282] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_3223 [locus_tag=ECD_RS23910] [protein=hypothetical protein] [pseudo=true] [location=3190071..3190267] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_3871 [locus_tag=ECD_RS18960] [protein=D-ribose pyranase] [pseudo=true] [partial=3'] [location=3822152..>3822343] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_071829610.1_4448 [locus_tag=ECD_RS24415] [protein=hypothetical protein] [protein_id=WP_071829610.1] [location=4432957..4433043] [gbkey=CDS]	ATC is not a start codon
+lcl|NC_012971.2_cds_WP_000091840.1_1683 [locus_tag=ECD_RS08215] [protein=MFS transporter] [protein_id=WP_000091840.1] [location=1614896..1616149] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_274 [locus_tag=ECD_RS24505] [protein=oxidoreductase] [pseudo=true] [partial=5'] [location=complement(283899..>283988)] [gbkey=CDS]	CAA is not a start codon
+lcl|NC_012971.2_cds_WP_000805902.1_754 [gene=lacI] [locus_tag=ECD_RS03700] [protein=lactose operon repressor] [protein_id=WP_000805902.1] [location=748736..749818] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_753 [locus_tag=ECD_RS23070] [protein=integrase] [pseudo=true] [location=complement(748484..748665)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001102321.1_2530 [locus_tag=ECD_RS12365] [protein=hydrogenase-4 component G] [protein_id=WP_001102321.1] [location=2472974..2474641] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000435167.1_2423 [locus_tag=ECD_RS11810] [protein=multidrug resistance protein EmrK] [protein_id=WP_000435167.1] [location=complement(2360064..2361227)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3642 [locus_tag=ECD_RS17870] [protein=xylose ABC transporter ATP-binding protein] [pseudo=true] [location=3594354..3595894] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_1652 [locus_tag=ECD_RS08065] [protein=hypothetical protein] [pseudo=true] [location=complement(1591435..1591844)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000797573.1_2020 [locus_tag=ECD_RS09860] [protein=tyrosine transporter TyrP] [protein_id=WP_000797573.1] [location=1934823..1936034] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2055 [locus_tag=ECD_RS10050] [protein=hypothetical protein] [pseudo=true] [partial=5'] [location=complement(1972901..>1973614)] [gbkey=CDS]	TCA is not a start codon
+lcl|NC_012971.2_cds_2920 [locus_tag=ECD_RS25315] [protein=transposase] [pseudo=true] [partial=5'] [location=<2891584..2891715] [gbkey=CDS]	AGA is not a start codon
+lcl|NC_012971.2_cds_WP_000101193.1_1748 [locus_tag=ECD_RS08525] [protein=murein DD-endopeptidase MepH] [protein_id=WP_000101193.1] [location=1679631..1680446] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000762401.1_84 [locus_tag=ECD_RS00425] [protein=catabolite repressor/activator] [protein_id=WP_000762401.1] [location=90833..91837] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001311248.1_3894 [locus_tag=ECD_RS24970] [protein=hypothetical protein] [protein_id=WP_001311248.1] [location=complement(3850484..3850702)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001070563.1_3324 [locus_tag=ECD_RS16350] [protein=DUF1488 domain-containing protein] [protein_id=WP_001070563.1] [location=complement(3290936..3291193)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_543 [locus_tag=ECD_RS02625] [protein=IS1 family transposase] [pseudo=true] [location=complement(543652..544349)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001142708.1_3368 [locus_tag=ECD_RS16570] [protein=type II secretion system protein GspC] [protein_id=WP_001142708.1] [location=3316748..3317563] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2858 [locus_tag=ECD_RS14060] [protein=2-deoxy-D-gluconate 3-dehydrogenase] [pseudo=true] [partial=3'] [location=complement(<2822371..2822986)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000044679.1_1181 [locus_tag=ECD_RS05815] [protein=beta-ketoacyl-[acyl-carrier-protein] synthase II] [protein_id=WP_000044679.1] [location=1154506..1155747] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001019197.1_1075 [locus_tag=ECD_RS05280] [protein=protein GnsA] [protein_id=WP_001019197.1] [location=1056356..1056529] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1256 [locus_tag=ECD_RS25175] [protein=hemolysin E] [pseudo=true] [location=complement(1217642..1218542)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001191419.1_2333 [locus_tag=ECD_RS11370] [protein=isochorismate synthase MenF] [protein_id=WP_001191419.1] [location=complement(2269522..2270817)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001269293.1_4374 [locus_tag=ECD_RS21550] [protein=autotransporter assembly complex protein TamA] [protein_id=WP_001269293.1] [location=4354504..4356237] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000094981.1_2994 [locus_tag=ECD_RS14720] [protein=type II secretion system protein GspL] [protein_id=WP_000094981.1] [location=complement(2963407..2964585)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001300711.1_1407 [locus_tag=ECD_RS06910] [protein=oxidoreductase] [protein_id=WP_001300711.1] [location=1363198..1364253] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000736861.1_3410 [locus_tag=ECD_RS16770] [protein=DUF2559 domain-containing protein] [protein_id=WP_000736861.1] [location=complement(3351054..3351221)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000681903.1_3179 [locus_tag=ECD_RS15605] [protein=tagatose-bisphosphate aldolase subunit KbaZ] [protein_id=WP_000681903.1] [location=3145107..3146387] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3632 [locus_tag=ECD_RS25375] [protein=IS150 protein InsAB] [pseudo=true] [location=3582834..3584203] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_071819585.1_1668 [locus_tag=ECD_RS23420] [protein=hypothetical protein] [protein_id=WP_071819585.1] [location=complement(1600319..1600507)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000379245.1_3881 [locus_tag=ECD_RS19045] [protein=transcriptional regulator] [protein_id=WP_000379245.1] [location=complement(3837368..3838207)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001295390.1_4215 [locus_tag=ECD_RS20765] [protein=heme lyase CcmF/NrfE family subunit] [protein_id=WP_001295390.1] [location=4198924..4200582] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001298109.1_1285 [locus_tag=ECD_RS06310] [protein=ribose-phosphate pyrophosphokinase] [protein_id=WP_001298109.1] [location=complement(1249076..1250023)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001301345.1_156 [locus_tag=ECD_RS00765] [protein=ATP-dependent helicase HrpB] [protein_id=WP_001301345.1] [location=164957..167386] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000670998.1_1736 [locus_tag=ECD_RS08465] [protein=DUF1656 domain-containing protein] [protein_id=WP_000670998.1] [location=1666221..1666457] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000046637.1_386 [locus_tag=ECD_RS01870] [protein=protein translocase subunit SecF] [protein_id=WP_000046637.1] [location=394907..395878] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001052219.1_3859 [locus_tag=ECD_RS18900] [protein=ATP synthase subunit B] [protein_id=WP_001052219.1] [location=complement(3809219..3809689)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2195 [locus_tag=ECD_RS24800] [protein=transposase] [pseudo=true] [partial=5'] [location=<2123699..2123785] [gbkey=CDS]	TTA is not a start codon
+lcl|NC_012971.2_cds_WP_000152933.1_1282 [locus_tag=ECD_RS06295] [protein=peptidyl-tRNA hydrolase] [protein_id=WP_000152933.1] [location=complement(1246077..1246661)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001278936.1_1993 [locus_tag=ECD_RS09735] [protein=flagellar type III secretion system protein FlhB] [protein_id=WP_001278936.1] [location=complement(1910961..1912109)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_077239085.1_1073 [locus_tag=ECD_RS23180] [protein=cold-shock protein] [protein_id=WP_077239085.1] [location=1055928..1056161] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_023148767.1_4423 [locus_tag=ECD_RS24375] [protein=hypothetical protein] [protein_id=WP_023148767.1] [location=complement(4411045..4411275)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001099655.1_539 [locus_tag=ECD_RS02605] [protein=RusA family crossover junction endodeoxyribonuclease] [protein_id=WP_001099655.1] [location=541966..542328] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000417058.1_201 [locus_tag=ECD_RS00975] [protein=hypothetical protein] [protein_id=WP_000417058.1] [location=complement(216768..216968)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_921 [locus_tag=ECD_RS04520] [protein=late control] [pseudo=true] [partial=5'] [location=<891892..892293] [gbkey=CDS]	ACC is not a start codon
+lcl|NC_012971.2_cds_2339 [locus_tag=ECD_RS25265] [protein=aminopeptidase] [pseudo=true] [location=2274742..2275115] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_3805 [locus_tag=ECD_RS18625] [protein=GntR family transcriptional regulator] [pseudo=true] [location=3752774..3753411] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_756 [locus_tag=ECD_RS03705] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=749941..>750381] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_001333834.1_3621 [locus_tag=ECD_RS24045] [protein=hypothetical protein] [protein_id=WP_001333834.1] [location=3574155..3574334] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000123737.1_1438 [locus_tag=ECD_RS07070] [protein=ATP-dependent RNA helicase] [protein_id=WP_000123737.1] [location=1394679..1396052] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000525587.1_2266 [locus_tag=ECD_RS11045] [protein=cytochrome c biogenesis ATP-binding export protein CcmA] [protein_id=WP_000525587.1] [location=complement(2190671..2191294)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1644 [locus_tag=ECD_RS08025] [protein=IS3 family transposase] [pseudo=true] [location=1586996..1588158] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001295552.1_3206 [locus_tag=ECD_RS15740] [protein=SCP2 domain-containing protein] [protein_id=WP_001295552.1] [location=complement(3169251..3169775)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_698 [locus_tag=ECD_RS03395] [protein=RHS element protein] [pseudo=true] [partial=5'] [location=<691656..693176] [gbkey=CDS]	AAC is not a start codon
+lcl|NC_012971.2_cds_WP_001658585.1_2249 [locus_tag=ECD_RS23630] [protein=hypothetical protein] [protein_id=WP_001658585.1] [location=2175333..2175455] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3383 [locus_tag=ECD_RS25340] [protein=elongation factor Tu] [pseudo=true] [partial=3'] [location=complement(<3329676..3329765)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_000624298.1_1919 [locus_tag=ECD_RS09370] [protein=L-serine dehydratase 1] [protein_id=WP_000624298.1] [location=1842659..1844023] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3715 [locus_tag=ECD_RS18210] [protein=IS1 family transposase] [pseudo=true] [location=complement(3669648..3670345)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_511 [locus_tag=ECD_RS22950] [protein=MarR family transcriptional regulator] [pseudo=true] [partial=3'] [location=522120..>522274] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001230983.1_215 [locus_tag=ECD_RS01075] [protein=EEP domain-containing protein] [protein_id=WP_001230983.1] [location=234049..234849] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001303701.1_3455 [locus_tag=ECD_RS16980] [protein=hypothetical protein] [protein_id=WP_001303701.1] [location=complement(3392895..3393026)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1125 [locus_tag=ECD_RS05530] [protein=hypothetical protein] [pseudo=true] [location=complement(1106175..1106415)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_072094252.1_2542 [locus_tag=ECD_RS24870] [protein=hypothetical protein] [protein_id=WP_072094252.1] [location=2485474..2485659] [gbkey=CDS]	ATT is not a start codon
+lcl|NC_012971.2_cds_2341 [locus_tag=ECD_RS25270] [protein=IS3 family transposase] [pseudo=true] [location=2275808..2277165] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000456720.1_1918 [locus_tag=ECD_RS09365] [protein=CoA pyrophosphatase] [protein_id=WP_000456720.1] [location=1841897..1842475] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1645 [locus_tag=ECD_RS23415] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=complement(<1588189..1588335)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_001301104.1_1268 [gene=emtA] [locus_tag=ECD_RS06235] [protein=murein transglycosylase] [protein_id=WP_001301104.1] [location=1231328..1231939] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000122886.1_39 [locus_tag=ECD_RS00205] [protein=carnitine operon protein CaiE] [protein_id=WP_000122886.1] [location=complement(38976..39566)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4206 [locus_tag=ECD_RS20725] [protein=hypothetical protein] [pseudo=true] [location=complement(4189193..4190486)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000807125.1_1189 [locus_tag=ECD_RS05855] [protein=histidine triad nucleotide-binding protein] [protein_id=WP_000807125.1] [location=1164452..1164811] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_324 [locus_tag=ECD_RS22865] [protein=catalase] [pseudo=true] [partial=5'] [location=<335827..335913] [gbkey=CDS]	GTA is not a start codon
+lcl|NC_012971.2_cds_1579 [locus_tag=ECD_RS23375] [protein=hypothetical protein] [pseudo=true] [location=1527708..1527902] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000714550.1_1935 [locus_tag=ECD_RS09445] [protein=PhoP regulon feedback inhibition membrane protein MgrB] [protein_id=WP_000714550.1] [location=complement(1854349..1854492)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1445 [locus_tag=ECD_RS07105] [protein=hypothetical protein] [pseudo=true] [location=complement(1399954..1401053)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001303663.1_3048 [locus_tag=ECD_RS14985] [protein=hypothetical protein] [protein_id=WP_001303663.1] [location=complement(3019414..3019569)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000257417.1_1611 [locus_tag=ECD_RS07870] [protein=glutaminase] [protein_id=WP_000257417.1] [location=complement(1560898..1561824)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000977007.1_2367 [locus_tag=ECD_RS11540] [protein=phosphodiesterase YfcE] [protein_id=WP_000977007.1] [location=complement(2306487..2307041)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000564489.1_2844 [locus_tag=ECD_RS13975] [protein=RNA pyrophosphohydrolase] [protein_id=WP_000564489.1] [location=complement(2806728..2807258)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001269673.1_642 [locus_tag=ECD_RS03085] [protein=hypothetical protein] [protein_id=WP_001269673.1] [location=complement(631968..632549)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4447 [locus_tag=ECD_RS25440] [protein=IS1 family transposase] [pseudo=true] [location=4431924..4432621] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000020169.1_1269 [locus_tag=ECD_RS06240] [protein=flagellar brake protein YcgR] [protein_id=WP_000020169.1] [location=complement(1231941..1232675)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001268213.1_276 [locus_tag=ECD_RS01360] [protein=transcriptional regulator] [protein_id=WP_001268213.1] [location=complement(285912..286796)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000932839.1_3863 [locus_tag=ECD_RS18920] [protein=ribosomal RNA small subunit methyltransferase G] [protein_id=WP_000932839.1] [location=complement(3811858..3812481)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4511 [locus_tag=ECD_RS22210] [protein=helicase] [pseudo=true] [partial=5'] [location=<4479803..4483165] [gbkey=CDS]	GTC is not a start codon
+lcl|NC_012971.2_cds_WP_001300448.1_2877 [locus_tag=ECD_RS14160] [protein=putative selenium-dependent hydroxylase accessory protein YqeC] [protein_id=WP_001300448.1] [location=complement(2845149..2845919)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_009453425.1_2304 [locus_tag=ECD_RS23670] [protein=hypothetical protein] [protein_id=WP_009453425.1] [location=complement(2239921..2240004)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001295458.1_2437 [locus_tag=ECD_RS11880] [protein=DNA-binding response regulator] [protein_id=WP_001295458.1] [location=2378269..2379003] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1209 [locus_tag=ECD_RS05945] [protein=N-acetylglucosamine kinase] [pseudo=true] [partial=5'] [location=<1182383..1182874] [gbkey=CDS]	AAC is not a start codon
+lcl|NC_012971.2_cds_WP_000459594.1_3972 [locus_tag=ECD_RS19510] [protein=twin-arginine translocase subunit TatB] [protein_id=WP_000459594.1] [location=3929129..3929644] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000580332.1_1972 [locus_tag=ECD_RS09640] [protein=Holliday junction branch migration protein RuvA] [protein_id=WP_000580332.1] [location=complement(1891283..1891894)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000996005.1_932 [gene=potG] [locus_tag=ECD_RS04575] [protein=putrescine transport ATP-binding protein PotG] [protein_id=WP_000996005.1] [location=899695..900828] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_764 [locus_tag=ECD_RS03745] [protein=cell division protein ZapA] [pseudo=true] [location=complement(755833..756115)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_600 [locus_tag=ECD_RS24570] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=complement(597565..>597675)] [gbkey=CDS]	CAT is not a start codon
+lcl|NC_012971.2_cds_1008 [locus_tag=ECD_RS25130] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=989381..>989576] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000906340.1_2003 [locus_tag=ECD_RS09785] [protein=flagellar motor stator protein MotA] [protein_id=WP_000906340.1] [location=complement(1922170..1923057)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000459457.1_804 [locus_tag=ECD_RS03940] [protein=phage tail assembly protein T] [protein_id=WP_000459457.1] [location=778589..779023] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001289873.1_762 [locus_tag=ECD_RS03735] [protein=hypothetical protein] [protein_id=WP_001289873.1] [location=complement(754968..755516)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2217 [locus_tag=ECD_RS25250] [protein=hypothetical protein] [pseudo=true] [location=complement(2141661..2141865)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_2056 [locus_tag=ECD_RS25230] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=complement(<1973635..1973826)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_1684 [locus_tag=ECD_RS23425] [protein=transposase] [pseudo=true] [partial=5'] [location=<1616302..1616400] [gbkey=CDS]	TTT is not a start codon
+lcl|NC_012971.2_cds_WP_000153162.1_147 [locus_tag=ECD_RS00720] [protein=outer membrane usher protein] [protein_id=WP_000153162.1] [location=complement(155671..158271)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000213361.1_2247 [locus_tag=ECD_RS10955] [protein=Bcr/CflA family drug resistance efflux transporter] [protein_id=WP_000213361.1] [location=complement(2173419..2174609)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000044065.1_162 [locus_tag=ECD_RS00795] [protein=Fe(3+)-hydroxamate ABC transporter permease FhuB] [protein_id=WP_000044065.1] [location=174305..176287] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000719088.1_1870 [locus_tag=ECD_RS09130] [protein=DeoR/GlpR transcriptional regulator] [protein_id=WP_000719088.1] [location=complement(1798473..1799231)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001487982.1_1273 [locus_tag=ECD_RS24660] [protein=hypothetical protein] [protein_id=WP_001487982.1] [location=1235469..1235684] [gbkey=CDS]	ATA is not a start codon
+lcl|NC_012971.2_cds_WP_001158034.1_3198 [locus_tag=ECD_RS15700] [protein=DnaA initiator-associating protein DiaA] [protein_id=WP_001158034.1] [location=3164308..3164898] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000410113.1_4537 [locus_tag=ECD_RS22340] [protein=L-galactonate transporter] [protein_id=WP_000410113.1] [location=complement(4511737..4513098)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000125832.1_577 [locus_tag=ECD_RS02790] [protein=enterochelin esterase] [protein_id=WP_000125832.1] [location=573224..574426] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2812 [locus_tag=ECD_RS13805] [protein=L-fuculose phosphate aldolase] [pseudo=true] [partial=3'] [location=complement(<2766615..2767055)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_1433 [locus_tag=ECD_RS07045] [protein=glutamate decarboxylase] [pseudo=true] [partial=5'] [location=complement(1390889..>1390999)] [gbkey=CDS]	AAT is not a start codon
+lcl|NC_012971.2_cds_2615 [locus_tag=ECD_RS12775] [protein=glutamate decarboxylase] [pseudo=true] [partial=5'] [location=<2566982..2567110] [gbkey=CDS]	AAT is not a start codon
+lcl|NC_012971.2_cds_WP_000976912.1_2981 [locus_tag=ECD_RS14655] [protein=Polysialic acid transport protein kpsD] [protein_id=WP_000976912.1] [location=2947924..2949603] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4137 [locus_tag=ECD_RS25400] [protein=hypothetical protein] [pseudo=true] [partial=5'] [location=complement(4115511..>4115696)] [gbkey=CDS]	AAA is not a start codon
+lcl|NC_012971.2_cds_1494 [locus_tag=ECD_RS07325] [protein=IS1 family transposase] [pseudo=true] [location=1444168..1444865] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000150543.1_1924 [locus_tag=ECD_RS09390] [protein=PTS mannose transporter subunit EIIAB] [protein_id=WP_000150543.1] [location=1847775..1848746] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_786 [locus_tag=ECD_RS24610] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=766833..>766945] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000876286.1_1367 [locus_tag=ECD_RS06710] [protein=LPS assembly protein A] [protein_id=WP_000876286.1] [location=1326613..1326921] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001107167.1_2560 [locus_tag=ECD_RS12505] [protein=histidine--tRNA ligase] [protein_id=WP_001107167.1] [location=complement(2503781..2505055)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1359 [locus_tag=ECD_RS23295] [protein=transposase] [pseudo=true] [partial=5'] [location=<1320024..1320164] [gbkey=CDS]	TCT is not a start codon
+lcl|NC_012971.2_cds_1115 [locus_tag=ECD_RS05470] [protein=IS3 family transposase] [pseudo=true] [location=complement(1098558..1099720)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_170 [locus_tag=ECD_RS22795] [protein=hypothetical protein] [pseudo=true] [location=183621..183809] [gbkey=CDS]	ATA is not a start codon
+lcl|NC_012971.2_cds_WP_001317389.1_3819 [locus_tag=ECD_RS18700] [protein=DUF937 domain-containing protein] [protein_id=WP_001317389.1] [location=complement(3765863..3766270)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000046749.1_4571 [locus_tag=ECD_RS22535] [protein=energy-dependent translational throttle protein EttA] [protein_id=WP_000046749.1] [location=complement(4546209..4547876)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001029698.1_4569 [locus_tag=ECD_RS22520] [protein=DNA repair protein RadA] [protein_id=WP_001029698.1] [location=4543267..4544649] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000044837.1_820 [locus_tag=ECD_RS04020] [protein=ATP-dependent dethiobiotin synthetase BioD] [protein_id=WP_000044837.1] [location=796263..796940] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4270 [locus_tag=ECD_RS21030] [protein=glutamate decarboxylase] [pseudo=true] [partial=5'] [location=<4256290..4256418] [gbkey=CDS]	ATT is not a start codon
+lcl|NC_012971.2_cds_WP_000128847.1_1912 [locus_tag=ECD_RS09335] [protein=ATP-dependent DNA helicase] [protein_id=WP_000128847.1] [location=complement(1837051..1838961)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001336550.1_1124 [locus_tag=ECD_RS23205] [protein=hypothetical protein] [protein_id=WP_001336550.1] [location=complement(1105979..1106158)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000801125.1_393 [gene=nusB] [locus_tag=ECD_RS01910] [protein=N utilization substance protein B] [protein_id=WP_000801125.1] [location=400538..400957] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1207 [locus_tag=ECD_RS24655] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=<1181613..1181711] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_WP_012767774.1_3943 [locus_tag=ECD_RS19360] [protein=DNA helicase RecQ] [protein_id=WP_012767774.1] [location=3898731..3900560] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000090775.1_3342 [locus_tag=ECD_RS16440] [protein=30S ribosomal protein S13] [protein_id=WP_000090775.1] [location=complement(3303285..3303641)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000212242.1_512 [locus_tag=ECD_RS02465] [protein=UDP-2,3-diacylglucosamine diphosphatase] [protein_id=WP_000212242.1] [location=complement(522305..523027)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3757 [locus_tag=ECD_RS18410] [protein=IS3 family transposase] [pseudo=true] [partial=3'] [location=complement(<3714356..3714702)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001300564.1_2318 [locus_tag=ECD_RS11295] [protein=nucleoside triphosphatase] [protein_id=WP_001300564.1] [location=2254728..2255153] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000044711.1_4476 [locus_tag=ECD_RS22045] [protein=type 1 fimbriae regulatory protein FimE] [protein_id=WP_000044711.1] [location=4451316..4451912] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_012602004.1_1863 [locus_tag=ECD_RS09095] [protein=hypothetical protein] [protein_id=WP_012602004.1] [location=complement(1792326..1792475)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001024876.1_923 [locus_tag=ECD_RS04530] [protein=transporter] [protein_id=WP_001024876.1] [location=complement(892838..894523)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000527844.1_3047 [locus_tag=ECD_RS14980] [protein=biopolymer transporter ExbB] [protein_id=WP_000527844.1] [location=complement(3018687..3019421)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_339 [locus_tag=ECD_RS25075] [protein=transferase] [pseudo=true] [partial=5'] [location=complement(350178..>350243)] [gbkey=CDS]	CTA is not a start codon
+lcl|NC_012971.2_cds_WP_001321683.1_3727 [locus_tag=ECD_RS18265] [protein=DNA repair protein RadC] [protein_id=WP_001321683.1] [location=complement(3678681..3679349)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_072094233.1_598 [locus_tag=ECD_RS25100] [protein=hypothetical protein] [protein_id=WP_072094233.1] [location=596791..596976] [gbkey=CDS]	ATC is not a start codon
+lcl|NC_012971.2_cds_WP_000622418.1_183 [locus_tag=ECD_RS00885] [protein=ribosome-recycling factor] [protein_id=WP_000622418.1] [location=195715..196272] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2042 [locus_tag=ECD_RS25220] [protein=hypothetical protein] [pseudo=true] [location=1962931..1963135] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_2208 [locus_tag=ECD_RS10780] [protein=methyl-galactoside ABC transporter substrate-binding protein] [pseudo=true] [location=complement(2134254..2135247)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000210111.1_3492 [locus_tag=ECD_RS17150] [protein=low-affinity gluconate transporter] [protein_id=WP_000210111.1] [location=complement(3438870..3440210)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_570 [locus_tag=ECD_RS25095] [protein=IS150 protein InsAB] [pseudo=true] [partial=3'] [location=566321..>567387] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000569083.1_852 [gene=glnQ] [locus_tag=ECD_RS04180] [protein=glutamine transport ATP-binding protein GlnQ] [protein_id=WP_000569083.1] [location=complement(829733..830455)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000179409.1_3296 [locus_tag=ECD_RS16175] [protein=rod shape-determining protein MreD] [protein_id=WP_000179409.1] [location=complement(3259543..3260031)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001325005.1_1244 [locus_tag=ECD_RS23230] [protein=hypothetical protein] [protein_id=WP_001325005.1] [location=1211423..1211608] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001059922.1_2745 [locus_tag=ECD_RS13470] [protein=hydrogenase expression/formation protein HypE] [protein_id=WP_001059922.1] [location=2693221..2694231] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_370 [locus_tag=ECD_RS01790] [protein=IS1 family transposase] [pseudo=true] [location=complement(373743..374440)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_011579081.1_290 [locus_tag=ECD_RS22845] [protein=hypothetical protein] [protein_id=WP_011579081.1] [location=298879..299094] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000331745.1_4504 [locus_tag=ECD_RS22180] [protein=2-hydroxyglutaryl-CoA dehydratase activator] [protein_id=WP_000331745.1] [location=complement(4473201..4473968)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1543 [locus_tag=ECD_RS07550] [protein=ISAs1 family transposase] [pseudo=true] [location=1486678..1487804] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001253612.1_3293 [locus_tag=ECD_RS16160] [protein=AsmA2 domain-containing protein] [protein_id=WP_001253612.1] [location=complement(3253614..3257414)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001295704.1_2398 [locus_tag=ECD_RS11690] [protein=50S ribosomal protein L3 N(5)-glutamine methyltransferase] [protein_id=WP_001295704.1] [location=complement(2334761..2335693)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001177644.1_4325 [locus_tag=ECD_RS21310] [protein=transcriptional regulator] [protein_id=WP_001177644.1] [location=4312710..4313135] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001287454.1_2708 [locus_tag=ECD_RS13250] [protein=hypothetical protein] [protein_id=WP_001287454.1] [location=complement(2656478..2656906)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_071528550.1_4171 [locus_tag=ECD_RS24240] [protein=chorismate lyase] [protein_id=WP_071528550.1] [location=4159751..4159864] [gbkey=CDS]	ATC is not a start codon
+lcl|NC_012971.2_cds_1664 [locus_tag=ECD_RS08125] [protein=site-specific integrase] [pseudo=true] [location=1596611..1597905] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_041031660.1_21 [locus_tag=ECD_RS00110] [protein=hypothetical protein] [protein_id=WP_041031660.1] [location=complement(22208..23296)] [gbkey=CDS]	ATC is not a start codon
+lcl|NC_012971.2_cds_WP_001117838.1_2669 [locus_tag=ECD_RS13065] [protein=RnfH family protein] [protein_id=WP_001117838.1] [location=complement(2620410..2620700)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2677 [locus_tag=ECD_RS13100] [protein=IS1 family transposase] [pseudo=true] [location=2627770..2628467] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001091587.1_752 [locus_tag=ECD_RS03695] [protein=acyl-CoA thioesterase] [protein_id=WP_001091587.1] [location=complement(747066..748349)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3716 [locus_tag=ECD_RS24950] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=complement(3670302..>3670400)] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_WP_032201689.1_4181 [locus_tag=ECD_RS20630] [protein=DUF2713 domain-containing protein] [protein_id=WP_032201689.1] [location=4167987..4168715] [gbkey=CDS]	ATA is not a start codon
+lcl|NC_012971.2_cds_1609 [locus_tag=ECD_RS25195] [protein=diguanylate cyclase] [pseudo=true] [location=complement(1560250..1560400)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_858 [locus_tag=ECD_RS23135] [protein=transposase] [pseudo=true] [partial=5'] [location=<833138..833209] [gbkey=CDS]	CGG is not a start codon
+lcl|NC_012971.2_cds_4112 [locus_tag=ECD_RS24210] [protein=transcriptional regulator] [pseudo=true] [partial=3'] [location=complement(<4087822..4088031)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_2857 [locus_tag=ECD_RS25310] [protein=IS150 protein InsAB] [pseudo=true] [location=2821024..2822393] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_1638 [locus_tag=ECD_RS23400] [protein=phage tail protein] [pseudo=true] [partial=5'] [location=complement(1583605..>1583715)] [gbkey=CDS]	GCA is not a start codon
+lcl|NC_012971.2_cds_WP_000387388.1_1436 [gene=zntB] [locus_tag=ECD_RS07060] [protein=zinc transporter ZntB] [protein_id=WP_000387388.1] [location=1393218..1394201] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_012767720.1_1200 [locus_tag=ECD_RS05905] [protein=LysM peptidoglycan-binding domain-containing protein] [protein_id=WP_012767720.1] [location=complement(1172005..1172967)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2568 [locus_tag=ECD_RS25300] [protein=IS3 family transposase] [pseudo=true] [location=2517903..2519260] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_225 [locus_tag=ECD_RS25060] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=242005..>242205] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_000840481.1_1741 [locus_tag=ECD_RS25200] [protein=DUF1289 domain-containing protein] [protein_id=WP_000840481.1] [location=complement(1670877..1671116)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001076243.1_3027 [locus_tag=ECD_RS14880] [protein=ATP-binding protein] [protein_id=WP_001076243.1] [location=complement(3000678..3001391)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000249002.1_1635 [locus_tag=ECD_RS07985] [protein=hypothetical protein] [protein_id=WP_000249002.1] [location=1581609..1581848] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001024746.1_1627 [locus_tag=ECD_RS07950] [protein=hypothetical protein] [protein_id=WP_001024746.1] [location=1574069..1574587] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001174961.1_1758 [locus_tag=ECD_RS08570] [protein=multidrug resistance protein MdtK] [protein_id=WP_001174961.1] [location=1688726..1690099] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001299799.1_4558 [locus_tag=ECD_RS22455] [protein=patatin family protein] [protein_id=WP_001299799.1] [location=4530786..4531859] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000939738.1_624 [locus_tag=ECD_RS03000] [protein=fluoride efflux transporter CrcB] [protein_id=WP_000939738.1] [location=complement(617916..618299)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_223 [locus_tag=ECD_RS24495] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=<241260..241358] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_WP_001192973.1_4306 [locus_tag=ECD_RS21200] [protein=fumarate reductase flavoprotein subunit] [protein_id=WP_001192973.1] [location=complement(4287586..4289394)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4517 [locus_tag=ECD_RS22240] [protein=restriction endonuclease subunit S] [pseudo=true] [partial=3'] [location=complement(<4487853..4488578)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_000020078.1_1331 [locus_tag=ECD_RS06530] [protein=voltage-gated potassium channel] [protein_id=WP_000020078.1] [location=complement(1294608..1295861)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_813 [locus_tag=ECD_RS03990] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=complement(<789701..790570)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_1349 [locus_tag=ECD_RS06615] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=1310338..>1310718] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_000752979.1_799 [locus_tag=ECD_RS03915] [protein=tail attachment protein] [protein_id=WP_000752979.1] [location=776086..776439] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_072094231.1_552 [locus_tag=ECD_RS02675] [protein=host specificity protein J] [protein_id=WP_072094231.1] [location=548683..550491] [gbkey=CDS]	ATA is not a start codon
+lcl|NC_012971.2_cds_2607 [locus_tag=ECD_RS12740] [protein=IS1 family transposase] [pseudo=true] [location=2563190..2563887] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001301364.1_71 [locus_tag=ECD_RS00360] [protein=thiamine-binding periplasmic protein] [protein_id=WP_001301364.1] [location=complement(77302..78285)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001283424.1_2023 [locus_tag=ECD_RS09890] [protein=excinuclease ABC subunit C] [protein_id=WP_001283424.1] [location=complement(1938015..1939847)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000469743.1_2127 [locus_tag=ECD_RS10400] [protein=molecular chaperone] [protein_id=WP_000469743.1] [location=2046673..2048025] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000076233.1_315 [locus_tag=ECD_RS01535] [protein=cytosine permease] [protein_id=WP_000076233.1] [location=324457..325716] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3427 [locus_tag=ECD_RS16845] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=complement(<3365919..3366398)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_000123343.1_795 [locus_tag=ECD_RS03895] [protein=S49 family peptidase] [protein_id=WP_000123343.1] [location=772892..774211] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001300900.1_4499 [locus_tag=ECD_RS24455] [protein=hypothetical protein] [protein_id=WP_001300900.1] [location=4469989..4470180] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000100932.1_1727 [locus_tag=ECD_RS08420] [protein=MFS transporter] [protein_id=WP_000100932.1] [location=1657965..1659467] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_077626112.1_2987 [locus_tag=ECD_RS14685] [protein=NAD(P)-dependent oxidoreductase] [protein_id=WP_077626112.1] [location=complement(2956605..2957297)] [gbkey=CDS]	ATT is not a start codon
+lcl|NC_012971.2_cds_WP_000262882.1_3017 [locus_tag=ECD_RS14830] [protein=acyl-CoA synthetase] [protein_id=WP_000262882.1] [location=2990792..2992522] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_812 [locus_tag=ECD_RS23105] [protein=phage tail protein] [pseudo=true] [partial=3'] [location=788125..>789306] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_000786310.1_563 [locus_tag=ECD_RS02720] [protein=phenylalanine-specific permease] [protein_id=WP_000786310.1] [location=560641..562017] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_748 [locus_tag=ECD_RS03675] [protein=glutamate decarboxylase] [pseudo=true] [partial=5'] [location=complement(743820..>743933)] [gbkey=CDS]	GGA is not a start codon
+lcl|NC_012971.2_cds_WP_000085240.1_1858 [locus_tag=ECD_RS09070] [protein=DUF1496 domain-containing protein] [protein_id=WP_000085240.1] [location=complement(1786239..1786511)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001300651.1_4130 [locus_tag=ECD_RS20370] [protein=DUF1481 domain-containing protein] [protein_id=WP_001300651.1] [location=4108618..4109313] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000148762.1_1777 [locus_tag=ECD_RS08680] [protein=hypothetical protein] [protein_id=WP_000148762.1] [location=complement(1709349..1709618)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000616554.1_1321 [locus_tag=ECD_RS06485] [protein=MarC family protein] [protein_id=WP_000616554.1] [location=1285389..1286036] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001150456.1_391 [locus_tag=ECD_RS01900] [protein=bifunctional diaminohydroxyphosphoribosylaminopyrimidine deaminase/5-amino-6-(5-phosphoribosylamino)uracil reductase RibD] [protein_id=WP_001150456.1] [location=398856..399959] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000422045.1_1355 [locus_tag=ECD_RS06650] [protein=protease] [protein_id=WP_000422045.1] [location=1315702..1316751] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000681108.1_924 [locus_tag=ECD_RS04535] [protein=hypothetical protein] [protein_id=WP_000681108.1] [location=894793..895170] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1530 [locus_tag=ECD_RS23345] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=1472902..>1473090] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_000733916.1_2499 [locus_tag=ECD_RS12215] [protein=ethanolamine utilization acetate kinase EutQ] [protein_id=WP_000733916.1] [location=complement(2438791..2439492)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2051 [locus_tag=ECD_RS10045] [protein=hypothetical protein] [pseudo=true] [location=complement(1971303..1971541)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000332308.1_1230 [locus_tag=ECD_RS06055] [protein=helix-turn-helix-type transcriptional regulator] [protein_id=WP_000332308.1] [location=complement(1201487..1202218)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_961 [locus_tag=ECD_RS25125] [protein=hypothetical protein] [pseudo=true] [location=930264..930447] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001265279.1_1648 [locus_tag=ECD_RS08040] [protein=DUF968 domain-containing protein] [protein_id=WP_001265279.1] [location=complement(1589603..1590253)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001345346.1_180 [locus_tag=ECD_RS22805] [protein=hypothetical protein] [protein_id=WP_001345346.1] [location=complement(193394..193681)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3714 [locus_tag=ECD_RS18205] [protein=lipopolysaccharide 1,2-glucosyltransferase] [pseudo=true] [partial=5'] [location=complement(3669128..>3669631)] [gbkey=CDS]	AAC is not a start codon
+lcl|NC_012971.2_cds_2414 [locus_tag=ECD_RS23690] [protein=IS1 family transposase] [pseudo=true] [location=complement(2351118..2351815)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000854633.1_1606 [locus_tag=ECD_RS07855] [protein=altronate oxidoreductase] [protein_id=WP_000854633.1] [location=complement(1557304..1558755)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2085 [locus_tag=ECD_RS10200] [protein=IS1 family transposase] [pseudo=true] [location=complement(2000142..2000839)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_072094230.1_542 [locus_tag=ECD_RS02620] [protein=porin] [protein_id=WP_072094230.1] [location=complement(543124..543642)] [gbkey=CDS]	ATT is not a start codon
+lcl|NC_012971.2_cds_WP_000879113.1_2319 [locus_tag=ECD_RS11300] [protein=histidine phosphatase family protein] [protein_id=WP_000879113.1] [location=complement(2255192..2255794)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_647 [locus_tag=ECD_RS24575] [protein=molecular chaperone DnaJ] [pseudo=true] [partial=3'] [location=637778..>637995] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000237947.1_2832 [locus_tag=ECD_RS13915] [protein=N-acetylglutamate synthase] [protein_id=WP_000237947.1] [location=2787522..2788853] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001236847.1_4309 [locus_tag=ECD_RS21215] [protein=miniconductance mechanosensitive channel MscM] [protein_id=WP_001236847.1] [location=complement(4292567..4295890)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001140174.1_212 [locus_tag=ECD_RS01030] [protein=D-glycero-beta-D-manno-heptose 1,7-bisphosphate 7-phosphatase] [protein_id=WP_001140174.1] [location=225674..226246] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4272 [locus_tag=ECD_RS21040] [protein=two-component system sensor histidine kinase DcuS] [pseudo=true] [location=complement(4257111..4258747)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000035693.1_62 [locus_tag=ECD_RS00320] [protein=DNA polymerase II] [protein_id=WP_000035693.1] [location=complement(66234..68585)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_292 [locus_tag=ECD_RS22850] [protein=hypothetical protein] [pseudo=true] [location=301125..301323] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_012777765.1_2164 [locus_tag=ECD_RS23590] [protein=hypothetical protein] [protein_id=WP_012777765.1] [location=complement(2085463..2085714)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001272653.1_693 [locus_tag=ECD_RS03370] [protein=potassium-transporting ATPase subunit F] [protein_id=WP_001272653.1] [location=complement(688606..688695)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000225262.1_1681 [locus_tag=ECD_RS08205] [protein=protein mlc] [protein_id=WP_000225262.1] [location=complement(1612541..1613761)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3760 [locus_tag=ECD_RS18420] [protein=IS3 family transposase] [pseudo=true] [partial=5'] [location=<3716017..3716397] [gbkey=CDS]	TAC is not a start codon
+lcl|NC_012971.2_cds_WP_012767737.1_2001 [locus_tag=ECD_RS09775] [protein=chemotaxis protein CheA] [protein_id=WP_012767737.1] [location=complement(1919278..1921242)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_042182998.1_2024 [locus_tag=ECD_RS09895] [protein=two-component system response regulator UvrY] [protein_id=WP_042182998.1] [location=complement(1939844..1940425)] [gbkey=CDS]	ATC is not a start codon
+lcl|NC_012971.2_cds_259 [locus_tag=ECD_RS22835] [protein=transporter] [pseudo=true] [location=complement(272940..273064)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_3756 [locus_tag=ECD_RS18405] [protein=conjugal transfer domain protein] [pseudo=true] [partial=3'] [location=3713345..>3714379] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_001097447.1_2490 [gene=eutA] [locus_tag=ECD_RS12170] [protein=ethanolamine ammonia-lyase reactivating factor EutA] [protein_id=WP_001097447.1] [location=complement(2429871..2431274)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001318550.1_4512 [locus_tag=ECD_RS22215] [protein=5-methylcytosine-specific restriction endonuclease system specificity protein McrC] [protein_id=WP_001318550.1] [location=complement(4483222..4484268)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2246 [locus_tag=ECD_RS23625] [protein=transposase] [pseudo=true] [partial=5'] [location=complement(2173251..>2173385)] [gbkey=CDS]	TTT is not a start codon
+lcl|NC_012971.2_cds_WP_000687705.1_2933 [locus_tag=ECD_RS14420] [protein=nucleoside/nucleotide kinase family protein] [protein_id=WP_000687705.1] [location=complement(2904834..2905547)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000806638.1_2896 [locus_tag=ECD_RS14255] [protein=tyrosine recombinase XerD] [protein_id=WP_000806638.1] [location=complement(2869707..2870603)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001319841.1_439 [locus_tag=ECD_RS02135] [protein=EAL domain-containing protein] [protein_id=WP_001319841.1] [location=complement(446113..447663)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000961458.1_866 [locus_tag=ECD_RS04240] [protein=ABC-F family ATPase] [protein_id=WP_000961458.1] [location=839955..841547] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000653944.1_4116 [locus_tag=ECD_RS20300] [protein=DNA-directed RNA polymerase subunit beta'] [protein_id=WP_000653944.1] [location=4093401..4097624] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000360401.1_3721 [locus_tag=ECD_RS18235] [protein=lipopolysaccharide core heptosyltransferase RfaQ] [protein_id=WP_000360401.1] [location=complement(3673859..3674917)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4422 [locus_tag=ECD_RS22685] [protein=phosphoethanolamine transferase YjgX] [pseudo=true] [location=complement(4409934..4411036)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000493352.1_2927 [locus_tag=ECD_RS14395] [protein=arginine exporter protein ArgO] [protein_id=WP_000493352.1] [location=complement(2899031..2899666)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2810 [locus_tag=ECD_RS13800] [protein=IS1 family transposase] [pseudo=true] [location=complement(2765863..2766560)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001110989.1_3618 [locus_tag=ECD_RS17745] [protein=hypothetical protein] [protein_id=WP_001110989.1] [location=complement(3570211..3570471)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2086 [locus_tag=ECD_RS24795] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=complement(2000796..>2000894)] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_474 [locus_tag=ECD_RS24530] [protein=type I secretion protein] [pseudo=true] [partial=5'] [location=<483046..483143] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001295461.1_2468 [locus_tag=ECD_RS12065] [protein=cysteine synthase B] [protein_id=WP_001295461.1] [location=complement(2411075..2411986)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001126645.1_3109 [locus_tag=ECD_RS23870] [protein=hypothetical protein] [protein_id=WP_001126645.1] [location=3078948..3079070] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_012775986.1_1302 [locus_tag=ECD_RS06380] [protein=transporter] [protein_id=WP_012775986.1] [location=1260654..1261349] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4451 [locus_tag=ECD_RS21940] [protein=IS1 family transposase] [pseudo=true] [location=complement(4433722..4434419)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001329055.1_1894 [locus_tag=ECD_RS09250] [protein=diguanylate cyclase] [protein_id=WP_001329055.1] [location=1822092..1823117] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000686736.1_2273 [locus_tag=ECD_RS11080] [protein=ferredoxin-type protein NapF] [protein_id=WP_000686736.1] [location=complement(2196653..2197147)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000095995.1_4145 [locus_tag=ECD_RS20460] [protein=methionine synthase] [protein_id=WP_000095995.1] [location=4131199..4134882] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_071524618.1_4203 [locus_tag=ECD_RS24270] [protein=hypothetical protein] [protein_id=WP_071524618.1] [location=4185791..4185988] [gbkey=CDS]	ATT is not a start codon
+lcl|NC_012971.2_cds_755 [locus_tag=ECD_RS23075] [protein=catalase] [pseudo=true] [partial=5'] [location=complement(749868..>749954)] [gbkey=CDS]	GTA is not a start codon
+lcl|NC_012971.2_cds_WP_001025322.1_1989 [locus_tag=ECD_RS09715] [protein=arginine--tRNA ligase] [protein_id=WP_001025322.1] [location=1905980..1907713] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000644904.1_4067 [locus_tag=ECD_RS20020] [protein=transcriptional regulator] [protein_id=WP_000644904.1] [location=complement(4031354..4032379)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000014321.1_102 [locus_tag=ECD_RS00510] [protein=SecA regulator SecM] [protein_id=WP_000014321.1] [location=110510..111022] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001304705.1_4210 [locus_tag=ECD_RS24275] [protein=hypothetical protein] [protein_id=WP_001304705.1] [location=4194894..4195079] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2989 [locus_tag=ECD_RS14695] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=complement(<2958060..2958755)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_000780912.1_1150 [locus_tag=ECD_RS05660] [protein=glutaredoxin 2] [protein_id=WP_000780912.1] [location=complement(1125977..1126624)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001053393.1_354 [locus_tag=ECD_RS24525] [protein=DUF2754 domain-containing protein] [protein_id=WP_001053393.1] [location=364086..364430] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001011008.1_2044 [gene=cbl] [locus_tag=ECD_RS10005] [protein=transcriptional regulator] [protein_id=WP_001011008.1] [location=complement(1965112..1966062)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001043459.1_1197 [locus_tag=ECD_RS05890] [protein=glycine zipper 2TM domain-containing protein] [protein_id=WP_001043459.1] [location=1170191..1170730] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001081870.1_3038 [locus_tag=ECD_RS14935] [protein=hydrogenase-2 operon protein HybA] [protein_id=WP_001081870.1] [location=complement(3011588..3012574)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2988 [locus_tag=ECD_RS14690] [protein=IS1 family transposase] [pseudo=true] [location=complement(2957307..2958004)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000059111.1_3823 [gene=dnaA] [locus_tag=ECD_RS18725] [protein=chromosomal replication initiator protein DnaA] [protein_id=WP_000059111.1] [location=complement(3771122..3772525)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001104549.1_2292 [locus_tag=ECD_RS11170] [protein=DUF2300 domain-containing protein] [protein_id=WP_001104549.1] [location=complement(2218509..2220158)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001297649.1_1888 [locus_tag=ECD_RS09220] [protein=hypothetical protein] [protein_id=WP_001297649.1] [location=complement(1818455..1818607)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_250 [locus_tag=ECD_RS01240] [protein=IS1 family transposase] [pseudo=true] [location=262850..263547] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001333307.1_365 [locus_tag=ECD_RS01770] [protein=hypothetical protein] [protein_id=WP_001333307.1] [location=371826..372023] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001008963.1_3535 [locus_tag=ECD_RS17360] [protein=nickel ABC transporter permease subunit NikC] [protein_id=WP_001008963.1] [location=3478566..3479399] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001303690.1_3300 [locus_tag=ECD_RS16190] [protein=hypothetical protein] [protein_id=WP_001303690.1] [location=3262351..3262539] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_968 [locus_tag=ECD_RS23170] [protein=hypothetical protein] [pseudo=true] [location=complement(937448..937722)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_077249270.1_3753 [locus_tag=ECD_RS18390] [protein=MFS transporter] [protein_id=WP_077249270.1] [location=3708455..3709762] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1481 [locus_tag=ECD_RS07260] [protein=IS3 family transposase] [pseudo=true] [location=1426654..1427816] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_2503 [locus_tag=ECD_RS25285] [protein=hypothetical protein] [pseudo=true] [location=2442904..2443158] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_077598959.1_3794 [locus_tag=ECD_RS25385] [protein=hypothetical protein] [protein_id=WP_077598959.1] [location=3742066..3742248] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001024904.1_1974 [locus_tag=ECD_RS09645] [protein=hypothetical protein] [protein_id=WP_001024904.1] [location=1892169..1892771] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001329022.1_3759 [locus_tag=ECD_RS24105] [protein=hypothetical protein] [protein_id=WP_001329022.1] [location=3715525..3715827] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_048339841.1_1663 [locus_tag=ECD_RS08120] [protein=hypothetical protein] [protein_id=WP_048339841.1] [location=1596397..1596591] [gbkey=CDS]	ATT is not a start codon
+lcl|NC_012971.2_cds_WP_000409456.1_4573 [locus_tag=ECD_RS22540] [protein=murein transglycosylase] [protein_id=WP_000409456.1] [location=4548087..4550024] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1212 [locus_tag=ECD_RS05960] [protein=hypothetical protein] [pseudo=true] [location=complement(1184633..1185093)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_4188 [locus_tag=ECD_RS25415] [protein=hypothetical protein] [pseudo=true] [location=complement(4175938..4176188)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001234314.1_585 [locus_tag=ECD_RS02830] [protein=Fe2+-enterobactin ABC transporter substrate-binding protein] [protein_id=WP_001234314.1] [location=complement(584041..584997)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3426 [locus_tag=ECD_RS24925] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=complement(3365827..>3365925)] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_WP_000813794.1_1516 [locus_tag=ECD_RS07435] [protein=mRNA interferase HicA] [protein_id=WP_000813794.1] [location=1463349..1463525] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000163771.1_1882 [locus_tag=ECD_RS09190] [protein=MltA-interacting protein] [protein_id=WP_000163771.1] [location=complement(1810103..1810849)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001300881.1_2509 [locus_tag=ECD_RS12260] [protein=nitrate/nitrite two-component system sensor histidine kinase NarQ] [protein_id=WP_001300881.1] [location=2450220..2451920] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_077221251.1_4380 [locus_tag=ECD_RS21580] [protein=ABC transporter permease] [protein_id=WP_077221251.1] [location=4364186..4365211] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001028905.1_3549 [locus_tag=ECD_RS17435] [protein=hypothetical protein] [protein_id=WP_001028905.1] [location=3497226..3498278] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001012899.1_2359 [locus_tag=ECD_RS11495] [protein=transporter] [protein_id=WP_001012899.1] [location=complement(2296772..2298604)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2863 [locus_tag=ECD_RS14090] [protein=IS3 family transposase] [pseudo=true] [location=2827881..2829043] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000758956.1_189 [locus_tag=ECD_RS00915] [protein=chaperone protein Skp] [protein_id=WP_000758956.1] [location=203325..203810] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_032193215.1_489 [locus_tag=ECD_RS24540] [protein=hypothetical protein] [protein_id=WP_032193215.1] [location=498085..498276] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000234533.1_2972 [locus_tag=ECD_RS14610] [protein=membrane protein] [protein_id=WP_000234533.1] [location=2940315..2941022] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_24 [locus_tag=ECD_RS00125] [protein=type III effector] [pseudo=true] [partial=3'] [location=complement(<24058..24404)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000699450.1_2098 [locus_tag=ECD_RS10260] [protein=dTDP-glucose 4,6-dehydratase] [protein_id=WP_000699450.1] [location=complement(2011008..2012093)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001301412.1_3326 [locus_tag=ECD_RS16360] [protein=L-threonylcarbamoyladenylate synthase type 1 TsaC] [protein_id=WP_001301412.1] [location=complement(3292013..3292585)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_072094260.1_3323 [locus_tag=ECD_RS16345] [protein=gamma carbonic anhydrase family protein] [protein_id=WP_072094260.1] [location=3290190..3290960] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000041390.1_2274 [locus_tag=ECD_RS11085] [protein=hypothetical protein] [protein_id=WP_000041390.1] [location=2197247..2197420] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000532923.1_2040 [locus_tag=ECD_RS09985] [protein=YebC/PmpR family DNA-binding transcriptional regulator] [protein_id=WP_000532923.1] [location=1962005..1962721] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000866670.1_3905 [locus_tag=ECD_RS19155] [protein=UDP-N-acetylglucosamine 2-epimerase (non-hydrolyzing)] [protein_id=WP_000866670.1] [location=3860373..3861503] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001295962.1_1171 [locus_tag=ECD_RS05765] [protein=DUF2655 domain-containing protein] [protein_id=WP_001295962.1] [location=1147069..1147389] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_249 [locus_tag=ECD_RS24500] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=<262795..262893] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_1105 [locus_tag=ECD_RS25150] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=complement(<1085465..1085602)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_2413 [locus_tag=ECD_RS11760] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=2350337..>2351102] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000658583.1_2226 [locus_tag=ECD_RS10855] [protein=transcriptional regulator YeiL] [protein_id=WP_000658583.1] [location=2150164..2150862] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2696 [locus_tag=ECD_RS23755] [protein=hypothetical protein] [pseudo=true] [location=2644438..2644684] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001307868.1_2034 [locus_tag=ECD_RS09945] [protein=hypothetical protein] [protein_id=WP_001307868.1] [location=1948068..1948310] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_071777032.1_2608 [locus_tag=ECD_RS23735] [protein=aldehyde dehydrogenase] [protein_id=WP_071777032.1] [location=complement(2563822..2563968)] [gbkey=CDS]	ATC is not a start codon
+lcl|NC_012971.2_cds_554 [locus_tag=ECD_RS02685] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=complement(<550998..551267)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_3763 [locus_tag=ECD_RS24960] [protein=transposase] [pseudo=true] [partial=5'] [location=complement(3720348..>3720553)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_907 [locus_tag=ECD_RS04450] [protein=glycoside hydrolase] [pseudo=true] [partial=5'] [location=<883611..883781] [gbkey=CDS]	ACG is not a start codon
+lcl|NC_012971.2_cds_3872 [locus_tag=ECD_RS25390] [protein=IS150 protein InsAB] [pseudo=true] [location=complement(3822369..3823738)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_023147221.1_2996 [locus_tag=ECD_RS14730] [protein=type II secretion system protein GspJ] [protein_id=WP_023147221.1] [location=complement(2965556..2966161)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000145111.1_1571 [locus_tag=ECD_RS07685] [protein=ABC transporter permease] [protein_id=WP_000145111.1] [location=complement(1515375..1516397)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_696 [locus_tag=ECD_RS03385] [protein=hypothetical protein] [pseudo=true] [partial=5'] [location=<689755..691299] [gbkey=CDS]	CGG is not a start codon
+lcl|NC_012971.2_cds_WP_000186074.1_688 [locus_tag=ECD_RS03345] [protein=DNA-binding response regulator] [protein_id=WP_000186074.1] [location=complement(680930..681607)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001050960.1_3903 [locus_tag=ECD_RS19145] [protein=undecaprenyl-phosphate alpha-N-acetylglucosaminyl 1-phosphate transferase] [protein_id=WP_001050960.1] [location=3858156..3859259] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000212426.1_1029 [locus_tag=ECD_RS05045] [protein=MOSC domain-containing protein] [protein_id=WP_000212426.1] [location=complement(1011580..1012689)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001300367.1_1977 [locus_tag=ECD_RS09660] [protein=NUDIX pyrophosphatase] [protein_id=WP_001300367.1] [location=complement(1894098..1894550)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4516 [locus_tag=ECD_RS22235] [protein=IS1 family transposase] [pseudo=true] [location=complement(4487106..4487803)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_3717 [locus_tag=ECD_RS18215] [protein=lipopolysaccharide 1,2-glucosyltransferase] [pseudo=true] [partial=3'] [location=complement(<3670399..3670899)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_012775985.1_1453 [locus_tag=ECD_RS07130] [protein=holin] [protein_id=WP_012775985.1] [location=1403122..1403334] [gbkey=CDS]	ATC is not a start codon
+lcl|NC_012971.2_cds_WP_001078380.1_2838 [locus_tag=ECD_RS13945] [protein=hypothetical protein] [protein_id=WP_001078380.1] [location=complement(2801029..2801436)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000667585.1_2134 [locus_tag=ECD_RS10430] [protein=multidrug resistance protein MdtC] [protein_id=WP_000667585.1] [location=2057307..2060384] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000189210.1_2632 [locus_tag=ECD_RS12865] [protein=cysteine/O-acetylserine efflux protein] [protein_id=WP_000189210.1] [location=2582023..2582610] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001318795.1_4502 [locus_tag=ECD_RS22170] [protein=hypothetical protein] [protein_id=WP_001318795.1] [location=complement(4472022..4472882)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1246 [locus_tag=ECD_RS23245] [protein=hypothetical protein] [pseudo=true] [location=1212112..1212296] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000893580.1_377 [gene=phoR] [locus_tag=ECD_RS01825] [protein=two-component system sensor histidine kinase PhoR] [protein_id=WP_000893580.1] [location=383291..384586] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4510 [locus_tag=ECD_RS22205] [protein=IS1 family transposase] [pseudo=true] [location=4479099..4479796] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_023155834.1_3466 [locus_tag=ECD_RS23980] [protein=hypothetical protein] [protein_id=WP_023155834.1] [location=complement(3403322..3403555)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4509 [locus_tag=ECD_RS25040] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=<4479044..4479142] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_WP_000979579.1_185 [locus_tag=ECD_RS00895] [protein=ditrans,polycis-undecaprenyl-diphosphate synthase ((2E,6E)-farnesyl-diphosphate specific)] [protein_id=WP_000979579.1] [location=197746..198507] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_072094265.1_4475 [locus_tag=ECD_RS24445] [protein=transcriptional regulator] [protein_id=WP_072094265.1] [location=4450698..4450838] [gbkey=CDS]	ATC is not a start codon
+lcl|NC_012971.2_cds_WP_012601956.1_1134 [locus_tag=ECD_RS25160] [protein=hypothetical protein] [protein_id=WP_012601956.1] [location=complement(1111700..1111858)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4467 [locus_tag=ECD_RS24435] [protein=restriction endonuclease] [pseudo=true] [partial=3'] [location=complement(<4444802..4445007)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001285557.1_1568 [locus_tag=ECD_RS07670] [protein=peptide ABC transporter ATP-binding protein] [protein_id=WP_001285557.1] [location=complement(1512580..1513506)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3167 [locus_tag=ECD_RS15560] [protein=hypothetical protein] [pseudo=true] [location=3134714..3135902] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_1208 [locus_tag=ECD_RS05940] [protein=IS1 family transposase] [pseudo=true] [location=1181668..1182365] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000956830.1_4146 [locus_tag=ECD_RS20465] [protein=Na/Pi cotransporter family protein] [protein_id=WP_000956830.1] [location=4135102..4136733] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_077249080.1_4534 [locus_tag=ECD_RS22325] [protein=4-hydroxyphenylacetate degradation protein] [protein_id=WP_077249080.1] [location=complement(4507907..4509202)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001700733.1_1812 [locus_tag=ECD_RS08855] [protein=translation initiation factor IF-3] [protein_id=WP_001700733.1] [location=complement(1744511..1745053)] [gbkey=CDS]	ATT is not a start codon
+lcl|NC_012971.2_cds_WP_000673804.1_3448 [locus_tag=ECD_RS16945] [protein=carboxypeptidase/penicillin-binding protein 1A] [protein_id=WP_000673804.1] [location=3383249..3385801] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3462 [locus_tag=ECD_RS23975] [protein=hypothetical protein] [pseudo=true] [location=3400290..3400517] [gbkey=CDS]	ATT is not a start codon
+lcl|NC_012971.2_cds_WP_000086722.1_2364 [locus_tag=ECD_RS11525] [protein=phosphate acetyltransferase] [protein_id=WP_000086722.1] [location=2302000..2304144] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000030637.1_740 [gene=tolA] [locus_tag=ECD_RS03600] [protein=cell envelope integrity/translocation protein TolA] [protein_id=WP_000030637.1] [location=735003..736268] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1350 [locus_tag=ECD_RS06620] [protein=IS1 family transposase] [pseudo=true] [location=1310774..1311471] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001307570.1_124 [locus_tag=ECD_RS00615] [protein=aconitate hydratase B] [protein_id=WP_001307570.1] [location=134420..137017] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4161 [locus_tag=ECD_RS25410] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=complement(<4149785..4149995)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001196237.1_3948 [locus_tag=ECD_RS19385] [protein=EamA family transporter] [protein_id=WP_001196237.1] [location=3903943..3904842] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_009008406.1_855 [locus_tag=ECD_RS24625] [protein=hypothetical protein] [protein_id=WP_009008406.1] [location=complement(831923..832114)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001203392.1_2360 [locus_tag=ECD_RS11500] [protein=sugar phosphatase YfbT] [protein_id=WP_001203392.1] [location=complement(2298691..2299341)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000457199.1_1902 [locus_tag=ECD_RS09285] [protein=leucine efflux protein] [protein_id=WP_000457199.1] [location=complement(1825847..1826485)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000829156.1_910 [locus_tag=ECD_RS04465] [protein=phage virion morphogenesis protein] [protein_id=WP_000829156.1] [location=884726..885172] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000854033.1_3289 [locus_tag=ECD_RS16140] [protein=p-hydroxybenzoic acid efflux pump subunit AaeA] [protein_id=WP_000854033.1] [location=complement(3249356..3250288)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000220247.1_267 [locus_tag=ECD_RS01330] [protein=helix-turn-helix transcriptional regulator] [protein_id=WP_000220247.1] [location=complement(280930..281520)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_555 [locus_tag=ECD_RS24560] [protein=rhs element domain protein] [pseudo=true] [location=551527..551693] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001296811.1_3657 [locus_tag=ECD_RS17950] [protein=L-xylulose 5-phosphate 3-epimerase] [protein_id=WP_001296811.1] [location=3611384..3612244] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_490 [locus_tag=ECD_RS02360] [protein=IS481 family transposase] [pseudo=true] [partial=3'] [location=complement(<498796..499161)] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_23 [locus_tag=ECD_RS00120] [protein=IS1 family transposase] [pseudo=true] [location=23346..24043] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001302478.1_2219 [locus_tag=ECD_RS23620] [protein=hypothetical protein] [protein_id=WP_001302478.1] [location=complement(2143415..2143597)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000268232.1_2807 [locus_tag=ECD_RS13785] [protein=flap endonuclease Xni] [protein_id=WP_000268232.1] [location=2763645..2764400] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001043542.1_423 [locus_tag=ECD_RS02055] [protein=DNA-binding protein HU-beta] [protein_id=WP_001043542.1] [location=430485..430757] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000843414.1_1619 [locus_tag=ECD_RS07910] [protein=MarR family transcriptional regulator] [protein_id=WP_000843414.1] [location=1568416..1568850] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001295190.1_4334 [locus_tag=ECD_RS21355] [protein=isovaleryl-CoA dehydrogenase] [protein_id=WP_001295190.1] [location=4320795..4322420] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000708487.1_3096 [locus_tag=ECD_RS15240] [protein=multifunctional CCA tRNA nucleotidyl transferase/2'3'-cyclic phosphodiesterase/2'nucleotidase/phosphatase] [protein_id=WP_000708487.1] [location=3067990..3069228] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1457 [locus_tag=ECD_RS24680] [protein=endopeptidase] [pseudo=true] [partial=5'] [location=<1404591..1404689] [gbkey=CDS]	TTA is not a start codon
+lcl|NC_012971.2_cds_2338 [locus_tag=ECD_RS25260] [protein=hypothetical protein] [pseudo=true] [location=complement(2274599..2274792)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001301240.1_316 [locus_tag=ECD_RS01540] [protein=cytosine deaminase] [protein_id=WP_001301240.1] [location=325706..326989] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000498829.1_3002 [locus_tag=ECD_RS14760] [protein=type II secretion system protein GspD] [protein_id=WP_000498829.1] [location=complement(2970281..2972341)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000439197.1_3550 [locus_tag=ECD_RS17440] [protein=NAD(P)/FAD-dependent oxidoreductase] [protein_id=WP_000439197.1] [location=complement(3498593..3499795)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2099 [locus_tag=ECD_RS23570] [protein=hypothetical protein] [pseudo=true] [location=2012165..2012441] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_1544 [locus_tag=ECD_RS07555] [protein=ISAs1 family transposase] [pseudo=true] [partial=3'] [location=1487908..>1488681] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_340 [locus_tag=ECD_RS01650] [protein=IS1 family transposase] [pseudo=true] [location=complement(350258..350955)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_072075122.1_2255 [locus_tag=ECD_RS24805] [protein=hypothetical protein] [protein_id=WP_072075122.1] [location=complement(2181090..2181275)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001115147.1_2998 [locus_tag=ECD_RS14740] [protein=type II secretion system protein GspH] [protein_id=WP_001115147.1] [location=complement(2966526..2967089)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000826416.1_1511 [locus_tag=ECD_RS07410] [protein=transposase] [protein_id=WP_000826416.1] [location=1457720..1458928] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_077249240.1_3752 [locus_tag=ECD_RS18385] [protein=LacI family transcriptional regulator] [protein_id=WP_077249240.1] [location=complement(3707129..3708277)] [gbkey=CDS]	ATA is not a start codon
+lcl|NC_012971.2_cds_WP_000669834.1_2926 [locus_tag=ECD_RS14390] [protein=oxidative stress defense protein] [protein_id=WP_000669834.1] [location=complement(2898198..2898938)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_547 [locus_tag=ECD_RS24550] [protein=endopeptidase] [pseudo=true] [partial=5'] [location=<546315..546413] [gbkey=CDS]	TTA is not a start codon
+lcl|NC_012971.2_cds_1780 [locus_tag=ECD_RS23445] [protein=hypothetical protein] [pseudo=true] [location=complement(1713143..1713348)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_012767717.1_1077 [locus_tag=ECD_RS05290] [protein=hybrid sensor histidine kinase/response regulator] [protein_id=WP_012767717.1] [location=complement(1057722..1060466)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000349855.1_3416 [locus_tag=ECD_RS16800] [protein=siroheme synthase] [protein_id=WP_000349855.1] [location=3357429..3358802] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000132961.1_2731 [locus_tag=ECD_RS13400] [protein=hydrogenase 3 maturation endopeptidase HyCI] [protein_id=WP_000132961.1] [location=complement(2682540..2683010)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_024181916.1_3424 [locus_tag=ECD_RS16835] [protein=hypothetical protein] [protein_id=WP_024181916.1] [location=complement(3364536..3365156)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000934822.1_385 [locus_tag=ECD_RS01865] [protein=protein translocase subunit SecD] [protein_id=WP_000934822.1] [location=393049..394896] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001301045.1_1514 [locus_tag=ECD_RS07425] [protein=collagenase-like protease] [protein_id=WP_001301045.1] [location=1460844..1462805] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000690820.1_2091 [locus_tag=ECD_RS10225] [protein=glycosyl transferase] [protein_id=WP_000690820.1] [location=complement(2004749..2005495)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_077248222.1_468 [locus_tag=ECD_RS25085] [protein=hypothetical protein] [protein_id=WP_077248222.1] [location=complement(476144..476422)] [gbkey=CDS]	ATT is not a start codon
+lcl|NC_012971.2_cds_1662 [locus_tag=ECD_RS08115] [protein=exonuclease VIII] [pseudo=true] [partial=3'] [location=1595891..>1596388] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_001079187.1_2738 [locus_tag=ECD_RS13435] [protein=formate hydrogenlyase subunit 2] [protein_id=WP_001079187.1] [location=complement(2689205..2689816)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2167 [locus_tag=ECD_RS10585] [protein=IS1 family transposase] [pseudo=true] [location=complement(2086745..2087442)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000584114.1_4410 [locus_tag=ECD_RS21730] [protein=LPS export ABC transporter permease LptF] [protein_id=WP_000584114.1] [location=4397810..4398910] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_012602050.1_2614 [locus_tag=ECD_RS12770] [protein=hypothetical protein] [protein_id=WP_012602050.1] [location=complement(2566793..2566957)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3497 [locus_tag=ECD_RS25350] [protein=hypothetical protein] [pseudo=true] [location=complement(3443988..3444172)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000776104.1_637 [locus_tag=ECD_RS03060] [protein=23S rRNA (pseudouridine(1915)-N(3))-methyltransferase RlmH] [protein_id=WP_000776104.1] [location=complement(628611..629078)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1206 [locus_tag=ECD_RS05935] [protein=N-acetyl-D-glucosamine kinase] [pseudo=true] [partial=3'] [location=1181186..>1181614] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_001307632.1_417 [locus_tag=ECD_RS02025] [protein=hypothetical protein] [protein_id=WP_001307632.1] [location=422407..422670] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4335 [locus_tag=ECD_RS24995] [protein=glutamate decarboxylase isozyme] [pseudo=true] [partial=5'] [location=complement(4322385..>4322477)] [gbkey=CDS]	AAT is not a start codon
+lcl|NC_012971.2_cds_WP_000785116.1_90 [locus_tag=ECD_RS00450] [protein=UDP-N-acetylmuramoyl-L-alanyl-D-glutamate--2,6-diaminopimelate ligase] [protein_id=WP_000785116.1] [location=95971..97458] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3152 [locus_tag=ECD_RS23895] [protein=DUF805 domain-containing protein] [pseudo=true] [partial=5'] [location=<3119537..3119629] [gbkey=CDS]	GAA is not a start codon
+lcl|NC_012971.2_cds_4515 [locus_tag=ECD_RS22230] [protein=restriction endonuclease subunit S] [pseudo=true] [partial=5'] [location=complement(4486378..>4487103)] [gbkey=CDS]	TGG is not a start codon
+lcl|NC_012971.2_cds_4436 [locus_tag=ECD_RS21855] [protein=transposase] [pseudo=true] [location=complement(4421183..4422339)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000565966.1_192 [locus_tag=ECD_RS00930] [protein=acyl-[acyl-carrier-protein]--UDP-N-acetylglucosamine O-acyltransferase] [protein_id=WP_000565966.1] [location=205403..206191] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000681360.1_17 [locus_tag=ECD_RS00090] [protein=Na+/H+ antiporter NhaA] [protein_id=WP_000681360.1] [location=17488..18654] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1493 [locus_tag=ECD_RS24695] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=<1444113..1444211] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_2478 [locus_tag=ECD_RS23705] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=2420418..>2420654] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_000486988.1_4187 [locus_tag=ECD_RS20660] [protein=aromatic amino acid transaminase] [protein_id=WP_000486988.1] [location=4174523..4175716] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1019 [locus_tag=ECD_RS25135] [protein=transposase] [pseudo=true] [partial=5'] [location=complement(1002576..>1002680)] [gbkey=CDS]	TTT is not a start codon
+lcl|NC_012971.2_cds_WP_000342431.1_2802 [locus_tag=ECD_RS13760] [protein=protein Syd] [protein_id=WP_000342431.1] [location=complement(2757325..2757870)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001293003.1_245 [locus_tag=ECD_RS01220] [protein=cytosol nonspecific dipeptidase] [protein_id=WP_001293003.1] [location=complement(258753..260210)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001317296.1_2888 [locus_tag=ECD_RS23790] [protein=hypothetical protein] [protein_id=WP_001317296.1] [location=2862095..2862181] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000119055.1_2129 [locus_tag=ECD_RS10410] [protein=protein phosphatase 2C domain-containing protein] [protein_id=WP_000119055.1] [location=complement(2049975..2050736)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2025 [locus_tag=ECD_RS09900] [protein=IS1 family transposase] [pseudo=true] [location=1940475..1941172] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000066560.1_4481 [locus_tag=ECD_RS22065] [protein=molecular chaperone FimC] [protein_id=WP_000066560.1] [location=4453583..4454308] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001219309.1_372 [locus_tag=ECD_RS01800] [protein=fructokinase] [protein_id=WP_001219309.1] [location=375546..376454] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_224 [locus_tag=ECD_RS01120] [protein=IS1 family transposase] [pseudo=true] [location=241315..242012] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000565727.1_1379 [locus_tag=ECD_RS06775] [protein=DUF559 domain-containing protein] [protein_id=WP_000565727.1] [location=complement(1337774..1338127)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000483353.1_1709 [locus_tag=ECD_RS08335] [protein=7-alpha-hydroxysteroid dehydrogenase] [protein_id=WP_000483353.1] [location=complement(1642470..1643237)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001322399.1_4471 [locus_tag=ECD_RS25455] [protein=hypothetical protein] [protein_id=WP_001322399.1] [location=4448373..4448522] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000853959.1_3983 [gene=hemG] [locus_tag=ECD_RS19565] [protein=protoporphyrinogen oxidase] [protein_id=WP_000853959.1] [location=3941421..3941966] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4508 [locus_tag=ECD_RS22200] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=4478277..>4479041] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_WP_001116560.1_1192 [locus_tag=ECD_RS05870] [protein=thiamine kinase] [protein_id=WP_001116560.1] [location=1165827..1166651] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000347696.1_3967 [locus_tag=ECD_RS19485] [protein=DNA recombination protein RmuC] [protein_id=WP_000347696.1] [location=3924244..3925671] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3690 [locus_tag=ECD_RS25380] [protein=hypothetical protein] [pseudo=true] [partial=3'] [location=complement(<3646333..3646516)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000686620.1_3556 [locus_tag=ECD_RS17465] [protein=ribosomal RNA small subunit methyltransferase J] [protein_id=WP_000686620.1] [location=complement(3504766..3505518)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000179213.1_2282 [locus_tag=ECD_RS23655] [protein=IS1 family transposase] [protein_id=WP_000179213.1] [location=complement(2206838..2207113)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2415 [locus_tag=ECD_RS24845] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=complement(2351772..>2351870)] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_WP_001320618.1_1990 [locus_tag=ECD_RS09720] [protein=DUF1311 domain-containing protein] [protein_id=WP_001320618.1] [location=1907890..1908378] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_4432 [locus_tag=ECD_RS21840] [protein=IS3 family transposase] [pseudo=true] [location=4417454..4418621] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001200905.1_2061 [locus_tag=ECD_RS10090] [protein=FUSC family protein] [protein_id=WP_001200905.1] [location=complement(1975777..1976835)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001329315.1_3460 [locus_tag=ECD_RS17000] [protein=transcription elongation factor GreB] [protein_id=WP_001329315.1] [location=3397156..3397668] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3006 [locus_tag=ECD_RS23840] [protein=hypothetical protein] [pseudo=true] [location=2974582..2974774] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_599 [locus_tag=ECD_RS02890] [protein=IS1 family transposase] [pseudo=true] [location=complement(596911..597608)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001098384.1_737 [locus_tag=ECD_RS03585] [protein=acyl-CoA thioester hydrolase YbgC] [protein_id=WP_001098384.1] [location=733413..733817] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_071819583.1_1351 [locus_tag=ECD_RS06625] [protein=DUF2207 domain-containing protein] [protein_id=WP_071819583.1] [location=1311468..1313009] [gbkey=CDS]	ATA is not a start codon
+lcl|NC_012971.2_cds_3592 [locus_tag=ECD_RS24020] [protein=hypothetical protein] [pseudo=true] [location=3543188..3543440] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001295645.1_2008 [locus_tag=ECD_RS09810] [protein=trehalose-6-phosphate phosphatase] [protein_id=WP_001295645.1] [location=complement(1926729..1927529)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000967595.1_1332 [locus_tag=ECD_RS06535] [protein=hypothetical protein] [protein_id=WP_000967595.1] [location=complement(1296161..1296457)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000131314.1_738 [locus_tag=ECD_RS03590] [protein=protein TolQ] [protein_id=WP_000131314.1] [location=733814..734506] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000409205.1_2559 [locus_tag=ECD_RS12500] [protein=ancillary SecYEG translocon subunit] [protein_id=WP_000409205.1] [location=complement(2503143..2503763)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000239730.1_3826 [locus_tag=ECD_RS18735] [protein=ribonuclease P protein component] [protein_id=WP_000239730.1] [location=3773289..3773648] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001296830.1_2213 [locus_tag=ECD_RS23615] [protein=hypothetical protein] [protein_id=WP_001296830.1] [location=complement(2138535..2138648)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001308705.1_1933 [locus_tag=ECD_RS09435] [protein=hypothetical protein] [protein_id=WP_001308705.1] [location=1853280..1853486] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_012767748.1_2434 [locus_tag=ECD_RS24850] [protein=membrane protein YpdK] [protein_id=WP_012767748.1] [location=2374806..2374877] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000745230.1_2960 [locus_tag=ECD_RS14555] [protein=DUF1202 domain-containing protein] [protein_id=WP_000745230.1] [location=complement(2929326..2930333)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2830 [locus_tag=ECD_RS23775] [protein=murein transglycosylase] [pseudo=true] [location=complement(2785475..2785595)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_077248944.1_20 [locus_tag=ECD_RS00105] [protein=fimbrial protein] [protein_id=WP_077248944.1] [location=complement(20630..21955)] [gbkey=CDS]	ATT is not a start codon
+lcl|NC_012971.2_cds_WP_000596015.1_4381 [locus_tag=ECD_RS21585] [protein=sugar ABC transporter permease] [protein_id=WP_000596015.1] [location=4365198..4366193] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001235579.1_431 [locus_tag=ECD_RS02095] [protein=multidrug ABC transporter permease/ATP-binding protein] [protein_id=WP_001235579.1] [location=437917..439689] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000905386.1_141 [locus_tag=ECD_RS00690] [protein=pantoate--beta-alanine ligase] [protein_id=WP_000905386.1] [location=complement(150748..151599)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1802 [locus_tag=ECD_RS08800] [protein=EAL domain-containing protein] [pseudo=true] [location=complement(1735723..1736435)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000658652.1_318 [locus_tag=ECD_RS01550] [protein=carbonic anhydrase] [protein_id=WP_000658652.1] [location=328334..328993] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2143 [locus_tag=ECD_RS10475] [protein=transcriptional regulator] [pseudo=true] [location=complement(2067983..2068657)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_788 [locus_tag=ECD_RS23100] [protein=hypothetical protein] [pseudo=true] [location=complement(767371..767572)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000684321.1_928 [locus_tag=ECD_RS04555] [protein=30S ribosomal protein S6--L-glutamate ligase] [protein_id=WP_000684321.1] [location=896671..897573] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000813212.1_2894 [locus_tag=ECD_RS14245] [protein=single-stranded-DNA-specific exonuclease RecJ] [protein_id=WP_000813212.1] [location=complement(2867233..2868966)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001310720.1_1217 [locus_tag=ECD_RS05985] [protein=hypothetical protein] [protein_id=WP_001310720.1] [location=complement(1188941..1189192)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_012777748.1_1482 [locus_tag=ECD_RS07265] [protein=oxidoreductase] [protein_id=WP_012777748.1] [location=1427834..1428367] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2676 [locus_tag=ECD_RS24885] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=<2627715..2627813] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_WP_001303671.1_3119 [locus_tag=ECD_RS23885] [protein=hypothetical protein] [protein_id=WP_001303671.1] [location=3087436..3087618] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_3101 [locus_tag=ECD_RS23860] [protein=transposase] [pseudo=true] [partial=5'] [location=complement(3072435..>3072581)] [gbkey=CDS]	TAT is not a start codon
+lcl|NC_012971.2_cds_WP_000068828.1_4066 [locus_tag=ECD_RS20015] [protein=cell division protein FtsN] [protein_id=WP_000068828.1] [location=complement(4030303..4031262)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000615067.1_1271 [locus_tag=ECD_RS06250] [protein=hypothetical protein] [protein_id=WP_000615067.1] [location=1233308..1233748] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_071819600.1_3606 [locus_tag=ECD_RS25360] [protein=hypothetical protein] [protein_id=WP_071819600.1] [location=3561347..3561706] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_66 [locus_tag=ECD_RS22765] [protein=hypothetical protein] [pseudo=true] [location=73005..73199] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_592 [locus_tag=ECD_RS02860] [protein=carbon starvation protein A] [pseudo=true] [location=590381..592476] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_071524615.1_4152 [locus_tag=ECD_RS24225] [protein=hypothetical protein] [protein_id=WP_071524615.1] [location=4140926..4141129] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2811 [locus_tag=ECD_RS24890] [protein=glycosyl transferase] [pseudo=true] [partial=5'] [location=complement(2766517..>2766615)] [gbkey=CDS]	GGT is not a start codon
+lcl|NC_012971.2_cds_WP_001027292.1_792 [locus_tag=ECD_RS03880] [protein=phage terminase large subunit family protein] [protein_id=WP_001027292.1] [location=769185..771110] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001188343.1_709 [locus_tag=ECD_RS03445] [protein=hypothetical protein] [protein_id=WP_001188343.1] [location=702157..702813] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001102108.1_281 [locus_tag=ECD_RS01385] [protein=(Fe-S)-binding protein] [protein_id=WP_001102108.1] [location=291236..291955] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000699145.1_2387 [locus_tag=ECD_RS11640] [protein=erythronate-4-phosphate dehydrogenase] [protein_id=WP_000699145.1] [location=complement(2323968..2325104)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000207564.1_238 [locus_tag=ECD_RS01185] [protein=putative lateral flagellar export/assembly protein LafU] [protein_id=WP_000207564.1] [location=254608..255393] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000683788.1_2392 [locus_tag=ECD_RS11660] [protein=bifunctional tRNA (5-methylaminomethyl-2-thiouridine)(34)-methyltransferase MnmD/FAD-dependent 5-carboxymethylaminomethyl-2-thiouridine(34) oxidoreductase MnmC] [protein_id=WP_000683788.1] [location=2329017..2331023] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000589326.1_1166 [gene=flgI] [locus_tag=ECD_RS05740] [protein=flagellar P-ring protein] [protein_id=WP_000589326.1] [location=1138841..1139938] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001321287.1_1672 [locus_tag=ECD_RS08160] [protein=YnfC family lipoprotein] [protein_id=WP_001321287.1] [location=complement(1601944..1602654)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000067755.1_972 [locus_tag=ECD_RS04765] [protein=replication-associated recombination protein A] [protein_id=WP_000067755.1] [location=943085..944428] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2058 [locus_tag=ECD_RS25235] [protein=hypothetical protein] [pseudo=true] [partial=5'] [location=complement(1974793..>1974939)] [gbkey=CDS]	CTT is not a start codon
+lcl|NC_012971.2_cds_WP_000805902.1_325 [gene=lacI] [locus_tag=ECD_RS01580] [protein=lactose operon repressor] [protein_id=WP_000805902.1] [location=complement(335963..337045)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000378033.1_629 [locus_tag=ECD_RS03020] [protein=LysR family transcriptional regulator] [protein_id=WP_000378033.1] [location=complement(620787..621740)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_571 [locus_tag=ECD_RS22975] [protein=IS1 family transposase] [pseudo=true] [location=complement(567349..568046)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_553 [locus_tag=ECD_RS02680] [protein=phage tail protein] [pseudo=true] [partial=3'] [location=550550..>551005] [gbkey=CDS] has no stop codon
+lcl|NC_012971.2_cds_42 [locus_tag=ECD_RS00220] [protein=L-carnitine CoA-transferase] [pseudo=true] [location=complement(42093..43309)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000202794.1_2245 [locus_tag=ECD_RS10950] [protein=hypothetical protein] [protein_id=WP_000202794.1] [location=complement(2172742..2173086)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001362540.1_1314 [locus_tag=ECD_RS06450] [protein=hypothetical protein] [protein_id=WP_001362540.1] [location=complement(1276466..1276924)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001052181.1_3985 [gene=mobA] [locus_tag=ECD_RS19600] [protein=molybdenum cofactor guanylyltransferase] [protein_id=WP_001052181.1] [location=complement(3948152..3948736)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001295484.1_1856 [locus_tag=ECD_RS09060] [protein=hypothetical protein] [protein_id=WP_001295484.1] [location=complement(1785159..1785779)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000220833.1_2186 [locus_tag=ECD_RS10680] [protein=ABC transporter permease] [protein_id=WP_000220833.1] [location=complement(2112263..2113420)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_617 [locus_tag=ECD_RS02970] [protein=IS1 family transposase] [pseudo=true] [location=complement(611772..612469)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_1240 [locus_tag=ECD_RS23225] [protein=autotransporter outer membrane beta-barrel domain-containing protein] [pseudo=true] [location=1209293..1210407] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_3501 [locus_tag=ECD_RS23995] [protein=transposase] [pseudo=true] [partial=5'] [location=<3446703..3446813] [gbkey=CDS]	CAT is not a start codon
+lcl|NC_012971.2_cds_1245 [locus_tag=ECD_RS25170] [protein=autotransporter outer membrane beta-barrel domain-containing protein] [pseudo=true] [location=1211624..1212066] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000198822.1_2237 [locus_tag=ECD_RS10910] [protein=GTP-binding protein] [protein_id=WP_000198822.1] [location=2162678..2163664] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000753622.1_4026 [locus_tag=ECD_RS19810] [protein=sulfurtransferase FdhD] [protein_id=WP_000753622.1] [location=3992603..3993436] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1005 [locus_tag=ECD_RS23175] [protein=hypothetical protein] [pseudo=true] [location=complement(987921..988129)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_000569958.1_2374 [locus_tag=ECD_RS11575] [protein=histidine ABC transporter permease] [protein_id=WP_000569958.1] [location=complement(2311770..2312486)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2071 [locus_tag=ECD_RS23560] [protein=ATP phosphoribosyltransferase] [pseudo=true] [location=1985865..1985990] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001188520.1_4285 [locus_tag=ECD_RS21095] [protein=transcriptional regulator] [protein_id=WP_001188520.1] [location=complement(4269819..4270394)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001421818.1_139 [locus_tag=ECD_RS22790] [protein=hypothetical protein] [protein_id=WP_001421818.1] [location=complement(149591..149791)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_2809 [locus_tag=ECD_RS13795] [protein=L-fuculose phosphate aldolase] [pseudo=true] [partial=5'] [location=complement(2765631..>2765846)] [gbkey=CDS]	AAA is not a start codon
+lcl|NC_012971.2_cds_WP_000244783.1_2898 [locus_tag=ECD_RS14265] [protein=membrane protein] [protein_id=WP_000244783.1] [location=complement(2871276..2871683)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001295215.1_3560 [locus_tag=ECD_RS25355] [protein=hypothetical protein] [protein_id=WP_001295215.1] [location=complement(3510091..3510174)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_077249612.1_487 [locus_tag=ECD_RS02350] [protein=RHS repeat protein] [protein_id=WP_077249612.1] [location=497092..497805] [gbkey=CDS]	ATA is not a start codon
+lcl|NC_012971.2_cds_WP_000736158.1_1154 [locus_tag=ECD_RS05680] [protein=oxidoreductase] [protein_id=WP_000736158.1] [location=1129376..1130299] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_272 [locus_tag=ECD_RS25065] [protein=hypothetical protein] [pseudo=true] [location=complement(283026..283245)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_001289652.1_1724 [locus_tag=ECD_RS08405] [protein=electron transporter RsxE] [protein_id=WP_001289652.1] [location=1656024..1656719] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000146992.1_2381 [locus_tag=ECD_RS11610] [protein=protein DedD] [protein_id=WP_000146992.1] [location=complement(2318275..2318937)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000383233.1_2859 [locus_tag=ECD_RS14065] [protein=5-keto-4-deoxyuronate isomerase] [protein_id=WP_000383233.1] [location=complement(2823016..2823852)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_1091 [locus_tag=ECD_RS25140] [protein=hypothetical protein] [pseudo=true] [location=complement(1072598..1072796)] [gbkey=CDS] is not divisible by 3 (possible frame shift error)
+lcl|NC_012971.2_cds_WP_072094248.1_2026 [locus_tag=ECD_RS09905] [protein=protein deglycase HchA] [protein_id=WP_072094248.1] [location=1941165..1941833] [gbkey=CDS]	ATC is not a start codon
+lcl|NC_012971.2_cds_WP_001295476.1_2551 [locus_tag=ECD_RS12460] [protein=hypothetical protein] [protein_id=WP_001295476.1] [location=2494272..2494790] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_000096086.1_3147 [locus_tag=ECD_RS15465] [protein=hypothetical protein] [protein_id=WP_000096086.1] [location=3116376..3116675] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001300936.1_3616 [locus_tag=ECD_RS17735] [protein=hypothetical protein] [protein_id=WP_001300936.1] [location=3567962..3568189] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_001136577.1_946 [locus_tag=ECD_RS04645] [protein=NAD(P)-dependent oxidoreductase] [protein_id=WP_001136577.1] [location=complement(911556..912986)] [gbkey=CDS]	GTG is not a start codon
+lcl|NC_012971.2_cds_WP_071587491.1_4397 [locus_tag=ECD_RS24350] [protein=hypothetical protein] [protein_id=WP_071587491.1] [location=4384305..4384487] [gbkey=CDS]	GTG is not a start codon
