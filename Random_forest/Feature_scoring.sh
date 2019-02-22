@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -n "$1" ]; then \
+if [ ! -n "$1" ] || [ ! -n "$2" ]; then \
   echo "" >&2
   echo "Usage: ./Feature_scoring.sh <Threads> <CDS.fa> [option]" >&2
   echo "  <Threads>       INT    Set number of threads for RNAup_avoidance_calculator.py" >&2
