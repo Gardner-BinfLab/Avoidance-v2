@@ -7,7 +7,7 @@ if [ ! -n "$1" ] || [ ! -n "$2" ]; then \
   echo "  <CDS.fa>        STR    Coding sequences in fasta format" >&2
   echo "" >&2
   echo "Option:" >&2
-  echo "  <5UTR_sequence> STR    Use your own 5UTR sequence if your plasmid backbone is not pET vector" >&2
+  echo "  <5UTR_sequence> STR    Use your own 5UTR sequence (71 nt) if your plasmid backbone is not pET vector" >&2
   echo "                         Default is GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACAT" >&2
   echo "" >&2
   echo "Dependencies: biopython, codonw, ViennaRNA" >&2
@@ -41,11 +41,11 @@ time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/$
 for i in *_openen; do \
   paste \
   <(echo ${i}) \
-  <(awk 'BEGIN{OFS="\t"} NR>73 && NR<=101 {print $42,$43,$44,$45,$46}' ${i} \
+  <(awk 'BEGIN{OFS="\t"} NR>73 && NR<=102 {print $42,$43,$44,$45,$46}' ${i} \
   | awk '{for(i=1;i<=NF;i++)$i=(a[i]+=$i)}END{print}')
 done \
 | sed 's/_openen//;s/ /\t/g' \
-| sed '1i Accession\topenen42\topenen43\topenen44\topenen45\topenen46' > ${DIR}/openen.out
+| sed '1i Accession\topenen41\topenen42\topenen43\topenen44\topenen45' > ${DIR}/openen.out
 cd ${DIR}
 
 echo ""
@@ -81,25 +81,25 @@ time python ${SRC}/CodonMuSe/CodonMuSe.py \
 mv ${CDS%.*}_OptimisationResults.txt codonmuse.out
 sed -i 's/%//g' codonmuse.out
 
-echo ""
-echo "....................................................................................."
-echo "Calculating Minimum Free Energies for Avoidance of mRNA:ncRNA Intereactions(1:30)..."
-echo ""
-mkdir ${DIR}/avoidance_scores
-cd ${DIR}/avoidance_scores
-awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
-| awk '{print $1 "\n" substr($NF,1,30)}' > w1.30.fa
-time python ${SRC}/RNAup_avoidance_calculator.py \
--mrna w1.30.fa \
--ncrna ${SRC}/data/ncrna.ril.fa \
--parallel ${THREADS}
-for i in *.result; do \
-  sequence=$(echo ${i%.*})
-  avoidance_mfe=$(cat ${i%.*}.result \
-  | gawk 'match($0,/.*\s\(([-]*[0-9]+.[0-9]+)\s=\s.*/,m){avoid+=m[1]}END{print avoid}')
-  echo -e $sequence"\t"$avoidance_mfe
-done \
-| sed '1i Accession\tAvoidance' > ${DIR}/avoidance.out
-cd ${DIR}
+# echo ""
+# echo "....................................................................................."
+# echo "Calculating Minimum Free Energies for Avoidance of mRNA:ncRNA Intereactions(1:30)..."
+# echo ""
+# mkdir ${DIR}/avoidance_scores
+# cd ${DIR}/avoidance_scores
+# awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
+# | awk '{print $1 "\n" substr($NF,1,30)}' > w1.30.fa
+# time python ${SRC}/RNAup_avoidance_calculator.py \
+# -mrna w1.30.fa \
+# -ncrna ${SRC}/data/ncrna.ril.fa \
+# -parallel ${THREADS}
+# for i in *.result; do \
+#   sequence=$(echo ${i%.*})
+#   avoidance_mfe=$(cat ${i%.*}.result \
+#   | gawk 'match($0,/.*\s\(([-]*[0-9]+.[0-9]+)\s=\s.*/,m){avoid+=m[1]}END{print avoid}')
+#   echo -e $sequence"\t"$avoidance_mfe
+# done \
+# | sed '1i Accession\tAvoidance' > ${DIR}/avoidance.out
+# cd ${DIR}
 
-rm -r avoidance_scores rnaplfold ${CDS%.*}_*.txt *.blk
+#rm -r avoidance_scores rnaplfold ${CDS%.*}_*.txt *.blk
