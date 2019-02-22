@@ -1,0 +1,6 @@
+chr     	26	2785667	2785743	fMet	CAT	0	0	77.5	50.60	26.90	fMet	129.5 includes fMet so is excluded from the analysis
+chr     	27	2785777	2785853	fMet	CAT	0	0	77.5	50.60	26.90	fMet	129.5 includes fMet so is excluded from the analysis
+chr     	28	2785887	2785963	fMet	CAT	0	0	77.5	50.60	26.90	fMet	129.5 includes fMet so is excluded from the analysis
+chr     	30	3081680	3081755	Ile2	CAT	0	0	85.1	56.20	28.90	Ile2	111.7 includes unknown anticodon so is excluded from the analysis
+chr     	31	3703699	3703793	SeC	TCA	0	0	142.5	0.00	0.00	SeC	142.5 includes SeC so is excluded from the analysis.
+chr     	60	3186788	3186712	fMet	CAT	0	0	77.5	50.60	26.90	fMet	129.5 includes fMet so is excluded from the analysis
