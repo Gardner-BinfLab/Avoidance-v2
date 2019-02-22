@@ -203,7 +203,7 @@ def score(sequence_df,prob_data,back_prob_data):
 
 
 def rna_ss(seq):
-    '''calculates mean free energy of sequence using RNAlib
+    '''calculates minimum free energy of sequence using RNAlib
     '''
     ss,mfe = RNA.fold(seq)
     return mfe
