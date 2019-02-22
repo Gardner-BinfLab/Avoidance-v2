@@ -81,25 +81,25 @@ time python ${SRC}/CodonMuSe/CodonMuSe.py \
 mv ${CDS%.*}_OptimisationResults.txt codonmuse.out
 sed -i 's/%//g' codonmuse.out
 
-# echo ""
-# echo "....................................................................................."
-# echo "Calculating Minimum Free Energies for Avoidance of mRNA:ncRNA Intereactions(1:30)..."
-# echo ""
-# mkdir ${DIR}/avoidance_scores
-# cd ${DIR}/avoidance_scores
-# awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
-# | awk '{print $1 "\n" substr($NF,1,30)}' > w1.30.fa
-# time python ${SRC}/RNAup_avoidance_calculator.py \
-# -mrna w1.30.fa \
-# -ncrna ${SRC}/data/ncrna.ril.fa \
-# -parallel ${THREADS}
-# for i in *.result; do \
-#   sequence=$(echo ${i%.*})
-#   avoidance_mfe=$(cat ${i%.*}.result \
-#   | gawk 'match($0,/.*\s\(([-]*[0-9]+.[0-9]+)\s=\s.*/,m){avoid+=m[1]}END{print avoid}')
-#   echo -e $sequence"\t"$avoidance_mfe
-# done \
-# | sed '1i Accession\tAvoidance' > ${DIR}/avoidance.out
-# cd ${DIR}
+echo ""
+echo "....................................................................................."
+echo "Calculating Minimum Free Energies for Avoidance of mRNA:ncRNA Intereactions(1:30)..."
+echo ""
+mkdir ${DIR}/avoidance_scores
+cd ${DIR}/avoidance_scores
+awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
+| awk '{print $1 "\n" substr($NF,1,30)}' > w1.30.fa
+time python ${SRC}/RNAup_avoidance_calculator.py \
+-mrna w1.30.fa \
+-ncrna ${SRC}/data/ncrna.ril.fa \
+-parallel ${THREADS}
+for i in *.result; do \
+  sequence=$(echo ${i%.*})
+  avoidance_mfe=$(cat ${i%.*}.result \
+  | gawk 'match($0,/.*\s\(([-]*[0-9]+.[0-9]+)\s=\s.*/,m){avoid+=m[1]}END{print avoid}')
+  echo -e $sequence"\t"$avoidance_mfe
+done \
+| sed '1i Accession\tAvoidance' > ${DIR}/avoidance.out
+cd ${DIR}
 
-#rm -r avoidance_scores rnaplfold ${CDS%.*}_*.txt *.blk
+rm -r avoidance_scores rnaplfold ${CDS%.*}_*.txt *.blk
