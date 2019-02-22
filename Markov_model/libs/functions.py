@@ -209,28 +209,28 @@ def rna_ss(seq):
     return mfe
 
 
-def mutate(sequence,prob_df,length = 30):
+def substitute_codon(sequence,prob_df,length = 30):
     '''synonymously mutate sequence. The probability of codon from the model is used as a 
     weght to randomly pick the new codon.
     '''
     codons = functions.splitter(sequence,length)
-    mutable_codon_position = choice(list(range(len(codons)))) #randomly choose pos to mutate
-    mutable_synonymous_codons = data.aa2codon[data.codon2aa[codons[mutable_codon_position]]]
+    subst_codon_position = choice(list(range(len(codons)))) #randomly choose pos to mutate
+    subst_synonymous_codons = data.aa2codon[data.codon2aa[codons[subst_codon_position]]]
     
     #with probs of codon as weights for random picking
     try:
-        probs_of_codons_for_emission = prob_df.loc[mutable_synonymous_codons,mutable_codon_position]
+        probs_of_codons_for_subst = prob_df.loc[subst_synonymous_codons,subst_codon_position]
     except IndexError:
-        probs_of_codons_for_emission = prob_df.loc[mutable_synonymous_codons,'codon_prob']
+        probs_of_codons_for_subst = prob_df.loc[subst_synonymous_codons,'codon_prob']
     
-    probs_sum = sum(probs_of_codons_for_emission)
-    mutated_codon = choice(mutable_synonymous_codons, p = [float(i)/probs_sum\
-                                                        for i in probs_of_codons_for_emission])
+    probs_sum = sum(probs_of_codons_for_subst)
+    subst_codon = choice(subst_synonymous_codons, p = [float(i)/probs_sum\
+                                                        for i in probs_of_codons_for_subst])
     
     
     #without weights
     #mutated_codon = random.choice(mutable_synonymous_codons)
-    new_seq = sequence[:mutable_codon_position*3]+ mutated_codon + sequence[mutable_codon_position*3+3:]
+    new_seq = sequence[:subst_codon_position*3]+ subst_codon + sequence[subst_codon_position*3+3:]
     return new_seq
 
 
@@ -246,7 +246,7 @@ def sim_anneal(sequence,prob_df,length = 30,niter=100):
     sbest = seq
     for i in range(niter):
         T = temp[i]
-        snew = mutate(sbest,prob_df,length)
+        snew = substitute_codon(sbest,prob_df,length)[:length]
         if rna_ss(utr[-length:]+ snew) >= rna_ss(utr[-length:] + scurr):
                 scurr = snew
                 if rna_ss(utr[-length:]+scurr)>=rna_ss(utr[-length:]+sbest):
