@@ -35,7 +35,7 @@ echo "Calculating Open Energies for Accessibility(1:30)..."
 echo ""
 mkdir rnaplfold
 cd rnaplfold
-/usr/bin/time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
+time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
 | awk -v U=${UTR5} '{print $1 "\n" U $2}' \
 | RNAplfold -W 210 -u 210 -O
 for i in *_openen; do \
@@ -52,7 +52,7 @@ echo ""
 echo "....................................................................................."
 echo "Calculating Minimum Free Energies for STR(-30:+30)..."
 echo ""
-/usr/bin/time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${CDS} \
+time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${CDS} \
 | awk '{print $1 "\n" substr($NF,1,30)}' \
 | awk -v U=${UTR5} '{print $1 "\n" substr(U,length(U)-29) $2}'  \
 | RNAfold --noPS \
@@ -64,7 +64,7 @@ echo ""
 echo ""
 echo "....................................................................................."
 echo "Calculating Codon Usage Indices..."
-/usr/bin/time codonw ${CDS} codonw.out codonw.blk \
+time codonw ${CDS} codonw.out codonw.blk \
 -cai -fop -cbi -enc -gc -gc3s -sil_base \
 -nomenu -silent
 awk 'BEGIN{OFS="\t"}{sub("title","Accession"); print $1,$2,$3,$4,$5,$6,$9,$10,$11}' codonw.out > codonw.out2
@@ -73,7 +73,7 @@ mv codonw.out2 codonw.out
 echo ""
 echo "....................................................................................."
 echo "Calculating Biosynthetic Cost and tAI..."
-/usr/bin/time python ${SRC}/CodonMuSe/CodonMuSe.py \
+time python ${SRC}/CodonMuSe/CodonMuSe.py \
 -f ${CDS} \
 -tscan ${SRC}/CodonMuSe/eschColi_BL21DE3_1-tRNAs.out \
 -ind -par -m GC_Sc_St \
@@ -89,7 +89,7 @@ mkdir ${DIR}/avoidance_scores
 cd ${DIR}/avoidance_scores
 awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
 | awk '{print $1 "\n" substr($NF,1,30)}' > w1.30.fa
-/usr/bin/time python ${SRC}/RNAup_avoidance_calculator.py \
+time python ${SRC}/RNAup_avoidance_calculator.py \
 -mrna w1.30.fa \
 -ncrna ${SRC}/data/ncrna.ril.fa \
 -parallel ${THREADS}
@@ -102,4 +102,4 @@ done \
 | sed '1i Accession\tAvoidance' > ${DIR}/avoidance.out
 cd ${DIR}
 
-rm -r avoidance_scores rnaplfold *.txt *.blk
+rm -r avoidance_scores rnaplfold ${CDS%.*}_*.txt *.blk
