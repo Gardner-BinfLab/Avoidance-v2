@@ -29,57 +29,67 @@ UTR5=${3:-GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACA
 DIR=$PWD
 SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-# echo ""
-# echo "....................................................................................."
-# echo "Calculating Open Energies for Accessibility(1:30)..."
-# echo ""
-# mkdir rnaplfold
-# cd rnaplfold
-# time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
-# | awk -v U=${UTR5} '{print $1 "\n" U $2}' \
-# | RNAplfold -W 210 -u 210 -O
-# for i in *_openen; do \
-#   paste \
-#   <(echo ${i}) \
-#   <(awk 'BEGIN{OFS="\t"} NR>73 && NR<=102 {print $42,$43,$44,$45,$46}' ${i} \
-#   | awk '{for(i=1;i<=NF;i++)$i=(a[i]+=$i)}END{print}')
-# done \
-# | sed 's/_openen//;s/ /\t/g' \
-# | sed '1i Accession\topenen41\topenen42\topenen43\topenen44\topenen45' > ${DIR}/openen.out
-# cd ${DIR}
+echo ""
+echo "....................................................................................."
+echo "Calculating Open Energies for Accessibility(1:30)..."
+echo ""
+mkdir rnaplfold
+cd rnaplfold
+time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${CDS} \
+| awk -v U=${UTR5} '{print $1 "\n" U $2}' \
+| RNAplfold -W 210 -u 210 -O
+for i in *_openen; do \
+  paste \
+  <(echo ${i}) \
+  <(awk 'BEGIN{OFS="\t"} NR>73 && NR<=102 {print $42,$43,$44,$45,$46}' ${i} \
+  | awk '{for(i=1;i<=NF;i++)$i=(a[i]+=$i)}END{print}')
+done \
+| sed 's/_openen//;s/ /\t/g' \
+| sed '1i Accession\topenen41\topenen42\topenen43\topenen44\topenen45' > ${DIR}/openen.out
+cd ${DIR}
 
-# echo ""
-# echo "....................................................................................."
-# echo "Calculating Minimum Free Energies for STR(-30:+30)..."
-# echo ""
-# time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${CDS} \
-# | awk '{print $1 "\n" substr($NF,1,30)}' \
-# | awk -v U=${UTR5} '{print $1 "\n" substr(U,length(U)-29) $2}'  \
-# | RNAfold --noPS \
-# | awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print $0}' \
-# | awk '{print $1 "\t" $NF}' \
-# | sed 's/[()]//g' \
-# | sed '1i Accession\tSTR'> ${DIR}/rnafold.out
+echo ""
+echo "....................................................................................."
+echo "Calculating Minimum Free Energies for STR(-30:+30)..."
+echo ""
+time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${CDS} \
+| awk '{print $1 "\n" substr($NF,1,30)}' \
+| awk -v U=${UTR5} '{print $1 "\n" substr(U,length(U)-29) $2}'  \
+| RNAfold --noPS \
+| awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print $0}' \
+| awk '{print $1 "\t" $NF}' \
+| sed 's/[()]//g' \
+| sed '1i Accession\tSTR'> ${DIR}/rnafold.out
 
-# echo ""
-# echo "....................................................................................."
-# echo "Calculating Codon Usage Indices..."
-# time codonw ${CDS} codonw.out codonw.blk \
-# -cai -fop -cbi -enc -gc -gc3s -sil_base \
-# -nomenu -silent
-# awk 'BEGIN{OFS="\t"}{sub("title","Accession"); print $1,$2,$3,$4,$5,$6,$9,$10,$11}' codonw.out > codonw.out2
-# mv codonw.out2 codonw.out
+echo ""
+echo "....................................................................................."
+echo "Calculating basepair classes..."
+echo ""
+python ../basepair.py -i ${CDS} > basepair.txt
+cat basepair.txt \
+| sed 's/\t/,/2;s/0,0/3/;s/0,1/2/;s/0,2/1/;s/1,0/2/;s/1,1/1/;s/1,2/3/;s/2,0/1/;s/2,1/3/;s/2,2/2/' \
+| sort | uniq -c \
+| awk 'BEGIN{OFS="\t"}{print $2,$3,$1}' > basepair.out
 
-# echo ""
-# echo "....................................................................................."
-# echo "Calculating Biosynthetic Cost and tAI..."
-# time python ${SRC}/CodonMuSe/CodonMuSe.py \
-# -f ${CDS} \
-# -tscan ${SRC}/CodonMuSe/eschColi_BL21DE3_1-tRNAs.out \
-# -ind -par -m GC_Sc_St \
-# -tc 11 -GC 0.2075 -Sc -0.0741 -St 0.2222
-# mv ${CDS%.*}_OptimisationResults.txt codonmuse.out
-# sed -i 's/%//g' codonmuse.out
+echo ""
+echo "....................................................................................."
+echo "Calculating Codon Usage Indices..."
+time codonw ${CDS} codonw.out codonw.blk \
+-cai -fop -cbi -enc -gc -gc3s -sil_base \
+-nomenu -silent
+awk 'BEGIN{OFS="\t"}{sub("title","Accession"); print $1,$2,$3,$4,$5,$6,$9,$10,$11}' codonw.out > codonw.out2
+mv codonw.out2 codonw.out
+
+echo ""
+echo "....................................................................................."
+echo "Calculating Biosynthetic Cost and tAI..."
+time python ${SRC}/CodonMuSe/CodonMuSe.py \
+-f ${CDS} \
+-tscan ${SRC}/CodonMuSe/eschColi_BL21DE3_1-tRNAs.out \
+-ind -par -m GC_Sc_St \
+-tc 11 -GC 0.2075 -Sc -0.0741 -St 0.2222
+mv ${CDS%.*}_OptimisationResults.txt codonmuse.out
+sed -i 's/%//g' codonmuse.out
 
 echo ""
 echo "....................................................................................."
@@ -87,19 +97,19 @@ echo "Calculating Minimum Free Energies for Avoidance of mRNA:ncRNA Intereaction
 echo ""
 mkdir ${DIR}/avoidance_scores
 cd ${DIR}/avoidance_scores
-awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
+awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${CDS} \
 | awk '{print $1 "\n" substr($NF,1,30)}' > w1.30.fa
 time python ${SRC}/RNAup_avoidance_calculator.py \
 -mrna w1.30.fa \
 -ncrna ${SRC}/data/ncrna.ril.fa \
 -parallel ${THREADS}
-# for i in *.result; do \
-#   sequence=$(echo ${i%.*})
-#   avoidance_mfe=$(cat ${i%.*}.result \
-#   | gawk 'match($0,/.*\s\(([-]*[0-9]+.[0-9]+)\s=\s.*/,m){avoid+=m[1]}END{print avoid}')
-#   echo -e $sequence"\t"$avoidance_mfe
-# done \
-# | sed '1i Accession\tAvoidance' > ${DIR}/avoidance.out
-# cd ${DIR}
+for i in *.result; do \
+  sequence=$(echo ${i%.*})
+  avoidance_mfe=$(cat ${i%.*}.result \
+  | gawk 'match($0,/.*\s\(([-]*[0-9]+.[0-9]+)\s=\s.*/,m){avoid+=m[1]}END{print avoid}')
+  echo -e $sequence"\t"$avoidance_mfe
+done \
+| sed '1i Accession\tAvoidance' > ${DIR}/avoidance.out
+cd ${DIR}
 
-#rm -r avoidance_scores rnaplfold ${CDS%.*}_*.txt *.blk
+#rm -r avoidance_scores rnaplfold ${CDS%.*}_*.txt *.blk basepair.txt
