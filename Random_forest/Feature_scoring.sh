@@ -11,7 +11,7 @@ if [ ! -n "$1" ] || [ ! -n "$2" ]; then \
   echo "                         Default is GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACAT" >&2
   echo "" >&2
   echo "Dependencies: biopython, codonw, ViennaRNA" >&2
-  echo "  Install from Miniconda" >&2
+  echo "  Install through Miniconda" >&2
   echo "    conda install -c bioconda biopython codonw viennarna" >&2
   echo "  or source/precompiled binary package" >&2
   echo "    https://sourceforge.net/projects/codonw/" >&2
@@ -35,7 +35,7 @@ echo "Calculating Open Energies for Accessibility(1:30)..."
 echo ""
 mkdir rnaplfold
 cd rnaplfold
-time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
+time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${CDS} \
 | awk -v U=${UTR5} '{print $1 "\n" U $2}' \
 | RNAplfold -W 210 -u 210 -O
 for i in *_openen; do \
@@ -63,6 +63,16 @@ time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${CDS} \
 
 echo ""
 echo "....................................................................................."
+echo "Calculating basepair classes..."
+echo ""
+python ../basepair.py -i ${CDS} > basepair.txt
+cat basepair.txt \
+| sed 's/\t/,/2;s/0,0/3/;s/0,1/2/;s/0,2/1/;s/1,0/2/;s/1,1/1/;s/1,2/3/;s/2,0/1/;s/2,1/3/;s/2,2/2/' \
+| sort | uniq -c \
+| awk 'BEGIN{OFS="\t"}{print $2,$3,$1}' > basepair.out
+
+echo ""
+echo "....................................................................................."
 echo "Calculating Codon Usage Indices..."
 time codonw ${CDS} codonw.out codonw.blk \
 -cai -fop -cbi -enc -gc -gc3s -sil_base \
@@ -87,7 +97,7 @@ echo "Calculating Minimum Free Energies for Avoidance of mRNA:ncRNA Intereaction
 echo ""
 mkdir ${DIR}/avoidance_scores
 cd ${DIR}/avoidance_scores
-awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
+awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${CDS} \
 | awk '{print $1 "\n" substr($NF,1,30)}' > w1.30.fa
 time python ${SRC}/RNAup_avoidance_calculator.py \
 -mrna w1.30.fa \
@@ -102,4 +112,4 @@ done \
 | sed '1i Accession\tAvoidance' > ${DIR}/avoidance.out
 cd ${DIR}
 
-rm -r avoidance_scores rnaplfold ${CDS%.*}_*.txt *.blk
+#rm -r avoidance_scores rnaplfold ${CDS%.*}_*.txt *.blk basepair.txt
