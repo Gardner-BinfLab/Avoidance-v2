@@ -27,7 +27,7 @@ THREADS=${1}
 CDS=${2}
 UTR5=${3:-GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACAT}
 DIR=$PWD
-SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+SRC="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
 
 echo ""
 echo "....................................................................................."
@@ -65,11 +65,19 @@ echo ""
 echo "....................................................................................."
 echo "Calculating basepair classes..."
 echo ""
-python ../basepair.py -i ${CDS} > basepair.txt
+python ../basepair.py -i ${CDS} > basepair.raw
 cat basepair.txt \
 | sed 's/\t/,/2;s/0,0/3/;s/0,1/2/;s/0,2/1/;s/1,0/2/;s/1,1/1/;s/1,2/3/;s/2,0/1/;s/2,1/3/;s/2,2/2/' \
 | sort | uniq -c \
-| awk 'BEGIN{OFS="\t"}{print $2,$3,$1}' > basepair.out
+| awk 'BEGIN{OFS="\t"}{print $2,$3,$1}' > basepair.txt
+paste \
+<(awk '$2==1 {print $1 "\t" $3}' basepair.txt) \
+<(awk '$2==2 {print $3}' basepair.txt) \
+<(awk '$2==3 {print $3}' basepair.txt) \
+| join -t$'\t' \
+<(sort -k1,1 -) \
+<(awk '{a[$1] += $3} END{for (i in a) print i "\t" a[i]}' basepair.txt | sort -k1,1) \
+| sed '1i Accession\tc1\tc2\tc3\tTotal_c' > basepair.out
 
 echo ""
 echo "....................................................................................."
@@ -106,10 +114,19 @@ time python ${SRC}/RNAup_avoidance_calculator.py \
 for i in *.result; do \
   sequence=$(echo ${i%.*})
   avoidance_mfe=$(cat ${i%.*}.result \
-  | gawk 'match($0,/.*\s\(([-]*[0-9]+.[0-9]+)\s=\s.*/,m){avoid+=m[1]}END{print avoid}')
+  | awk 'match($0,/.*\s\(([-]*[0-9]+.[0-9]+)\s=\s.*/,m){avoid+=m[1]}END{print avoid}')
   echo -e $sequence"\t"$avoidance_mfe
 done \
 | sed '1i Accession\tAvoidance' > ${DIR}/avoidance.out
+#avoidance for each ncRNA
+for i in *.result; do \
+  paste \
+  <(echo ${i%.*}) \
+  <(awk 'match($0,/.*\s\(([-]*[0-9]+.[0-9]+)\s=\s.*/,m){print m[1]}' ${i} | transpose -t)
+done \
+| cat \
+<(grep ">" ${SRC}/data/ncrna.ril.fa | sed 's/>//;s/-/_/g' | transpose -t | sed 's/^/Accession\t/') - \
+> ${DIR}/avoidance.ncrna.out
 cd ${DIR}
 
 #rm -r avoidance_scores rnaplfold ${CDS%.*}_*.txt *.blk basepair.txt
