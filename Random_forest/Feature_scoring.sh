@@ -65,8 +65,8 @@ echo ""
 echo "....................................................................................."
 echo "Calculating basepair classes..."
 echo ""
-python ../basepair.py -i ${CDS} > basepair.raw
-cat basepair.txt \
+python ${SRC}/basepair.py -i ${CDS} -w 60 -s 6 | gzip > basepair.raw.gz
+zcat basepair.raw.gz \
 | sed 's/\t/,/2;s/0,0/3/;s/0,1/2/;s/0,2/1/;s/1,0/2/;s/1,1/1/;s/1,2/3/;s/2,0/1/;s/2,1/3/;s/2,2/2/' \
 | sort | uniq -c \
 | awk 'BEGIN{OFS="\t"}{print $2,$3,$1}' > basepair.txt
