@@ -209,30 +209,36 @@ def rna_ss(seq):
     return mfe
 
 
-def substitute_codon(sequence,prob_df,length = 30):
-    '''preform a synonymous codon substitution. The probability of codon from the model is used as a 
-    weght to randomly pick the new codon.
+def substitute_codon(sequence,prob_df,length_to_count = 30,subst = 2):
+    '''synonymously mutate sequence. The probability of codon from the model is used as a 
+    weght to randomly pick the new codon. 
+    length_to_count = length to consider for substitution. Default = 10 codons
+    subst = max number of codons to substitute. Default = 2 substitutions
     '''
-    codons = functions.splitter(sequence,length)
-    subst_codon_position = choice(list(range(len(codons)))) #randomly choose pos to mutate
-    subst_synonymous_codons = data.aa2codon[data.codon2aa[codons[subst_codon_position]]]
-    
-    #with probs of codon as weights for random picking
-    try:
-        probs_of_codons_for_subst = prob_df.loc[subst_synonymous_codons,subst_codon_position]
-    except IndexError:
-        probs_of_codons_for_subst = prob_df.loc[subst_synonymous_codons,'codon_prob']
-    
-    probs_sum = sum(probs_of_codons_for_subst)
-    subst_codon = choice(subst_synonymous_codons, p = [float(i)/probs_sum\
-                                                        for i in probs_of_codons_for_subst])
-    
-    
-    #without weights
-    #mutated_codon = random.choice(mutable_synonymous_codons)
-    new_seq = sequence[:subst_codon_position*3]+ subst_codon + sequence[subst_codon_position*3+3:]
-    return new_seq
+    length = sequence_length(sequence) if len(sequence)<length_to_count else length_to_count
+    new_seq = sequence
+    for i in range(subst):
+        codons = functions.splitter(new_seq,length)
+        subst_codon_position = choice(list(range(len(codons)))) #randomly choose pos to mutate
+        subst_synonymous_codons = data.aa2codon[data.codon2aa[codons[subst_codon_position]]]
 
+        #with probs of codon as weights for random picking
+        try:
+            probs_of_codons_for_subst = prob_df.loc[subst_synonymous_codons,subst_codon_position]
+        except IndexError:
+            probs_of_codons_for_subst = prob_df.loc[subst_synonymous_codons,'codon_prob']
+
+        probs_sum = sum(probs_of_codons_for_subst)
+        subst_codon = choice(subst_synonymous_codons, p = [float(i)/probs_sum\
+                                                            for i in probs_of_codons_for_subst])
+
+
+        #without weights
+        #mutated_codon = random.choice(mutable_synonymous_codons)
+        new_seq = new_seq[:subst_codon_position*3]+ subst_codon + sequence[subst_codon_position*3+3:]
+        
+        
+    return new_seq
 
 
 def sim_anneal(sequence,prob_df,length = 30,niter=100):
