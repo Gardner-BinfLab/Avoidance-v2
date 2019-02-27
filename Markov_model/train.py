@@ -50,7 +50,7 @@ def main():
         os.makedirs(os.path.join(os.getcwd(),'results','model',''))
 
     base,ext = os.path.splitext(f)
-    if ext.lower in ('.fasta','.fa'):
+    if ext.lower() in ('.fasta','.fa'):
         seq_df = functions.fasta_to_dataframe(f)
     else:
         seq_df = pd.read_csv(f,skiprows=1,header=None)
