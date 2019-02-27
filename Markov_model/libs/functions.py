@@ -48,7 +48,7 @@ def fasta_to_dataframe(input_file):
     '''
     convert fasta to pandas dataframe
     '''
-    sequence_df = pd.DataFrame(columns==[1,0])
+    sequence_df = pd.DataFrame(columns=[1,0])
     fasta = []
     test = []
     with open(input_file) as file:
