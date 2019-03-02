@@ -45,7 +45,7 @@ def count_basepair(seqfile, win, step):
             yield c,'c2'
         else:
             yield c,'c3'
-    return
+
 
 
 def main():
