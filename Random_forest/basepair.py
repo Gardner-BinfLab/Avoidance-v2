@@ -12,7 +12,7 @@ import RNA
 import forgi.graph.bulge_graph as cgb
 
 
-def chunks(seq, win, step):
+def sliding_windows(seq, win, step):
     seqlen = len(seq)
     for i in range(0,seqlen,step):
         j = seqlen if i+win>seqlen else i+win
@@ -24,7 +24,7 @@ def basepair(seqfile, win, step):
     for seq_record in SeqIO.parse(seqfile, "fasta"):
         seq = str(seq_record.seq)
         id = str(seq_record.id)
-        for subseq in chunks(seq, win, step):
+        for subseq in sliding_windows(seq, win, step):
             dotbracket = RNA.fold(subseq)[0]
             bg = cgb.BulgeGraph.from_dotbracket(dotbracket)
             bg.from_dotbracket(dotbracket)
@@ -35,7 +35,7 @@ def basepair(seqfile, win, step):
                     yield id, l, r
 
 
-def count(seqfile, win, step):
+def count_basepair(seqfile, win, step):
     g = basepair(seqfile, win, step)
     for i in g:
         c = i[0]
@@ -43,14 +43,13 @@ def count(seqfile, win, step):
             yield c,'c1'
         elif (i[1]==0 and i[2]==1) or (i[1]==1 and i[2]==0) or (i[1]==2 and i[2]==2):
             yield c,'c2'
-        elif (i[1]==1 and i[2]==2) or (i[1]==2 and i[2]==1) or (i[1]==3 and i[2]==3):
+        else:
             yield c,'c3'
     return
 
 
-
 def main():
-    counter = collections.Counter(count(args.i, args.w, args.s))
+    counter = collections.Counter(count_basepair(args.i, args.w, args.s))
     df = pd.DataFrame.from_dict(counter, orient='index').reset_index()
     df = pd.concat([df['index'].apply(pd.Series), df[0]], axis = 1)
     df.columns = ['Accession', 'basepair', 'counts']
