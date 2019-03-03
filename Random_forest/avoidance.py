@@ -24,22 +24,24 @@ def valid_file(param):
 
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='RNAup wrapper using multiprocesses')
-    parser.add_argument('-m', '--mrna',
+    parser.add_argument('-m',
                         type=valid_file,
                         metavar='STR',
                         help='mRNA sequences in fasta or csv format',
                         required='True')
-    parser.add_argument('-n', '--ncrna',
+    parser.add_argument('-n',
                         type=valid_file,
                         metavar='STR',
                         help='ncRNA sequences in fasta or csv format',
                         required='True')
-    parser.add_argument('-l','--length',
+    parser.add_argument('-l',
+                        metavar='INT',
                         help='length to calculate interactions for. Default = 30 nt')
-    parser.add_argument('-o', '--output',
-                        help='Output file name.',
+    parser.add_argument('-o',
+                        metavar='STR',
+                        help='Output file name',
                         default = 'avoidance')
-    parser.add_argument('-p','--processes',
+    parser.add_argument('-p',
                         type=int,
                         metavar='INT',
                         help='number of process to spawn. Default = 16')
