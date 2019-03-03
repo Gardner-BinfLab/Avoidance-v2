@@ -13,30 +13,35 @@ from multiprocessing import Pool
 from subprocess import run, PIPE
 
 
+
 def valid_file(param):
     base, ext = os.path.splitext(param)
     if ext.lower() not in ('.csv', '.fasta','.fa'):
-        raise argparse.ArgumentTypeError('File must have a csv or fasta extension')
+        raise argparse.ArgumentTypeError('File must have a fasta or csv extension')
     return param
 
 
+
 def check_arg(args=None):
-    parser = argparse.ArgumentParser(description='Avoidance calculator script')
+    parser = argparse.ArgumentParser(description='RNAup wrapper using multiprocesses')
     parser.add_argument('-m', '--mrna',
                         type=valid_file,
-                        help='mrna in csv or fasta format',
+                        metavar='STR',
+                        help='mRNA sequences in fasta or csv format',
                         required='True')
     parser.add_argument('-n', '--ncrna',
                         type=valid_file,
-                        help='ncrna in csv or fasta format',
+                        metavar='STR',
+                        help='ncRNA sequences in fasta or csv format',
                         required='True')
     parser.add_argument('-l','--length',
-                        help='length to calculate interactions for. default = 30 nt')
+                        help='length to calculate interactions for. Default = 30 nt')
     parser.add_argument('-o', '--output',
                         help='Output file name.',
                         default = 'avoidance')
     parser.add_argument('-p','--processes',
                         type=int,
+                        metavar='INT',
                         help='number of process to spawn. Default = 16')
 
     results = parser.parse_args(args)
@@ -45,6 +50,7 @@ def check_arg(args=None):
             results.length,
             results.output,
             results.processes)
+
 
 
 def interaction_calc(seq):
@@ -94,8 +100,8 @@ def main():
     my_pool.join()
 
     seq_id = pd.Series(interactions).str.extractall(r'(>\w+-\w+)')[0].str.replace('>', '', regex=True).to_frame()
-    ncrna_id = (seq_id.loc[pd.IndexSlice[:, 1:], :]).reset_index().set_index('level_0')
     mrna_id = (seq_id.loc[pd.IndexSlice[:, 0], :]).reset_index().set_index('level_0')
+    ncrna_id = (seq_id.loc[pd.IndexSlice[:, 1:], :]).reset_index().set_index('level_0')
     binding_energy = pd.Series(interactions).str.extractall(r'(\(-[0-9]+\.[0-9]+)')[0].str.replace('(', '', regex=True).to_frame().reset_index().set_index('level_0')
     d = pd.concat([mrna_id, ncrna_id, binding_energy], axis=1)
     d = d.iloc[:,[1,3,5]]
@@ -104,6 +110,8 @@ def main():
     d.to_csv(filename, index=False, sep='\t', encoding='utf-8')
 
     print("We took ", datetime.now() - startTime, " to finish the task!", flush = True)
+
+
 
 if __name__ == "__main__":
     m,n,l,o,p = check_arg(sys.argv[1:])
