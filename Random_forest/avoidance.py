@@ -16,7 +16,7 @@ from subprocess import run, PIPE
 
 def valid_file(param):
     base, ext = os.path.splitext(param)
-    if ext.lower() not in ('.csv', '.fasta','.fa'):
+    if ext.lower() not in ('.csv', '.fasta','.fa','.fas','.fna'):
         raise argparse.ArgumentTypeError('File must have a fasta or csv extension')
     return param
 
@@ -64,13 +64,13 @@ def interaction_calc(seq):
 
 def main():
     base,ext = os.path.splitext(m)
-    if ext.lower() in ('.fasta','.fa'):
+    if ext.lower() in ('.fasta','.fa','.fas','.fna'):
         mrna = functions.fasta_to_dataframe(m)
     else:
         mrna = pd.read_csv(m,skiprows=1,header=None)
         
     base,ext = os.path.splitext(n)
-    if ext.lower() in ('.fasta','.fa'):
+    if ext.lower() in ('.fasta','.fa','.fas','.fna'):
         ncrna = functions.fasta_to_dataframe(n)
     else:
         ncrna = pd.read_csv(n,skiprows=1,header=None)
