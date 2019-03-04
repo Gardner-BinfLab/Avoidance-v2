@@ -91,13 +91,13 @@ def main():
     print('\nWe took', datetime.now() - startTime, 'to assign these interactions!', flush=True)
   
     print('\nCalculating interactions using', p, 'processes...', flush=True)
-    total_pairs = df.shape[0]
+    groups = df.shape[0]
     my_pool = Pool(p)
     interactions = []
-    functions.progress(0,total_pairs)
-    for i in my_pool.imap_unordered(interaction_calc, df['interaction_first'], chunksize=int(total_pairs/p)):
+    functions.progress(0,groups)
+    for i in my_pool.imap_unordered(interaction_calc, df['interaction_first'], chunksize=int(groups/p)):
         interactions.append(i)
-        functions.progress(len(interactions), total_pairs)
+        functions.progress(len(interactions), groups)
         
     my_pool.close()
     my_pool.join()
