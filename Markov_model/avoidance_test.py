@@ -141,10 +141,15 @@ def main():
                                     apply(','.join, 1).apply(lambda x: x.replace('(',''))
     
     filename = mypath + o +'_'+str(datetime.now()).replace(" ","_")+'.csv'
-    interaction_df.to_csv(filename, sep='\t', encoding='utf-8',index=None)
+    interaction_df.to_csv(filename, columns = ['accession','RNAup_result','interaction'],sep='\t',\
+                          encoding='utf-8',index=None)
     
     print('done!')
-   
+    
+
+
+
+
 
 
 
