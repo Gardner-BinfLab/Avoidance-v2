@@ -2,13 +2,14 @@ import os
 import sys
 import re
 import argparse
+import itertools
 import subprocess
 import pandas as pd
 import multiprocessing
 from collections import deque
 from datetime import datetime
 from multiprocessing import Pool
-from subprocess import run, PIPE
+from subprocess import Popen, PIPE
 
 
 def valid_file(param):
@@ -74,10 +75,13 @@ def fasta_to_dataframe(f):
 
 
 
-def interaction_calc(seq):
-    proc = run(['RNAup', '-b','-o','--interaction_first'], stdout=PIPE,stderr=subprocess.DEVNULL,
-               input=seq) #input is a stdin object so encode input str
-    return str(proc.stdout).replace("\\n"," ").replace("b'","")
+def interaction_calc(seq_df):
+    proc = Popen(['RNAup', '-b','-o','--interaction_first'],\
+                 stdin = PIPE, stdout=PIPE, stderr=subprocess.DEVNULL)
+    results = [str(proc.communicate(seq)[0]).replace("\\n"," ").replace("b'","") \
+               for seq in pd.Series(seq_df)]
+
+    return results
 
 
 
@@ -108,20 +112,24 @@ def main():
     
     
     total_seq = mrna.shape[0]
+    chunks = 1 if p >= total_seq else p
 
 
     
     
     print("\nspawning ", p, " processes..", flush=True)
     my_pool = Pool(p)
-    interactions = deque()
-    print("\ncalculating interactions.. this may take a while..",flush=True)
+    pool_results = deque()
+    
+    print("\ncalculating interactions.. this may take a while..")
+    print('progressbar is updated after completion of every ',
     progress(0,total_seq)
     for result in my_pool.imap_unordered(interaction_calc, \
                                          mrna['input_encoded'],\
                                          chunksize = p):
-        interactions.append(result)
-        progress(len(interactions),total_seq) 
+        pool_results.append(result)
+        completed = len(list(itertools.chain.from_iterable(pool_results)))
+        progress(completed,total_seq) 
         
     my_pool.close()
     my_pool.join()
@@ -131,7 +139,7 @@ def main():
     print('exporting results...', flush=True)
     
     
-    
+    interactions = list(itertools.chain.from_iterable(pool_results))
     interaction_df = pd.DataFrame({'results':interactions})
     interaction_df[['accession','RNAup_result']] = interaction_df['results'].str.split\
                                                (':break',1,expand=True)
@@ -140,7 +148,7 @@ def main():
                                     extractall(r'(\(-[0-9]+\.[0-9]+)').unstack().\
                                     apply(','.join, 1).apply(lambda x: x.replace('(',''))
     
-    filename = mypath + o +'_'+str(datetime.now()).replace(" ","_")+'.csv'
+    filename = mypath + o +'_'+str(datetime.now()).replace(" ","_")+'.tsv'
     interaction_df.to_csv(filename, columns = ['accession','RNAup_result','interaction'],sep='\t',\
                           encoding='utf-8',index=None)
     
@@ -166,12 +174,12 @@ if __name__ == "__main__":
         p = int(multiprocessing.cpu_count()/2)
     if l is None:
         length = 30
-        print('calculations are for first ', length,' nucleotides.', flush = True)
+        print('\ncalculations are for first ', length,' nucleotides.', flush = True)
     else:
         try:
             length = int(l)
-            print('calculations are for first ', length,' nucleotides.', flush = True)
+            print('\ncalculations are for first ', length,' nucleotides.', flush = True)
         except ValueError:
             length = None
-            print('calculations are for full length.', flush = True)
+            print('\ncalculations are for full length.', flush = True)
     main()
