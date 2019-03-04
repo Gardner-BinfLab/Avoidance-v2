@@ -140,8 +140,8 @@ def main():
         completed = len(list(itertools.chain.from_iterable(pool_results)))
         progress(completed,total_seq) 
         
-    my_pool.close()
-    my_pool.join()
+    pools.close()
+    pools.join()
     
     print("we took ", datetime.now() - startTime, " to finish the task!",\
           flush = True)
