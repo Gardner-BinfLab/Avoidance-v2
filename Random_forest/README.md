@@ -2,5 +2,5 @@
 
 To do (migrate to Python 3):
  - script for calculating biosynthetic cost
- - update avoidance calculator
+ - ~~update avoidance calculator~~
  - new wrapper for feature scoring
