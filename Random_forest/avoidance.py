@@ -95,7 +95,7 @@ def main():
     my_pool = Pool(p)
     interactions = []
     functions.progress(0,total_pairs)
-    for i in my_pool.imap_unordered(interaction_calc, df['interaction_first'], chunksize = int(total_pairs/p)):
+    for i in my_pool.imap_unordered(interaction_calc, df['interaction_first'], chunksize=int(total_pairs/p)):
         interactions.append(i)
         functions.progress(len(interactions), total_pairs)
         
