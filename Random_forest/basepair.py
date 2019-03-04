@@ -58,7 +58,7 @@ def count_basepair(seqfile, win, step):
 def main():
     counter = collections.Counter(count_basepair(args.i, args.w, args.s))
     df = pd.DataFrame.from_dict(counter, orient='index').reset_index()
-    df = pd.concat([df['index'].apply(pd.Series), df[0]], axis = 1)
+    df = pd.concat([df['index'].apply(pd.Series), df[0]], axis=1)
     df.columns = ['Accession', 'basepair', 'counts']
     df = df.pivot(index='Accession', columns='basepair', values='counts')
     df['Total'] = df['c1']+df['c2']+df['c3']
@@ -72,8 +72,20 @@ def main():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Calculate the percent composition of RNA basepair classes by codon as described in https://doi.org/10.1093/bioinformatics/bty678")
-    parser.add_argument('-i',type=str,metavar='STR',help="a FASTA file of CDS",required=True)
-    parser.add_argument('-w',type=int,metavar='INT',help="Window size must be in multiple of 3 nt",required=True)
-    parser.add_argument('-s',type=int,metavar='INT',help="Step size must be in multiple of 3 nt",required=True)
+    parser.add_argument('-i',
+                        type=str,
+                        metavar='STR',
+                        help="a FASTA file of CDS",
+                        required=True)
+    parser.add_argument('-w',
+                        type=int,
+                        metavar='INT',
+                        help="Window size must be in multiple of 3 nt",
+                        required=True)
+    parser.add_argument('-s',
+                        type=int,
+                        metavar='INT',
+                        help="Step size must be in multiple of 3 nt",
+                        required=True)
     args = parser.parse_args()
     main()
