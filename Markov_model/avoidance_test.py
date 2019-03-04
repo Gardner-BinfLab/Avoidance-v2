@@ -35,7 +35,7 @@ def check_arg(args=None):
                         default = 'avoidance')
     parser.add_argument('-p','--processes',
                         type=int,
-                        help='number of process to spawn. Default = 16')
+                        help='number of process to spawn. Default = num cores/2')
 
 
     results = parser.parse_args(args)
