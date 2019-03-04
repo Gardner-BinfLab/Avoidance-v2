@@ -32,7 +32,7 @@ def check_arg(args=None):
     parser.add_argument('-l','--length',
                         help='length to calculate interactions for. default = 30 nt')
     parser.add_argument('-o', '--output',
-                        help='Output file name.',
+                        help='output file name.',
                         default = 'avoidance')
     parser.add_argument('-p','--processes',
                         type=int,
@@ -112,19 +112,28 @@ def main():
     
     
     total_seq = mrna.shape[0]
-    chunks = 1 if p >= total_seq else p
+    
+    #find appropriate chunksize for processes
+    if p >= total_seq: 
+        chunks = 1
+    elif p*p >= total_seq:
+        chunks = int(total_seq/p)
+    else:
+        chunks = p
+
 
 
     
     
-    print("\nspawning ", p, " processes..", flush=True)
-    my_pool = Pool(p)
+    print('\nspawning ', p, 'processes..', flush=True)
+    pools = Pool(p)
     pool_results = deque()
     
-    print("\ncalculating interactions.. this may take a while..")
-    print('progressbar is updated after completion of every ',
+    print('\ncalculating interactions.. this may take a while..')
+    print('for large number of input sequences,\nprogressbar is updated after completion of every ~ ',\
+          chunks*p,' sequences!',flush = True)
     progress(0,total_seq)
-    for result in my_pool.imap_unordered(interaction_calc, \
+    for result in pools.imap_unordered(interaction_calc, \
                                          mrna['input_encoded'],\
                                          chunksize = p):
         pool_results.append(result)
@@ -147,10 +156,19 @@ def main():
     interaction_df['interaction'] = interaction_df['RNAup_result'].str.\
                                     extractall(r'(\(-[0-9]+\.[0-9]+)').unstack().\
                                     apply(','.join, 1).apply(lambda x: x.replace('(',''))
+          
+    interaction_df['total_interaction'] = interaction_df['interaction'].\
+          apply(lambda x: sum(pd.to_numeric(x.split(','))))
+    
+    #this sums interaction for each ncrna across all mrnas
+    #might be handy someday
+    #interaction_df['interaction'].apply(lambda x: (pd.to_numeric(x.split(',')))).sum()
+
     
     filename = mypath + o +'_'+str(datetime.now()).replace(" ","_")+'.tsv'
-    interaction_df.to_csv(filename, columns = ['accession','RNAup_result','interaction'],sep='\t',\
-                          encoding='utf-8',index=None)
+    interaction_df.to_csv(filename, columns = ['accession','RNAup_result','interaction',
+                                                'total_interaction'],sep='\t',\
+                                                encoding='utf-8',index=None)
     
     print('done!')
     
