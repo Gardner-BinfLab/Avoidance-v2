@@ -102,7 +102,7 @@ def main():
     my_pool.close()
     my_pool.join()
 
-    seq_id = pd.Series(interactions).str.extractall(r'(>\w+-\w+)')[0].str.replace('>', '', regex=True).to_frame()
+    seq_id = pd.Series(interactions).str.extractall(r'(>[\S]+)')[0].str.replace('>', '', regex=True).to_frame()
     mrna_id = (seq_id.loc[pd.IndexSlice[:, 0], :]).reset_index().set_index('level_0')
     ncrna_id = (seq_id.loc[pd.IndexSlice[:, 1:], :]).reset_index().set_index('level_0')
     binding_energy = pd.Series(interactions).str.extractall(r'(\(-[0-9]+\.[0-9]+)')[0].str.replace('(', '', regex=True).to_frame().reset_index().set_index('level_0')
@@ -134,12 +134,12 @@ if __name__ == "__main__":
         p = 16
     if l is None:
         length = 30
-        print('calculations are for first ', length,' nucleotides.', flush = True)
+        print('Calculations are of the first ', length,' nt of mRNAs.', flush = True)
     else:
         try:
             length = int(l)
-            print('calculations are for first ', length,' nucleotides.', flush = True)
+            print('Calculations are of the first ', length,' nt of mRNAs.', flush = True)
         except ValueError:
             length = None
-            print('calculations are for full length.', flush = True)
+            print('Calculations are of full length.', flush = True)
     main()
