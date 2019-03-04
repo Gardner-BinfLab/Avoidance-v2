@@ -10,15 +10,16 @@ from numpy.random import choice
 def progress(iteration, total):   
     bars_string = int(float(iteration) / float(total) * 50.)
     sys.stdout.write(
-        "\r[%-50s] %d%% (%s/%s)" % (
-            '='*bars_string, float(iteration) / float(total) * 100,
+        "\r|%-50s| %d%% (%s/%s)" % (
+            '█'*bars_string+ "░" * (50 - bars_string), float(iteration) / float(total) * 100,
             iteration,
             total
         ) 
     )
     sys.stdout.flush()
     if iteration == total:
-        print('Finished!') 
+        print(' Completed!') 
+
 
 def sequence_length(seq):
     '''

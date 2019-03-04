@@ -29,7 +29,7 @@ def compute_function(a_single_mRNA,ncRNA_list):
         for sequence in ncRNA_list:
             tmp_file.write('>' + sub('\s','$',str(sequence.description)) +'\n' + str(sequence.seq) +'\n')
     shell_command="RNAup -b -o --interaction_first < '%s' > '%s' " % (sample_name+'.seq',sample_name+'.result') #-b
-    print str(a_single_mRNA.description)
+    print(str(a_single_mRNA.description))
     subprocess.check_call(shell_command,shell=True)
     return
 
