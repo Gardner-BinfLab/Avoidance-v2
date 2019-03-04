@@ -107,7 +107,7 @@ def main():
     mrna['input_encoded'] = mrna['input'].apply(lambda x: str.encode(x))
     
     
-    total_pairs = mrna.shape[0]
+    total_seq = mrna.shape[0]
 
 
     
@@ -116,11 +116,12 @@ def main():
     my_pool = Pool(p)
     interactions = deque()
     print("\ncalculating interactions.. this may take a while..",flush=True)
+    progress(0,total_seq)
     for result in my_pool.imap_unordered(interaction_calc, \
                                          mrna['input_encoded'],\
                                          chunksize = p):
         interactions.append(result)
-        progress(len(interactions),total_pairs) 
+        progress(len(interactions),total_seq) 
         
     my_pool.close()
     my_pool.join()
@@ -143,11 +144,7 @@ def main():
     interaction_df.to_csv(filename, sep='\t', encoding='utf-8',index=None)
     
     print('done!')
-    
-
-
-
-
+   
 
 
 
