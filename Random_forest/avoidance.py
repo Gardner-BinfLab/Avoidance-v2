@@ -105,13 +105,13 @@ def main():
     
     print('\nAssigning mRNA:ncRNA interactions...')
     startTime = datetime.now()
-    mrna['mrna_seq'] = mrna.index + '\n' + mrna['sequence'].map(str).str[:length] + '\n'
-    ncrna['ncrna_seq'] = ncrna.index + ':break' + '\n' + ncrna['sequence'].map(str) + '\n'
-    mrna_seq = [rows['mrna_seq'] for index,rows in mrna.iterrows()]   
+    ncrna['ncrna_seq'] = ncrna.index + '\n' + ncrna['sequence'].map(str) + '\n'
+    mrna['mrna_seq'] = mrna.index + ':break' + '\n' + mrna['sequence'].map(str).str[:length] + '\n'
+    mrna_seq = [rows['mrna_seq'] for index,rows in mrna.iterrows()]
     ncrna_seq = [rows['ncrna_seq'] for index,rows in ncrna.iterrows()]
-    index = pd.MultiIndex.from_product([mrna_seq, ncrna_seq], names = ['mrna', 'ncrna'])
-    sequence_df = pd.DataFrame(index=index).reset_index()
-    df = sequence_df.pivot(index='mrna', columns='ncrna', values='ncrna')
+    index = pd.MultiIndex.from_product([ncrna_seq, mrna_seq], names = ['ncrna', 'mrna'])
+    sequence_df = pd.DataFrame(index = index).reset_index()
+    df = sequence_df.pivot(index='ncrna',columns='mrna',values='mrna')
     df['interaction_first'] = df.reset_index().values.sum(axis=1)
     print('\nWe took', datetime.now() - startTime, 'to assign these interactions!', flush=True)
   
@@ -120,7 +120,7 @@ def main():
     my_pool = Pool(p)
     interactions = []
     progress(0,groups)
-    for i in my_pool.imap_unordered(interaction_calc, df['interaction_first'], chunksize=int(groups/p)):
+    for i in my_pool.imap_unordered(interaction_calc, df['interaction_first']):
         interactions.append(i)
         progress(len(interactions), groups)
         
@@ -128,13 +128,13 @@ def main():
     my_pool.join()
 
     #parsing RNAup output
-    ncrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+:break)')[0].str.replace('[>:break]', '', regex=True).to_frame().reset_index()
-    mrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+)')[0].str.replace('[>]', '', regex=True).to_frame().loc[pd.IndexSlice[:, 0], :].reset_index()
+    mrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+:break)')[0].str.replace('[>:break]', '', regex=True).to_frame().reset_index()
+    ncrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+)')[0].str.replace('[>]', '', regex=True).to_frame().loc[pd.IndexSlice[:, 0], :].reset_index()
     binding_energy = pd.Series(interactions).str.extractall(r'(\(-[0-9]+\.[0-9]+)')[0].str.replace('(', '', regex=True).to_frame().reset_index()
-    d = pd.merge(ncrna_id, binding_energy, on=['level_0','match'])
-    d = pd.merge(mrna_id, d, on='level_0').iloc[:, [2,4,5]]
-    d.columns = ['Accession', 'ncRNA', 'binding_energy']
-
+    d = pd.merge(mrna_id, binding_energy, on=['level_0','match'])
+    d = pd.merge(ncrna_id, d, on='level_0').iloc[:, [2,4,5]]
+    d.columns = ['ncRNA', 'Accession', 'binding_energy']
+    d = d.pivot(index='Accession',columns='ncRNA',values='binding_energy')
     filename = o + '.out'
     d.to_csv(filename, index=False, sep='\t', encoding='utf-8')
 
