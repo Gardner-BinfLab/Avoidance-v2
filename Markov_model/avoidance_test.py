@@ -5,6 +5,7 @@ import argparse
 import itertools
 import subprocess
 import pandas as pd
+import numpy as np
 import multiprocessing
 from collections import deque
 from datetime import datetime
@@ -107,7 +108,7 @@ def main():
     temp_df['input_mrna'] = ncrna.index+'\n' + ncrna['sequence']
     ncrna_input = '\n'.join(temp_df['input_mrna'] )
     
-    mrna['input'] = mrna.index+ ':break' + '\n'+ mrna['sequence'][:length] + '\n'+ ncrna_input
+    mrna['input'] = mrna.index+ ':break' + '\n'+ mrna['sequence'].apply(lambda x: x[:length]) + '\n'+ ncrna_input
     mrna['input_encoded'] = mrna['input'].apply(lambda x: str.encode(x))
     
     
@@ -153,12 +154,14 @@ def main():
     interaction_df[['accession','RNAup_result']] = interaction_df['results'].str.split\
                                                (':break',1,expand=True)
     
-    interaction_df['interaction'] = interaction_df['RNAup_result'].str.\
-                                    extractall(r'(\(-[0-9]+\.[0-9]+)').unstack().\
-                                    apply(','.join, 1).apply(lambda x: x.replace('(',''))
-          
-    interaction_df['total_interaction'] = interaction_df['interaction'].\
-          apply(lambda x: sum(pd.to_numeric(x.split(','))))
+    
+    results_temp_df = interaction_df['RNAup_result'].str.extractall(r'((?<=\(-).*?(?==))').astype(np.float64).unstack()*-1
+    results_temp_df.columns = ncrna.index
+    results_temp_df['total_interaction'] = results_temp_df.sum(axis=1)
+    
+    
+    
+    result_df = pd.concat([interaction_df, results_temp_df], axis=1)
     
     #this sums interaction for each ncrna across all mrnas
     #might be handy someday
@@ -166,9 +169,7 @@ def main():
 
     
     filename = mypath + o +'_'+str(datetime.now()).replace(" ","_")+'.tsv'
-    interaction_df.to_csv(filename, columns = ['accession','RNAup_result','interaction',
-                                                'total_interaction'],sep='\t',\
-                                                encoding='utf-8',index=None)
+    result_df.to_csv(filename,sep='\t',encoding='utf-8',index=None)
     
     print('done!')
     
