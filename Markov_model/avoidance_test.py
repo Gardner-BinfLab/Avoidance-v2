@@ -163,7 +163,11 @@ def main():
     
     result_df = pd.concat([interaction_df, results_temp_df], axis=1)
     
-   
+    #this sums interaction for each ncrna across all mrnas
+    #might be handy someday
+    #interaction_df['interaction'].apply(lambda x: (pd.to_numeric(x.split(',')))).sum()
+
+    
     filename = mypath + o +'_'+str(datetime.now()).replace(" ","_")+'.tsv'
     result_df.to_csv(filename,sep='\t',encoding='utf-8',index=None)
     
