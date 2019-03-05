@@ -108,7 +108,7 @@ def main():
     temp_df['input_mrna'] = ncrna.index+'\n' + ncrna['sequence']
     ncrna_input = '\n'.join(temp_df['input_mrna'] )
     
-    mrna['input'] = mrna.index+ ':break' + '\n'+ mrna['sequence'][:length] + '\n'+ ncrna_input
+    mrna['input'] = mrna.index+ ':break' + '\n'+ mrna['sequence'].apply(lambda x: x[:length]) + '\n'+ ncrna_input
     mrna['input_encoded'] = mrna['input'].apply(lambda x: str.encode(x))
     
     
