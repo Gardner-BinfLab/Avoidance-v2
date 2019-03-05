@@ -69,12 +69,12 @@ def progress(iteration, total):
 
 
 def fasta_to_dataframe(f):
-    fasta_df = pd.read_csv(f,sep='>', lineterminator='>',header=None)
-    fasta_df[['accession','sequence']]=fasta_df[0].str.split('\n', 1, expand=True)
-    fasta_df['accession'] = '>'+fasta_df['accession']
-    fasta_df['sequence'] = fasta_df['sequence'].replace('\n','', regex=True)
+    fasta_df = pd.read_csv(f,sep='>', lineterminator='>', header=None)
+    fasta_df[['accession','sequence']] = fasta_df[0].str.split('\n', 1, expand=True)
+    fasta_df['accession'] = '>' + fasta_df['accession']
+    fasta_df['sequence'] = fasta_df['sequence'].replace('\n', '', regex=True)
     fasta_df.drop(0, axis=1, inplace=True)
-    fasta_df.set_index('accession',inplace=True)
+    fasta_df.set_index('accession', inplace=True)
     fasta_df = fasta_df[fasta_df.sequence != '']
     final_df = fasta_df.dropna()
     return final_df
@@ -82,7 +82,7 @@ def fasta_to_dataframe(f):
 
 
 def interaction_calc(seq):
-    proc = run(['RNAup', '-b', '-o', '--interaction_first'], stdout=PIPE,stderr=subprocess.DEVNULL,
+    proc = run(['RNAup', '-b', '-o', '--interaction_first'], stdout=PIPE, stderr=subprocess.DEVNULL,
                input=str.encode(seq)) #input is a stdin object so encode input str
     return str(proc.stdout).replace("\\n", " ").replace("b'", "")
 
