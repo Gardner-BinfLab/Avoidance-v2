@@ -150,9 +150,9 @@ def main():
     my_pool.join()
 
     #parsing RNAup output
-    mrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+:break)')[0].str.replace('>', '', regex=True).str.replace(':break', '', regex=True).to_frame().reset_index()
-    ncrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+)')[0].str.replace('[>]', '', regex=True).to_frame().loc[pd.IndexSlice[:, 0], :].reset_index()
-    binding_energy = pd.Series(interactions).str.extractall(r'(\([\S]+\.[0-9]+)')[0].str.replace('(', '', regex=True).to_frame().reset_index()
+    mrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+:break)')[0].str.replace('>', '').str.replace(':break', '').to_frame().reset_index()
+    ncrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+)')[0].str.replace('>', '').to_frame().loc[pd.IndexSlice[:, 0], :].reset_index()
+    binding_energy = pd.Series(interactions).str.extractall(r'(\([\S]+\.[0-9]+)')[0].str.replace('(', '').to_frame().reset_index()
     d = pd.merge(mrna_id, binding_energy, on=['level_0','match'])
     d = pd.merge(ncrna_id, d, on='level_0').iloc[:, [2,4,5]]
     d.columns = ['ncRNA', 'Accession', 'binding_energy']
