@@ -156,8 +156,6 @@ def main():
     pool_results = deque()
 
     print('\ncalculating interactions.. this may take a while..')
-    print('progressbar is updated after completion of every ~ ',\
-          chunks*p,' sequences!',flush = True)
     print_time()
     progress(0,total_seq)
     for result in pools.imap_unordered(interaction_calc, \
