@@ -1,16 +1,19 @@
 import os
 import sys
 import re
+import time
 import argparse
 import itertools
 import subprocess
+import threading
+import multiprocessing
 import pandas as pd
 import numpy as np
-import multiprocessing
+from threading import Semaphore
 from collections import deque
 from datetime import datetime
 from multiprocessing import Pool
-from subprocess import Popen, PIPE
+from subprocess import run, PIPE 
 
 
 def valid_file(param):
@@ -47,12 +50,28 @@ def check_arg(args=None):
             results.output,
             results.processes)
 
+screen_lock = Semaphore(value=1)
+_stop_timer = threading.Event() #global var for thread
+def time_count():
+    starttime = datetime.now()
+    while not _stop_timer.isSet():
+        screen_lock.acquire()
+        time_message = '\r' + str(datetime.now() - starttime)
+        sys.stdout.write(time_message)
+        sys.stdout.flush()
+        screen_lock.release()
+        time.sleep(0.01)
+
+
+def print_time():
+    timerthread = threading.Thread(target = time_count,args = ())
+    timerthread.start()
 
 
 def progress(iteration, total):   
     bars_string = int(float(iteration) / float(total) * 50.)
     sys.stdout.write(
-        "\r|%-50s| %d%% (%s/%s)" % (
+        "\r                 |%-50s| %d%% (%s/%s)" % (
             '█'*bars_string+ "░" * (50 - bars_string), float(iteration) / float(total) * 100,
             iteration,
             total
@@ -75,14 +94,22 @@ def fasta_to_dataframe(f):
     return final_df
 
 
+def interaction_calc(seq):
+    proc = run(['RNAup', '-b','-o'], stdout=PIPE,stderr=subprocess.DEVNULL,
+               input=seq) #input is a stdin object so encode input str
+    return str(proc.stdout).replace("\\n"," ").replace("b'","")
 
-def interaction_calc(seq_df):
-    proc = Popen(['RNAup', '-b','-o','--interaction_first'],\
-                 stdin = PIPE, stdout=PIPE, stderr=subprocess.DEVNULL)
-    results = [str(proc.communicate(seq)[0]).replace("\\n"," ").replace("b'","") \
-               for seq in pd.Series(seq_df)]
 
-    return results
+def RNAup_result_parser(raw_result_list,mrna_dataframe):
+    interaction_df = pd.DataFrame({'unparsed_results':raw_result_list})
+    interaction_df[['accession','RNAup_output']] = interaction_df['unparsed_results'].str.split\
+                                               (':break',1,expand=True)
+    results_temp_df = pd.Series(interaction_df['RNAup_output'].str.extractall(r'((?<=\:).*?(?==))')[0]).str.\
+                        split(pat='(', n=-1, expand=True).drop(0, 1).astype(np.float64).unstack()
+    results_temp_df.columns = mrna_dataframe.index
+    result_df = pd.concat([interaction_df, results_temp_df], axis=1)
+    return result_df
+
 
 
 
@@ -105,69 +132,50 @@ def main():
     
     
     temp_df = pd.DataFrame()
-    temp_df['input_mrna'] = ncrna.index+'\n' + ncrna['sequence']
-    ncrna_input = '\n'.join(temp_df['input_mrna'] )
+    temp_df['input_mrna'] = mrna.index+'\n' + mrna['sequence'].apply(lambda x: x[:length])
+    mrna_input = '\n'.join(temp_df['input_mrna'] )
     
-    mrna['input'] = mrna.index+ ':break' + '\n'+ mrna['sequence'].apply(lambda x: x[:length]) + '\n'+ ncrna_input
-    mrna['input_encoded'] = mrna['input'].apply(lambda x: str.encode(x))
+    ncrna['input'] = ncrna.index+ ':break' + '\n'+ ncrna['sequence'] + '\n'+ mrna_input
+    ncrna['input_encoded'] = ncrna['input'].apply(lambda x: str.encode(x))
     
     
-    total_seq = mrna.shape[0]
+    total_seq = ncrna.shape[0]
     
     #find appropriate chunksize for processes
-    if p >= total_seq: 
-        chunks = 1
-    elif p*p >= total_seq:
-        chunks = int(total_seq/p)
-    else:
-        chunks = p
-
-
+    #if p >= total_seq: 
+    #    chunks = 1
+    #elif p*p >= total_seq:
+    #    chunks = int(total_seq/p)
+    #else:
+    #    chunks = p
 
     
     
     print('\nspawning ', p, 'processes..', flush=True)
     pools = Pool(p)
     pool_results = deque()
-    
+
     print('\ncalculating interactions.. this may take a while..')
-    print('for large number of input sequences,\nprogressbar is updated after completion of every ~ ',\
-          chunks*p,' sequences!',flush = True)
+    print_time()
     progress(0,total_seq)
     for result in pools.imap_unordered(interaction_calc, \
-                                         mrna['input_encoded'],\
-                                         chunksize = p):
+                                         ncrna['input_encoded']):
         pool_results.append(result)
-        completed = len(list(itertools.chain.from_iterable(pool_results)))
+        completed = len(pool_results)
         progress(completed,total_seq) 
-        
+    
+
+    _stop_timer.set() 
     pools.close()
     pools.join()
-    
+
     print("we took ", datetime.now() - startTime, " to finish the task!",\
           flush = True)
     print('exporting results...', flush=True)
     
     
-    interactions = list(itertools.chain.from_iterable(pool_results))
-    interaction_df = pd.DataFrame({'results':interactions})
-    interaction_df[['accession','RNAup_result']] = interaction_df['results'].str.split\
-                                               (':break',1,expand=True)
-    
-    
-    results_temp_df = interaction_df['RNAup_result'].str.extractall(r'((?<=\(-).*?(?==))').astype(np.float64).unstack()*-1
-    results_temp_df.columns = ncrna.index
-    results_temp_df['total_interaction'] = results_temp_df.sum(axis=1)
-    
-    
-    
-    result_df = pd.concat([interaction_df, results_temp_df], axis=1)
-    
-    #this sums interaction for each ncrna across all mrnas
-    #might be handy someday
-    #interaction_df['interaction'].apply(lambda x: (pd.to_numeric(x.split(',')))).sum()
 
-    
+    result_df = RNAup_result_parser(pool_results,mrna)
     filename = mypath + o +'_'+str(datetime.now()).replace(" ","_")+'.tsv'
     result_df.to_csv(filename,sep='\t',encoding='utf-8',index=None)
     
