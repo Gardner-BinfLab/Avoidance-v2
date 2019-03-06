@@ -156,7 +156,7 @@ def main():
     d = pd.merge(mrna_id, binding_energy, on=['level_0','match'])
     d = pd.merge(ncrna_id, d, on='level_0').iloc[:, [2,4,5]]
     d.columns = ['ncRNA', 'Accession', 'binding_energy']
-    d = d.pivot(index='Accession',columns='ncRNA',values='binding_energy').reindex()
+    d = d.pivot(index='Accession',columns='ncRNA',values='binding_energy')
     filename = o + '.out'
     d.to_csv(filename, sep='\t', encoding='utf-8')
 
