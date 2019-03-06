@@ -142,12 +142,12 @@ def main():
     total_seq = ncrna.shape[0]
     
     #find appropriate chunksize for processes
-    if p >= total_seq: 
-        chunks = 1
-    elif p*p >= total_seq:
-        chunks = int(total_seq/p)
-    else:
-        chunks = p
+    #if p >= total_seq: 
+    #    chunks = 1
+    #elif p*p >= total_seq:
+    #    chunks = int(total_seq/p)
+    #else:
+    #    chunks = p
 
     
     
@@ -159,8 +159,7 @@ def main():
     print_time()
     progress(0,total_seq)
     for result in pools.imap_unordered(interaction_calc, \
-                                         ncrna['input_encoded'],\
-                                         chunksize = p):
+                                         ncrna['input_encoded']):
         pool_results.append(result)
         completed = len(pool_results)
         progress(completed,total_seq) 
