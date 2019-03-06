@@ -2,11 +2,14 @@
 
 import os
 import sys
+import time
 import argparse
 import itertools
 import subprocess
 import pandas as pd
 import multiprocessing
+import threading
+from threading import Semaphore
 from datetime import datetime
 from multiprocessing import Pool
 from subprocess import run, PIPE
@@ -53,7 +56,24 @@ def check_arg(args=None):
             results.processes)
 
 
+screen_lock = Semaphore(value=1)
+_stop_timer = threading.Event() #global var for thread
+def time_count():
+    starttime = datetime.now()
+    while not _stop_timer.isSet():
+        screen_lock.acquire()
+        time_message = '\r' + str(datetime.now() - starttime)
+        sys.stdout.write(time_message)
+        sys.stdout.flush()
+        screen_lock.release()
+        time.sleep(0.01)
 
+
+def print_time():
+    timerthread = threading.Thread(target = time_count,args = ())
+    timerthread.start()
+
+    
 def progress(iteration, total):   
     bars_string = int(float(iteration) / float(total) * 50.)
     sys.stdout.write(
@@ -116,6 +136,7 @@ def main():
     print('\nWe took', datetime.now() - startTime, 'to assign these interactions!', flush=True)
   
     print('\nCalculating interactions using', p, 'processes...', flush=True)
+    print_time()
     groups = df.shape[0]
     my_pool = Pool(p)
     interactions = []
@@ -124,13 +145,14 @@ def main():
         interactions.append(i)
         progress(len(interactions), groups)
         
+    _stop_timer.set()
     my_pool.close()
     my_pool.join()
 
     #parsing RNAup output
     mrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+:break)')[0].str.replace('[>:break]', '', regex=True).to_frame().reset_index()
     ncrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+)')[0].str.replace('[>]', '', regex=True).to_frame().loc[pd.IndexSlice[:, 0], :].reset_index()
-    binding_energy = pd.Series(interactions).str.extractall(r'(\(-[0-9]+\.[0-9]+)')[0].str.replace('(', '', regex=True).to_frame().reset_index()
+    binding_energy = pd.Series(interactions).str.extractall(r'(\([\S]+\.[0-9]+)')[0].str.replace('(', '', regex=True).to_frame().reset_index()
     d = pd.merge(mrna_id, binding_energy, on=['level_0','match'])
     d = pd.merge(ncrna_id, d, on='level_0').iloc[:, [2,4,5]]
     d.columns = ['ncRNA', 'Accession', 'binding_energy']
