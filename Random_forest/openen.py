@@ -146,7 +146,7 @@ def main():
     p1.close()
     p1.join()    
     
-    print('\Parsing _openen using', p, 'processes...')
+    print('\nParsing _openen using', p, 'processes...')
     _openen = (df['accession'].str.replace('>', '') + '_openen').tolist()
     p2 = Pool(p)
     plfold =  p2.imap_unordered(openen43, _openen)
