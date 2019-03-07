@@ -55,6 +55,10 @@ class Analyze():
     
     
     def avoidance(self):
+        '''for single mrna vs many ncrnas.
+        if you have many mrnas, don't use this
+        use avoidance_cal from functions instead!
+        '''
         global ncrna
         sequence = self.sequence
         mrna_input = '>input_sequence'+'\n'+sequence[:30]
