@@ -1,7 +1,7 @@
 
 
 import sys
-#import RNA
+import RNA
 import subprocess
 import datetime
 import pandas as pd
