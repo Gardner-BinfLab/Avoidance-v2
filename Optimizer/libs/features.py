@@ -1,11 +1,10 @@
 
 import os
-#import RNA
+import RNA
 import numpy as np
 import pandas as pd
 from libs import data,functions
-from multiprocessing import Pool
-from subprocess import run, PIPE 
+
 
 script_dir = os.path.dirname(__file__)
 ncrna_path = os.path.join(script_dir, './ncrna.fa')
@@ -71,19 +70,20 @@ class Optimize:
     '''does optimizations to a sequence
     '''
     def __init__(self,sequence,background_df,cai_mean, cai_std,gc_cont_mean,\
-                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,niter=1000)
-    self.sequence = sequence.lower()
-    self.background_df = background_df
-    self.cai_mean = cai_mean
-    self.cai_std = cai_std
-    self.gc_cont_mean = gc_cont_mean
-    self.gc_cont_std = gc_cont_std
-    self.ss_mean = ss_mean
-    self.ss_std = ss_std
-    self.avd_mean = avd_mean
-    self.avd_mean = avd_mean
-    self.avd_std = avd_std
-    self.niter = niter
+                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,niter=1000):
+        
+        self.sequence = sequence.lower()
+        self.background_df = background_df
+        self.cai_mean = cai_mean
+        self.cai_std = cai_std
+        self.gc_cont_mean = gc_cont_mean
+        self.gc_cont_std = gc_cont_std
+        self.ss_mean = ss_mean
+        self.ss_std = ss_std
+        self.avd_mean = avd_mean
+        self.avd_mean = avd_mean
+        self.avd_std = avd_std
+        self.niter = niter
     
     
     def cost_function(self):
