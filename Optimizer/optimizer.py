@@ -77,7 +77,8 @@ def main():
     
     
     for sequences in mrna_df['sequence'].iterrows():
-        optimization = features.Optimize(sequence)
+        optimization = features.Optimize(sequence,cai_mean, cai_std,gc_cont_mean,\
+                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,niter=1000)
         optimizied_sequence = optimization.simulated_anneal()
         ##to_do
     
