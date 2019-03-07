@@ -69,11 +69,10 @@ class Analyze():
 class Optimize:
     '''does optimizations to a sequence
     '''
-    def __init__(self,sequence,background_df,cai_mean, cai_std,gc_cont_mean,\
+    def __init__(self,sequence,cai_mean, cai_std,gc_cont_mean,\
                  gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,niter=1000):
         
         self.sequence = sequence.lower()
-        self.background_df = background_df
         self.cai_mean = cai_mean
         self.cai_std = cai_std
         self.gc_cont_mean = gc_cont_mean
