@@ -7,7 +7,7 @@ if [ ! -n "$1" ] || [ ! -n "$2" ]; then \
   echo "  <CDS.fa>        STR    Coding sequences in fasta format" >&2
   echo "" >&2
   echo "Option:" >&2
-  echo "  <5UTR_sequence> STR    Use your own 5UTR sequence (71 nt) if your plasmid backbone is not pET vector" >&2
+  echo "  <5UTR_sequence> STR    Use your own 5UTR sequence (71 nt) if your plasmid backbone is not of pET vector" >&2
   echo "                         Default is GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACAT" >&2
   echo "" >&2
   echo "Dependencies: biopython, codonw, ViennaRNA" >&2
@@ -33,20 +33,7 @@ echo ""
 echo "....................................................................................."
 echo "Calculating Open Energies for Accessibility(1:30)..."
 echo ""
-mkdir rnaplfold
-cd rnaplfold
-time awk 'BEGIN{RS=">"}NR>1{sub("\n","\t"); gsub("\n",""); print RS$0}' ${DIR}/${CDS} \
-| awk -v U=${UTR5} '{print $1 "\n" U $2}' \
-| RNAplfold -W 210 -u 210 -O
-for i in *_openen; do \
-  paste \
-  <(echo ${i}) \
-  <(awk 'BEGIN{OFS="\t"} NR>73 && NR<=102 {print $42,$43,$44,$45,$46}' ${i} \
-  | awk '{for(i=1;i<=NF;i++)$i=(a[i]+=$i)}END{print}')
-done \
-| sed 's/_openen//;s/ /\t/g' \
-| sed '1i Accession\topenen41\topenen42\topenen43\topenen44\topenen45' > ${DIR}/openen.out
-cd ${DIR}
+python ${SRC}/openen.py -i ${CDS}
 
 echo ""
 echo "....................................................................................."
