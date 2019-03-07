@@ -33,7 +33,7 @@ echo ""
 echo "....................................................................................."
 echo "Calculating Open Energies for Accessibility(1:30)..."
 echo ""
-python ${SRC}/openen.py -i ${CDS}
+python ${SRC}/openen.py -i ${CDS} -u ${UTR5}
 
 echo ""
 echo "....................................................................................."
