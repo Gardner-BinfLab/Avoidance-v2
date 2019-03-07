@@ -104,10 +104,14 @@ def openen(seq):
 
 
 
-def openen43(files):
-    for i in files:
-        w = pd.read_csv(i, sep='\t', skiprows=2, header=None)[71:101][43].to_frame().apply(sum).values[0]
-        yield i.replace('_openen',''), w
+def openen43(file):
+    w = pd.read_csv(file, sep='\t', skiprows=2, header=None)[71:101][43].to_frame().apply(sum).values[0]
+    return file.replace('_openen',''), w
+
+
+
+def remove(file):
+    os.remove(file)
 
 
         
@@ -129,32 +133,39 @@ def main():
     df['fasta'] = df['accession'] + '\n' + u + seq['sequence'] + '\n'
     fasta = df.groupby('label')['fasta'].apply(''.join).tolist()
     
+    #running RNAplfold
     groups = len(fasta)
-    my_pool = Pool(p)
+    p1 = Pool(p)
     results = []
-    progress(0,groups)
-    for j in my_pool.imap_unordered(openen, fasta):
+    progress(0, groups)
+    for j in p1.imap_unordered(openen, fasta):
         results.append(j)
         progress(len(results), groups)
         
     _stop_timer.set()
-    my_pool.close()
-    my_pool.join()
+    p1.close()
+    p1.join()    
     
-    #parsing RNAplfold output
+    print('\Parsing _openen using', p, 'processes...')
     _openen = (df['accession'].str.replace('>', '') + '_openen').tolist()
-    ps = (df['accession'].str.replace('>', '') + '_dp.ps').tolist()
-    d = pd.DataFrame(openen43(_openen))
-    d.columns = ['Accession', 'openen43']
-
+    p2 = Pool(p)
+    plfold =  p2.imap_unordered(openen43, _openen)
+    p2.close()
+    p2.join()
+    
+    results = list(plfold)
+    d = pd.DataFrame(results)
+    d.columns = ['Accession', 'openen43']    
     filename = o + '.out'
     d.to_csv(filename, sep='\t', index=False, encoding='utf-8')
     
-    #removing temporary files
-    for k in _openen:
-        os.remove(k)
-    for l in ps:
-        os.remove(l)
+    print('\nRemoving temporary files...')
+    ps = (df['accession'].str.replace('>', '') + '_dp.ps').tolist()
+    p3 = Pool(p)
+    p3.imap_unordered(remove, _openen)
+    p3.imap_unordered(remove, ps)
+    p3.close()
+    p3.join()
         
     print('\nWe took', datetime.now() - startTime, 'to finish the task!', flush = True)
 
