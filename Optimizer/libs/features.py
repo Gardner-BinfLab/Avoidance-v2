@@ -108,7 +108,7 @@ class Optimize:
         avd_ = results.avoidance()
         z_avd = std_score(avd_, self.avd_mean, self.avd_std)
 
-        total_z_score = z_cai + z_gc + z_ss + z_avd
+        total_z_score = z_cai - z_gc + z_ss + z_avd
 
         return total_z_score
     
