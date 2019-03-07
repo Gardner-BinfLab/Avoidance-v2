@@ -2,7 +2,6 @@
 
 import os
 import sys
-import glob
 import time
 import argparse
 import itertools
@@ -143,15 +142,16 @@ def main():
     my_pool.join()
     
     #parsing RNAplfold output
-    files = glob.glob('*_openen')
-    ps = glob.glob('*.ps')
-    d = pd.DataFrame(openen43(files))
+    _openen = (df['accession'].str.replace('>', '') + '_openen').tolist()
+    ps = (df['accession'].str.replace('>', '') + '_dp.ps').tolist()
+    d = pd.DataFrame(openen43(_openen))
     d.columns = ['Accession', 'openen43']
 
     filename = o + '.out'
     d.to_csv(filename, sep='\t', index=False, encoding='utf-8')
     
-    for k in files:
+    #removing temporary files
+    for k in _openen:
         os.remove(k)
     for l in ps:
         os.remove(l)
