@@ -96,17 +96,17 @@ class Optimize:
         results = Analyze(sequence)
         
         cai_ = results.cai()
-        z_cai = std_score(cai_, cai_mean, cai_std)
+        z_cai = std_score(cai_, self.cai_mean, self.cai_std)
         
         gc_ = results.gc_cont()
-        z_gc = std_score(gc_, gc_cont_mean, gc_cont_std)
+        z_gc = std_score(gc_, self.gc_cont_mean, self.gc_cont_std)
 
 
         ss_ = results.sec_str()
-        z_ss = std_score(ss_, ss_mean, ss_std)
+        z_ss = std_score(ss_, self.ss_mean, self.ss_std)
 
         avd_ = results.avoidance()
-        z_avd = std_score(avd_, avd_mean, avd_std)
+        z_avd = std_score(avd_, self.avd_mean, self.avd_std)
 
         total_z_score = z_cai + z_gc + z_ss + z_avd
 
