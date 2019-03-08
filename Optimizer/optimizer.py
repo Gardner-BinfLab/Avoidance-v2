@@ -16,21 +16,16 @@ def valid_file(param):
 
 def check_arg(args=None):
     parser = argparse.ArgumentParser(description='Training script')
-    parser.add_argument('-b', '--background',
-                        type=valid_file,
-                        help='background sequences in csv or fasta.',
-                        required='True')
     parser.add_argument('-m', '--mrna',
                         type=valid_file,
-                        help='mrna sequence to optimize',
+                        help='mrna sequence to optimize in csv or fasta.',
                         required='True')
     parser.add_argument('-o', '--output',
                         help='Output file name.',
                         default = 'optimized_sequences')
 
     results = parser.parse_args(args)
-    return (results.background,
-            results.mrna,
+    return (results.mrna,
             results.output)
 
 
@@ -120,6 +115,6 @@ def main():
         
 
 if __name__ == '__main__':
-    b,m,o= check_arg(sys.argv[1:])
+    m,o= check_arg(sys.argv[1:])
     main()
         
