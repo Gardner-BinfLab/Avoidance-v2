@@ -55,19 +55,18 @@ class Analyze():
     
     
     def avoidance(self):
-        '''for single mrna vs many ncrnas.
-        if you have many mrnas, don't use this
-        use avoidance_cal from functions instead!
+        '''for single mrna vs many ncrnas!
         '''
         global ncrna
         sequence = self.sequence
-        mrna_input = '>input_sequence'+'\n'+sequence[:30]
-        ncrna['input'] = ncrna.index+ ':break' + '\n'+ ncrna['sequence']\
-                         + '\n'+ mrna_input
+        temp_df = pd.DataFrame({'input_mrna':['>input_mrna'+'\n' + sequence[:30]]})
+        mrna_input = '\n'.join(temp_df['input_mrna'])
+        ncrna['input'] = ncrna.index+ ':break' + '\n'+ ncrna['sequence'] + \
+                        '\n'+ mrna_input
         ncrna['input_encoded'] = ncrna['input'].apply(lambda x: str.encode(x))
         rnaup_res = functions.multiprocess_wrapper(functions.interaction_calc,\
                                                    ncrna['input_encoded'])
-        avoidance = functions.rnaup_result_parser(rnaup_res)[0]
+        avoidance = np.max(functions.rnaup_result_parser(rnaup_res)[0].values)
         return avoidance
     
 class Optimize:
@@ -89,28 +88,34 @@ class Optimize:
         self.niter = niter
     
     
-    def cost_function(self):
+    @staticmethod
+    def std_score(x,mu,sigma):
+        z = (x-mu)/sigma
+        return z
+    
+    
+    
+    def cost_function(self,new_seq=None):
+
         
-        @staticmethod
-        def std_score(x,mu,sigma):
-            z = (x-mu)/sigma
-            return z
-        
-        sequence = self.sequence
+        if new_seq is None:
+            sequence = self.sequence
+        else:
+            sequence = new_seq
         results = Analyze(sequence)
         
         cai_ = results.cai()
-        z_cai = std_score(cai_, self.cai_mean, self.cai_std)
+        z_cai = Optimize.std_score(cai_, self.cai_mean, self.cai_std)
         
         gc_ = results.gc_cont()
-        z_gc = std_score(gc_, self.gc_cont_mean, self.gc_cont_std)
+        z_gc = Optimize.std_score(gc_, self.gc_cont_mean, self.gc_cont_std)
 
 
         ss_ = results.sec_str()
-        z_ss = std_score(ss_, self.ss_mean, self.ss_std)
+        z_ss = Optimize.std_score(ss_, self.ss_mean, self.ss_std)
 
         avd_ = results.avoidance()
-        z_avd = std_score(avd_, self.avd_mean, self.avd_std)
+        z_avd = Optimize.std_score(avd_, self.avd_mean, self.avd_std)
 
         total_z_score = z_cai - z_gc + z_ss + z_avd
 
@@ -129,14 +134,14 @@ class Optimize:
         for i in range(niter):
             T = temp[i]
             snew = functions.substitute_codon(sbest)
-            if cost_function(snew) >= cost_function(scurr):
+            if self.cost_function(snew) >= self.cost_function(scurr):
                     scurr = snew
-                    if cost_function(scurr)>=cost_function(sbest):
+                    if self.cost_function(scurr)>=self.cost_function(sbest):
                         sbest = snew
-            elif np.exp(-(cost_function(scurr)-cost_function(snew))/T)\
+            elif np.exp(-(self.cost_function(scurr)-self.cost_function(snew))/T)\
                             <= np.random.rand(1)[0]:
                 scurr = snew
-            functions.progress(i+1,niter)
+            #functions.progress(i+1,niter)
         annealed_seq = sbest 
         return annealed_seq    
 
