@@ -141,7 +141,7 @@ class Optimize:
             elif np.exp(-(self.cost_function(scurr)-self.cost_function(snew))/T)\
                             <= np.random.rand(1)[0]:
                 scurr = snew
-            #functions.progress(i+1,niter)
+            functions.progress(i+1,niter)
         annealed_seq = sbest 
         return annealed_seq    
 
