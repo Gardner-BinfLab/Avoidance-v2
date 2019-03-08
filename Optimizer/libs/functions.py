@@ -105,13 +105,14 @@ def rnaup_result_parser(raw_result_list,mrna_dataframe=None):
     return results_temp_df,result_df
 
 
-
-#def avoidance_cal(mrna,ncrna):
-    '''use this to calculate avoidance of many mrnas with few ncrnas
-    '''
-
-
-
+def background(sequence,n=1000):
+    '''random background
+    '''    
+    length = functions.sequence_length(sequence)
+    codons = [k for k,v in data.codon2aa.items()]
+    backgnd_seq = pd.DataFrame({'sequence':[''.join(np.random.choice(codons,length))\
+                                            for _ in range(n)]})     
+    return backgnd_seq
 
 
 def substitute_codon(sequence):
