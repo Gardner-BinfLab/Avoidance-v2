@@ -72,6 +72,7 @@ def multiprocess_wrapper(function,input_dataframe):
         pool_results.append(result)
 
 
+
     pools.close()
     pools.join()
     return pool_results
@@ -101,7 +102,15 @@ def rnaup_result_parser(raw_result_list,mrna_dataframe=None):
     if mrna_dataframe is not None:
         results_temp_df.columns = mrna_dataframe.index
     result_df = pd.concat([interaction_df, results_temp_df], axis=1)
-    return results_temp_df.values.max(),result_df
+    return results_temp_df,result_df
+
+
+
+#def avoidance_cal(mrna,ncrna):
+    '''use this to calculate avoidance of many mrnas with few ncrnas
+    '''
+
+
 
 
 
