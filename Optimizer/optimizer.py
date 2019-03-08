@@ -55,18 +55,14 @@ def main():
     else:
         os.makedirs(os.path.join(os.getcwd(),'results','optimized_sequences',''))
 
-    base,ext = os.path.splitext(b)
-    if ext.lower() in ('.fasta','.fa'):
-        backgnd_seq = functions.read_fasta(b)
-    else:
-        backgnd_seq = pd.read_csv(b)
-        
+
     base,ext = os.path.splitext(m)
     if ext.lower() in ('.fasta','.fa'):
         mrna_df = functions.read_fasta(m)
     else:
         mrna_df = pd.read_csv(m)        
         
+    backgnd_seq = functions.background(mrna_df['sequence'][0],1000)    
         
     #calculate features for the background sequences first
     print('calculating features for background sequences..', flush = True)
