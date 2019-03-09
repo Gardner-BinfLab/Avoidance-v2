@@ -88,6 +88,7 @@ def main():
     d = pd.DataFrame(run(list(input['Sequence']), r)) # list(input['sequence'].map(str).str[3:-3])
     d.columns = ['CAI','CAI_HEG','Biosynthetic_cost','Sequence']
     d = pd.merge(input.reset_index(), d, on='Sequence').iloc[:,[0,2,3,4]]
+    d = d.loc[d['Biosynthetic_cost'] != 0]
     filename = o + '.out'
     d.to_csv(filename, index=False, sep='\t', encoding='utf-8')
 
