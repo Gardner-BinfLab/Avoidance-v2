@@ -1,7 +1,6 @@
 
 
 import sys
-import RNA
 import subprocess
 import datetime
 import pandas as pd
@@ -12,19 +11,20 @@ from multiprocessing import Pool
 from subprocess import run, PIPE 
 
 
-def progress(iteration, total):   
+def progress(iteration,total,message=None):
+    if message is None:
+        message = ''
     bars_string = int(float(iteration) / float(total) * 50.)
-    sys.stdout.write(
-        "\r|%-50s| %d%% (%s/%s)" % (
-            '█'*bars_string+ "░" * (50 - bars_string), float(iteration) / float(total) * 100,
-            iteration,
-            total
-        ) 
-    )
-    sys.stdout.flush()
-    if iteration == total:
-        print(' Completed!') 
+    print("\r|%-50s| %d%% (%s/%s) %s "% ('█'*bars_string+ "░" * \
+                                     (50 - bars_string), float(iteration) / float(total) * 100,\
+                                     iteration,total,message),end='\r',flush=True)
 
+    if iteration == total:
+        print('\nCompleted!') 
+
+
+        
+        
         
         
 def read_fasta(f):
@@ -90,7 +90,15 @@ def interaction_calc(seq):
 def rnaup_result_parser(raw_result_list,mrna_dataframe=None):
     '''return max interaction and a dataframe of all interactions
     '''
-    interaction_df = pd.DataFrame({'unparsed_results':raw_result_list})
+    #check if we are supplied a list (like for many sequences)
+    #or single item like(for one seq vs several other seq)
+    try:
+        results_list = raw_result_list.copy()
+    except AttributeError:
+        results_list = [raw_result_list]
+    
+    
+    interaction_df = pd.DataFrame({'unparsed_results':results_list})
     interaction_df[['accession','RNAup_output']] = interaction_df\
                                                    ['unparsed_results']\
                                                    .str.split(':break',1,\
@@ -105,14 +113,18 @@ def rnaup_result_parser(raw_result_list,mrna_dataframe=None):
     return results_temp_df,result_df
 
 
+
 def background(sequence,n=1000):
     '''random background
-    '''    
-    length = functions.sequence_length(sequence)
+    '''
+       
+    length = sequence_length(sequence)
     codons = [k for k,v in data.codon2aa.items()]
     backgnd_seq = pd.DataFrame({'sequence':[''.join(np.random.choice(codons,length))\
-                                            for _ in range(n)]})     
+                                            for _ in range(n)]})
+          
     return backgnd_seq
+
 
 
 def substitute_codon(sequence):
