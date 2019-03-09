@@ -81,7 +81,7 @@ def multiprocess_wrapper(function,input_dataframe):
 
 def interaction_calc(seq):
     proc = run(['RNAup', '-b','-o'], stdout=PIPE,stderr=subprocess.DEVNULL,
-               input=seq) #input is a stdin object so encode input str
+               input=seq,,encoding = 'utf-8')
     return str(proc.stdout).replace("\\n"," ").replace("b'","")
 
 
