@@ -5,6 +5,7 @@ import time
 import pandas as pd
 import numpy as np
 from libs import functions,data,features
+from functools import partial
 
 
 def valid_file(param):
@@ -40,6 +41,11 @@ def optimization(sequence):
     return result_df
 
 
+def dummy_func(optimization_df):
+    optimization_df['annealed'] = optimization_df['objects'].apply(lambda x:x.simulated_anneal())
+    return optimization_df
+
+
 
 def main():
     np.random.seed(12345)
@@ -57,26 +63,31 @@ def main():
     else:
         mrna_df = pd.read_csv(m)        
         
-    backgnd_seq = functions.background(mrna_df['sequence'][0],1000)    
-        
+    backgnd_seq = functions.background(mrna_df['sequence'][0],10) 
+    
     #calculate features for the background sequences first
-    print('calculating features for background sequences..', flush = True)
-    functions.progress(0,4)
+    print('1) calculating features for background sequences..', flush = True)
     backgnd_seq['features'] = backgnd_seq['sequence'].apply(lambda x:\
                                                             features.Analyze(x))
-    print('cai done!')
+
+    print('cai        ',end='\r',flush=True)
     backgnd_seq['cai'] = backgnd_seq['features'].apply(lambda x : x.cai())
-    functions.progress(1,4)
-    print('gc_cont done!')
+    print('cai done!   ',end='\r',flush=True)
+    
+    print('gc_cont      ',end='\r',flush=True)
     backgnd_seq['gc_cont'] = backgnd_seq['features'].apply(lambda x : x.gc_cont())
-    functions.progress(2,4)
-    print('sec_str done!')
+    print('gc_cont done!',end='\r',flush=True)
+    
+    print('sec_str      ',end='\r',flush=True)
     backgnd_seq['sec_str'] = backgnd_seq['features'].apply(lambda x : x.sec_str())
-    functions.progress(3,4)
-    print('avoidance')
+    print('sec_str done!',end='\r',flush=True)
+    
+    print('avoidance     ',end='\r',flush=True)
     backgnd_seq['avoidance'] = backgnd_seq['features'].apply(lambda x :\
                                                              x.avoidance())
-    functions.progress(4,4)
+    print('avoidance done!',end='\r',flush=True)
+    print('2) running optimizations. this may take a while...')
+    
     
     #for z scores
     cai_mean, cai_std = np.mean(backgnd_seq['cai'].values),\
@@ -89,28 +100,34 @@ def main():
                       np.std(backgnd_seq['avoidance'].values)
     
     
-    #results = functions.multiprocess_wrapper(optimization,mrna_df['sequence'])
-    #final = pd.concat([dfs for df in results], axis=1)
-    
-    
+
     count = 0
     opt_df = pd.DataFrame()
     for sequence in mrna_df['sequence'] :
+        message='at sequence :'+ str(count)
+        functions.progress(count,mrna_df.shape[0],message)
+        
         optimization = features.Optimize(sequence,cai_mean, cai_std,gc_cont_mean,\
-                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,1000)
+                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,20)
         sequence_count = mrna_df.loc[mrna_df['sequence']\
                                                        == sequence].index[0]
-        print('optimizing for sequence :', sequence_count)
+        
         optimized_sequence = [optimization.simulated_anneal() \
-                              for _ in range(10)]
+                              for _ in range(2)]
         opt_df[sequence_count]=optimized_sequence
         count+=1
-        functions.progress(count,mrna_df.shape[0])
+        message='at sequence :'+ str(count)
+        functions.progress(count,mrna_df.shape[0],message)
         
+
         
     filename = mypath + o +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
     opt_df.to_csv(filename,sep=',', encoding='utf-8', index=False)
+    
+    
 
+    
+                   
         
         
 
