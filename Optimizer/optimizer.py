@@ -108,12 +108,12 @@ def main():
         functions.progress(count,mrna_df.shape[0],message)
         
         optimization = features.Optimize(sequence,cai_mean, cai_std,gc_cont_mean,\
-                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,20)
+                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,2000)
         sequence_count = mrna_df.loc[mrna_df['sequence']\
                                                        == sequence].index[0]
         
         optimized_sequence = [optimization.simulated_anneal() \
-                              for _ in range(2)]
+                              for _ in range(10)]
         opt_df[sequence_count]=optimized_sequence
         count+=1
         message='at sequence :'+ str(count)
