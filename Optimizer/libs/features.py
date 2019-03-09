@@ -55,19 +55,50 @@ class Analyze():
     
     
     def avoidance(self):
-        '''for single mrna vs many ncrnas!
+        '''
+        this does NOT cat ncrnas, rather spawn a process for each ncrna
         '''
         global ncrna
         sequence = self.sequence
         temp_df = pd.DataFrame({'input_mrna':['>input_mrna'+'\n' + sequence[:30]]})
         mrna_input = '\n'.join(temp_df['input_mrna'])
-        ncrna['input'] = ncrna.index+ ':break' + '\n'+ ncrna['sequence'] + \
-                        '\n'+ mrna_input
+        try:
+            ncrna.reset_index(level=0, inplace=True)
+        except ValueError: #did we reset index already?
+            pass
+        ncrna['merge'] = ncrna['accession']+  ':break' +'\n' + ncrna['sequence'] 
+        ncrna['input'] = ncrna['merge'] +'\n'+ mrna_input
         ncrna['input_encoded'] = ncrna['input'].apply(lambda x: str.encode(x))
         rnaup_res = functions.multiprocess_wrapper(functions.interaction_calc,\
                                                    ncrna['input_encoded'])
         avoidance = np.max(functions.rnaup_result_parser(rnaup_res)[0].values)
         return avoidance
+    
+    def avoidance_opt(self):
+        '''
+        this cats ncrnas and computes interaction for single mrna
+        so is a single process
+        '''
+        global ncrna
+        sequence = self.sequence
+        #merge ncrnas to a single string
+        try:
+            ncrna.reset_index(level=0, inplace=True)
+        except ValueError:
+            pass
+        ncrna['merge'] = ncrna['accession']+'\n' + ncrna['sequence'] +'\n'
+        ncrna_input = ncrna['merge'].values.sum()
+        
+        mrna_input = '>input_mrna'+ ':break'+'\n' + sequence[:30] +'\n' +ncrna_input
+        mrna_input_encoded = str.encode(mrna_input)
+        
+        rnaup_res = functions.interaction_calc(mrna_input_encoded)
+    
+        avoidance = np.max(functions.rnaup_result_parser(rnaup_res)[0].values)
+        return avoidance
+        
+        
+        
     
 class Optimize:
     '''does optimizations to a sequence
@@ -114,7 +145,7 @@ class Optimize:
         ss_ = results.sec_str()
         z_ss = Optimize.std_score(ss_, self.ss_mean, self.ss_std)
 
-        avd_ = results.avoidance()
+        avd_ = results.avoidance_opt()
         z_avd = Optimize.std_score(avd_, self.avd_mean, self.avd_std)
 
         #total_z_score = z_cai - z_gc + z_ss + z_avd
@@ -129,7 +160,7 @@ class Optimize:
         '''
         seq = self.sequence
         niter = self.niter
-        temp = np.linspace(1,0.001,niter)
+        temp = np.linspace(1,0.00001,niter)
         scurr = seq
         sbest = seq
         for i in range(niter):
@@ -142,7 +173,9 @@ class Optimize:
             elif np.exp(-(self.cost_function(scurr)-self.cost_function(snew))/T)\
                             <= np.random.rand(1)[0]:
                 scurr = snew
-            functions.progress(i+1,niter)
+            text = '\ritr ' + '{:04d}'.format(i)
+            message= f"\033[{'34m'}{text}\033[00m"
+            print(message,end='\r')
         annealed_seq = sbest 
         return annealed_seq    
 
