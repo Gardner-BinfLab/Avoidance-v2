@@ -67,7 +67,7 @@ def cost(seq):
     seq = seq.lower()
     given_seq = splitter(seq,len(seq))
     try:
-        cost_values = [np.log(data.cost_table[codon]) for codon in given_seq]
+        cost_values = [np.log(data.cost_table[codon]) for codon in given_seq[1:-1]] #except the start and stop codons
         score = np.exp(np.mean(cost_values))
     except KeyError:
         print('strange sequence or corrupted cost table!')
