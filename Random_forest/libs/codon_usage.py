@@ -133,6 +133,7 @@ class CodonAdaptationIndex(object):
                         cai_value += math.log(self.index[codon])
                         cai_length += 1
                 except TypeError:
+                    print("illegal codon in sequence: %s.\n%s" % (codon, self.index))
 #             elif codon not in ['TGA', 'TAA', 'TAG']:  # some indices may not include stop codons
 #                 raise TypeError("illegal codon in sequence: %s.\n%s" % (codon, self.index))
 
