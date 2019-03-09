@@ -5,7 +5,7 @@ import time
 import pandas as pd
 import numpy as np
 from libs import functions,data,features
-from functools import partial
+#from functools import partial
 
 
 def valid_file(param):
