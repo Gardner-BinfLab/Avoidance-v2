@@ -128,11 +128,13 @@ class CodonAdaptationIndex(object):
         for i in range(0, len(dna_sequence), 3):
             codon = dna_sequence[i:i + 3]
             if codon in self.index:
-                if codon not in ['ATG', 'TGG']:  # these two codons are always one; exclude them
-                    cai_value += math.log(self.index[codon])
-                    cai_length += 1
-            elif codon not in ['TGA', 'TAA', 'TAG']:  # some indices may not include stop codons
-                raise TypeError("illegal codon in sequence: %s.\n%s" % (codon, self.index))
+                try:
+                    if codon not in ['ATG', 'TGG', 'TGA', 'TAA', 'TAG']:  # these codons are always one; exclude them
+                        cai_value += math.log(self.index[codon])
+                        cai_length += 1
+                    except TypeError:
+#             elif codon not in ['TGA', 'TAA', 'TAG']:  # some indices may not include stop codons
+#                 raise TypeError("illegal codon in sequence: %s.\n%s" % (codon, self.index))
 
         return math.exp(cai_value / (cai_length - 1.0))
 
