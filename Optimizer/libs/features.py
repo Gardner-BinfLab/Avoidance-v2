@@ -68,9 +68,8 @@ class Analyze():
             pass
         ncrna['merge'] = ncrna['accession']+  ':break' +'\n' + ncrna['sequence'] 
         ncrna['input'] = ncrna['merge'] +'\n'+ mrna_input
-        ncrna['input_encoded'] = ncrna['input'].apply(lambda x: str.encode(x))
         rnaup_res = functions.multiprocess_wrapper(functions.interaction_calc,\
-                                                   ncrna['input_encoded'])
+                                                   ncrna['input'])
         avoidance = np.max(functions.rnaup_result_parser(rnaup_res)[0].values)
         return avoidance
     
@@ -88,11 +87,8 @@ class Analyze():
             pass
         ncrna['merge'] = ncrna['accession']+'\n' + ncrna['sequence'] +'\n'
         ncrna_input = ncrna['merge'].values.sum()
-        
-        mrna_input = '>input_mrna'+ ':break'+'\n' + sequence[:30] +'\n' +ncrna_input
-        mrna_input_encoded = str.encode(mrna_input)
-        
-        rnaup_res = functions.interaction_calc(mrna_input_encoded)
+        mrna_input = '>input_mrna'+ ':break'+'\n' + sequence[:30] +'\n' +ncrna_input        
+        rnaup_res = functions.interaction_calc(mrna_input)
     
         avoidance = np.max(functions.rnaup_result_parser(rnaup_res)[0].values)
         return avoidance
