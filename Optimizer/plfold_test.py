@@ -15,6 +15,6 @@ def access_calc(seq):
     
 test_seq = 'ATGACGTCCAAAGTTTATGATCCGGAACAGCGCAAGAGGAATTAAAT'
 _stdout = access_calc(test_seq)
-openen = _stdout.split('%%EOF') #this is the openen values
+openen = _stdout.split('%%EOF')[1] #this is the openen values
 ##to do
 ##parsing the table
