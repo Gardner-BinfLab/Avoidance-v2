@@ -75,6 +75,14 @@ def cost(seq):
     return score
 
 
+def gc(seq):
+    seq = seq.upper()
+    given_seq = list(seq)
+    d = pd.DataFrame(base for base in given_seq[3:-3])[0].value_counts().to_frame()
+    score = d.loc[['G','C']][0].sum() / d[0].sum()
+    return score
+
+
 def gc3c(seq):
     seq = seq.upper()
     given_seq = splitter(seq,len(seq))
@@ -91,15 +99,15 @@ def run(seq, ref):
     heg = codon_usage.CodonAdaptationIndex()
     heg.generate_rscu(ref)
     for i in seq:
-        yield gc3c(i), codon_usage.CodonAdaptationIndex().cai_for_gene(i), heg.cai_for_gene(i), cost(i), i
+        yield gc(i), gc3c(i), codon_usage.CodonAdaptationIndex().cai_for_gene(i), heg.cai_for_gene(i), cost(i), i
 
 
 def main():
     input = fasta_to_dataframe(i)
 
     d = pd.DataFrame(run(list(input['Sequence']), r)) # list(input['sequence'].map(str).str[3:-3])
-    d.columns = ['GC3C','CAI','CAI_HEG','Biosynthetic_cost','Sequence']
-    d = pd.merge(input.reset_index(), d, on='Sequence').iloc[:,[0,2,3,4,5]]
+    d.columns = ['GC','GC3C','CAI','CAI_HEG','Biosynthetic_cost','Sequence']
+    d = pd.merge(input.reset_index(), d, on='Sequence').iloc[:,[0,2,3,4,5,6]]
     d = d.loc[d['Biosynthetic_cost'] != 0]
     filename = o + '.out'
     d.to_csv(filename, index=False, sep='\t', encoding='utf-8')
