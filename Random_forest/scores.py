@@ -30,7 +30,7 @@ def check_arg(args=None):
     parser.add_argument('-o', '--output',
                         metavar='STR',
                         help='Output file name',
-                        default='cai_cost')
+                        default='scores')
 
     results = parser.parse_args(args)
     return (results.input,
@@ -76,10 +76,14 @@ def cost(seq):
 
 
 def gc3c(seq):
-    seq = seq.lower()
+    seq = seq.upper()
     given_seq = splitter(seq,len(seq))
-    d = pd.DataFrame(codon[2] for codon in given_seq[1:-1])[0].value_counts().to_frame()
-    score = d.iloc[[1,3],][0].sum() / d[0].sum()
+    try:
+        d = pd.DataFrame(codon[2] for codon in given_seq[1:-1])[0].value_counts().to_frame()
+        score = d.loc[['G','C']][0].sum() / d[0].sum()
+    except KeyError:
+        print('None of G or C are in the position 3 of all codons!')
+        return 0
     return score
 
 
