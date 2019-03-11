@@ -15,8 +15,8 @@ def progress(iteration,total,message=None):
     if message is None:
         message = ''
     bars_string = int(float(iteration) / float(total) * 50.)
-    print("\r         |%-40s| %d%% (%s/%s) %s "% ('█'*bars_string+ "░" * \
-                                     (40 - bars_string), float(iteration) / float(total) * 100,\
+    print("\r|%-50s| %d%% (%s/%s) %s "% ('█'*bars_string+ "░" * \
+                                     (50 - bars_string), float(iteration) / float(total) * 100,\
                                      iteration,total,message),end='\r',flush=True)
 
     if iteration == total:
