@@ -86,6 +86,9 @@ def main():
     mrna_df['rf_results'] = mrna_df['rf_input'].apply(lambda x: 1 if \
                                                       rf_model.predict_proba([x])[0][1] >=0.9 else 0)
     
+    filename = mypath + 'mrna_analysis' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
+    mrna_df.to_csv(filename,sep=',', encoding='utf-8', index=False)
+    
     #pick those sequences with 1 from Random forest
     choosen_seq = mrna_df.loc[(mrna_df['rf_results'] == 1)].reset_index(drop=True)
     if choosen_seq.shape[0] == 0:
