@@ -105,7 +105,7 @@ def openen(seq):
 
 
 def openen43(file):
-    w = pd.read_csv(file, sep='\t', skiprows=2, header=None)[71:101][43].to_frame().apply(sum).values[0]
+    w = pd.read_csv(file, sep='\t', skiprows=2, header=None)[71:101][43].sum()
     return file.replace('_openen',''), w
 
 
