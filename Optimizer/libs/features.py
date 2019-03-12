@@ -1,10 +1,13 @@
 
 import os
 import RNA
+#from vienna import RNA
 import tempfile
 import numpy as np
 import pandas as pd
 from libs import data,functions
+import subprocess
+from subprocess import run,PIPE
 
 
 script_dir = os.path.dirname(__file__)
@@ -177,7 +180,7 @@ class Optimize:
         z_accs = Optimize.std_score(accs_, self.accs_mean, self.accs_std)
 
         #total_z_score = z_cai - z_gc + z_ss + z_avd
-        total_z_score = 2*z_cai - 0.1* z_gc + 0.5*z_ss + z_avd + z_accs
+        total_z_score = 2*z_cai - 0.1* z_gc + 0.5*z_ss + z_avd - z_accs
 
         return total_z_score
     
@@ -188,12 +191,15 @@ class Optimize:
         '''
         seq = self.sequence
         niter = self.niter
-        temp = np.linspace(1,0.00001,niter)
+        temp = np.logspace(1,0.00001,niter)
+        length = functions.sequence_length(seq)
+        num_of_subst = [int((length-5)*np.exp(-_/int(niter/10))+5) \
+                         for _ in range(niter)]
         scurr = seq
         sbest = seq
         for i in range(niter):
             T = temp[i]
-            snew = functions.substitute_codon(sbest)
+            snew = functions.substitute_codon(sbest,num_of_subst[i])
             if self.cost_function(snew) >= self.cost_function(scurr):
                     scurr = snew
                     if self.cost_function(scurr)>=self.cost_function(sbest):
