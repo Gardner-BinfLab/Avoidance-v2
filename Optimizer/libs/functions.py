@@ -114,7 +114,7 @@ def rnaup_result_parser(raw_result_list,mrna_dataframe=None):
 
 
 
-def background(sequence,n=1000):
+def rand_background(sequence,n=1000):
     '''random background
     '''
        
@@ -124,6 +124,29 @@ def background(sequence,n=1000):
                                             for _ in range(n)]})
           
     return backgnd_seq
+
+
+
+def syn_background(sequence,n=1000):
+    '''synonymous background
+    '''
+    sequence = sequence.lower()   
+    length = sequence_length(sequence)
+    codons = splitter(sequence,length)
+    syn_seq = []
+    for j in range(n):
+        chain=''
+        for i in range(len(codons)):
+            possible_codons = data.aa2codon[data.codon2aa[codons[i]]]
+            chain+=np.random.choice(possible_codons)
+        syn_seq.append(chain)
+    backgnd_seq = pd.DataFrame({'sequence':syn_seq})
+          
+    return backgnd_seq
+
+
+
+
 
 
 
@@ -153,5 +176,6 @@ def hammingDistance(seq1,seq2):
             score_nt += 1
             
     return score_nt
+
 
 

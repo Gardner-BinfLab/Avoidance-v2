@@ -1,6 +1,7 @@
 
 import os
 import RNA
+import tempfile
 import numpy as np
 import pandas as pd
 from libs import data,functions
@@ -94,13 +95,39 @@ class Analyze():
         return avoidance
         
         
+    def access_calc(self, length=30,
+                    utr='ggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacat'\
+                   ):
+
+
+        tmp = os.path.join(tempfile.gettempdir(), 'plfold')
+        try:
+            os.makedirs(tmp)
+        except FileExistsError:
+            pass
+
+        seq= utr.lower()+self.sequence.lower()
+        proc = run(['RNAplfold', '-W 210', '-u 210', '-O'], \
+                   stdout=PIPE,stderr=subprocess.DEVNULL,input=seq,\
+                   cwd = tmp,encoding='utf-8') 
+
+        open_en43 = pd.read_csv(tmp+'/plfold_openen',sep='\t',\
+                               skiprows=2, header=None)[43][len(utr):len(utr)+length].sum()
+        os.remove(tmp+'/plfold_openen')
+        os.remove(tmp+'/plfold_dp.ps')
+        return open_en43
+
+
+
+        
         
     
 class Optimize:
     '''does optimizations to a sequence
     '''
     def __init__(self,sequence,cai_mean, cai_std,gc_cont_mean,\
-                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,niter=1000):
+                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,\
+                 accs_mean,accs_std,niter=1000):
         
         self.sequence = sequence.lower()
         self.cai_mean = cai_mean
@@ -112,6 +139,8 @@ class Optimize:
         self.avd_mean = avd_mean
         self.avd_mean = avd_mean
         self.avd_std = avd_std
+        self.accs_mean = accs_mean
+        self.accs_std = accs_std
         self.niter = niter
     
     
@@ -143,9 +172,12 @@ class Optimize:
 
         avd_ = results.avoidance_opt()
         z_avd = Optimize.std_score(avd_, self.avd_mean, self.avd_std)
+        
+        accs_ = results.access_calc()
+        z_accs = Optimize.std_score(accs_, self.accs_mean, self.accs_std)
 
         #total_z_score = z_cai - z_gc + z_ss + z_avd
-        total_z_score = 2*z_cai - 0.1* z_gc + 0.5*z_ss# + z_avd
+        total_z_score = 2*z_cai - 0.1* z_gc + 0.5*z_ss + z_avd + z_accs
 
         return total_z_score
     
