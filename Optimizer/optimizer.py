@@ -93,6 +93,8 @@ def main():
         print('optimizing all of provided sequence instead..', flush=True)
         choosen_seq = mrna_df
     else:
+        filename = mypath + 'selected_sequences' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
+        choosen_seq.to_csv(filename,sep=',', encoding='utf-8', index=False)
         print('done!',flush=True)
     
     
