@@ -150,12 +150,12 @@ def syn_background(sequence,n=1000):
 
 
 
-def substitute_codon(sequence):
+def substitute_codon(sequence,num_of_subst=10):
     '''randomly substitute codons along the sequence at random positions
     '''
        
     length = sequence_length(sequence)
-    num_of_subst = np.random.choice(length)
+    #num_of_subst = np.random.choice(length)
     new_seq = sequence
     for i in range(num_of_subst):
         codons = splitter(new_seq,length)
