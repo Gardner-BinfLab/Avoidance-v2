@@ -7,6 +7,7 @@ import numpy as np
 import pickle
 from os import path
 from libs import functions,data,features
+from multiprocessing import Pool, cpu_count
 #from functools import partial
 
 
@@ -42,10 +43,18 @@ def all_features(dataframe):
     dataframe['sec_str'] = dataframe['analyze'].apply(lambda x:x.sec_str())
     dataframe['cai'] = dataframe['analyze'].apply(lambda x:x.cai())
     dataframe['gc_cont'] = dataframe['analyze'].apply(lambda x:x.gc_cont())
-    dataframe['avd'] = dataframe['analyze'].apply(lambda x:x.avoidance())
+    dataframe['avd'] = dataframe['analyze'].apply(lambda x:x.avoidance_opt())
     
     return dataframe
 
+def parallelize_df(df, func):
+    partitions = cpu_count()
+    df_split = np.array_split(df, partitions)
+    pool = Pool(partitions)
+    results = pd.concat(pool.map(func, df_split))
+    pool.close()
+    pool.join()
+    return results
 
 
 def main():
@@ -69,7 +78,7 @@ def main():
     
     #for mrna scoring and selecting
     print('calculating features for given sequence list..', flush=True)
-    mrna_df = all_features(mrna_df)
+    mrna_df = parallelize_df(mrna_df,all_features)
     print('done!',flush=True)
     
     ##for random forest
@@ -112,7 +121,7 @@ def main():
 
         #calculate features for background
         print('calculating features for background sequences..', flush=True)
-        backgnd_seq = all_features(backgnd_seq)
+        backgnd_seq = parallelize_df(backgnd_seq,all_features)
         backgnd_seq.to_csv('background_sequences.csv',index=False)
     
     
@@ -138,12 +147,19 @@ def main():
         functions.progress(count,choosen_seq.shape[0],message)
         
         optimization = features.Optimize(sequence,cai_mean, cai_std,gc_cont_mean,\
-                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,1000)
+                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,2000)
         
-        optimized_sequence = [optimization.simulated_anneal() \
-                              for _ in range(10)] #10 new_sequences per given sequence
         
-        new_sequences.append(optimized_sequence)
+        pools = Pool(10)
+        pool_results = []
+        for result in pools.starmap(optimization.simulated_anneal,\
+                                    [() for _ in range(10)]):
+            pool_results.append(result)
+        pools.close()
+        pools.join()
+        
+        
+        new_sequences.append(pool_results)
         count+=1
         message='at sequence :'+ str(count)
         functions.progress(count,choosen_seq.shape[0],message)
@@ -172,3 +188,4 @@ if __name__ == '__main__':
     m,r,o= check_arg(sys.argv[1:])
     main()
         
+
