@@ -6,7 +6,7 @@ import secrets,string #python 3.6+
 import tempfile
 import numpy as np
 import pandas as pd
-from libs import data,functions
+from libs import data,functions,codon_usage
 import subprocess
 from subprocess import run,PIPE
 
@@ -46,6 +46,13 @@ class Analyze():
         c_count = seq.count('c')
         gc_cont = (g_count + c_count)/len(seq)
         return gc_cont
+
+    def cai_heg(self):
+        seq = self.sequence
+        heg = codon_usage.CodonAdaptationIndex()
+        heg.set_cai_index(data.cai_heg)
+        return heg.cai_for_gene(seq)
+
 
     
     def sec_str(self):
