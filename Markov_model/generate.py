@@ -82,7 +82,7 @@ def main():
         functions.progress(seq,n)
     
     print("\nExporting sequences...")
-    dataframe = pd.DataFrame(syn_sequences,columns=['synonymous_sequence'])
+    dataframe = pd.DataFrame(syn_sequences,columns=['sequence'])
     filename = mypath + o +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
     dataframe.to_csv(filename,sep=',', encoding='utf-8', index=False) 
         
