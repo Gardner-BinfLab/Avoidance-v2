@@ -92,6 +92,7 @@ def main():
     mrna_df['rf_input'] = [mrna_df[['accs','sec_str','cai','gc_cont','avd']].values[x]\
                            for x in range(mrna_df.shape[0])]
     #we keep threshold of 0.9 i.e.. anything above or equal to 0.9 is 1, rest are 0
+    mrna_df['rf_scores'] = mrna_df['rf_input'].apply(lambda x:rf_model.predict_proba([x])[0])
     mrna_df['rf_results'] = mrna_df['rf_input'].apply(lambda x: 1 if \
                                                       rf_model.predict_proba([x])[0][1] >=0.9 else 0)
     
