@@ -78,8 +78,7 @@ def main():
         mrna_df = pd.read_csv(m) 
     
     
-    utr_ = u.lower()
-    print("using ",utr_," as the 5' utr", flush = True)
+    
     #first we find good sequences from the given list via random forest
     #then those good sequences can be optimized further by simulated annealing
     
@@ -155,7 +154,7 @@ def main():
         functions.progress(count,choosen_seq.shape[0],message)
         
         optimization = features.Optimize(sequence,cai_mean, cai_std,gc_cont_mean,\
-                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,1000)
+                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,100)
         
         
         pools = Pool(10)
@@ -196,6 +195,8 @@ if __name__ == '__main__':
     m,r,u,o= check_arg(sys.argv[1:])
     if u is None or len(u) < 71:
         u = 'aggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacc'
+    utr_ = u.lower()
+    print("using ",utr_," as the 5' utr", flush = True)
     main()
         
 
