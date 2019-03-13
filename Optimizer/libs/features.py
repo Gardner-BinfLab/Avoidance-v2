@@ -2,6 +2,7 @@
 import os
 import RNA
 #from vienna import RNA
+import secrets,string #python 3.6+
 import tempfile
 import numpy as np
 import pandas as pd
@@ -109,15 +110,22 @@ class Analyze():
         except FileExistsError:
             pass
 
-        seq= utr.lower()+self.sequence.lower()
+        sequence= utr.lower()+self.sequence.lower()
+        new_string = ''.join(secrets.choice(string.ascii_uppercase + string.digits)\
+                             for _ in range(10))
+        seq_accession = '>'+new_string+'\n'
+        input_seq = seq_accession+sequence
         proc = run(['RNAplfold', '-W 210', '-u 210', '-O'], \
-                   stdout=PIPE,stderr=subprocess.DEVNULL,input=seq,\
+                   stdout=PIPE,stderr=subprocess.DEVNULL,input=input_seq,\
                    cwd = tmp,encoding='utf-8') 
-
-        open_en43 = pd.read_csv(tmp+'/plfold_openen',sep='\t',\
+        out1 = '/' + new_string+'_openen'
+        out2 = '/' + new_string+'_dp.ps'
+        open_en43 = pd.read_csv(tmp+out1,sep='\t',\
                                skiprows=2, header=None)[43][len(utr):len(utr)+length].sum()
-        os.remove(tmp+'/plfold_openen')
-        os.remove(tmp+'/plfold_dp.ps')
+
+        os.remove(tmp+out1)
+        os.remove(tmp+out2)
+        
         return open_en43
 
 
