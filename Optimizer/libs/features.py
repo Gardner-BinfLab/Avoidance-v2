@@ -20,7 +20,7 @@ class Analyze():
     '''analyze sequence features
     '''
     def __init__(self,sequence,positions=(-30,30),\
-                 utr='ggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacat'):
+                 utr='aggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacc'):
         self.sequence = sequence.lower()
         self.utr = utr
         self.positions = positions
@@ -107,7 +107,7 @@ class Analyze():
         
         
     def access_calc(self, length=30,
-                    utr='ggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacat'\
+                    utr='aggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacc'\
                    ):
 
 
