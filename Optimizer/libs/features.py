@@ -128,8 +128,7 @@ class Analyze():
         out1 = '/' + new_string+'_openen'
         out2 = '/' + new_string+'_dp.ps'
         open_en43 = pd.read_csv(tmp+out1,sep='\t',\
-                              skiprows=2, header=None)[43][len(utr):len(utr)+30].sum()
-                               #for 30 nt from end of utr
+                                skiprows=2, header=None)[43][len(utr):len(utr)+30].sum() #for 30 nt from end of utr
         os.remove(tmp+out1)
         os.remove(tmp+out2)
         
