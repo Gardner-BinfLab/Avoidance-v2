@@ -96,7 +96,7 @@ def main():
     mrna_df['rf_results'] = mrna_df['rf_input'].apply(lambda x: 1 if \
                                                       rf_model.predict_proba([x])[0][1] >=0.9 else 0)
     
-    filename = mypath + 'mrna_analysis' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
+    filename = mypath + o+ 'mrna_analysis' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
     mrna_df.to_csv(filename,sep=',', encoding='utf-8', index=False)
     
     #pick those sequences with 1 from Random forest
@@ -106,7 +106,7 @@ def main():
         print('optimizing all of provided sequence instead..', flush=True)
         choosen_seq = mrna_df
     else:
-        filename = mypath + 'selected_sequences' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
+        filename = mypath + o+ 'selected_sequences' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
         choosen_seq.to_csv(filename,sep=',', encoding='utf-8', index=False)
         print('done!',flush=True)
     
@@ -148,7 +148,7 @@ def main():
         functions.progress(count,choosen_seq.shape[0],message)
         
         optimization = features.Optimize(sequence,cai_mean, cai_std,gc_cont_mean,\
-                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,2000)
+                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,1000)
         
         
         pools = Pool(10)
