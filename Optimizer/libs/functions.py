@@ -168,14 +168,3 @@ def substitute_codon(sequence,num_of_subst=10):
     return new_seq
 
 
-def hammingDistance(seq1,seq2):
-    score_nt = 0
-
-    for i in range(0,len(seq1)):
-        if seq1[i] != seq2[i]:
-            score_nt += 1
-            
-    return score_nt
-
-
-
