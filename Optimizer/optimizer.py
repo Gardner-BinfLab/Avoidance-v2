@@ -26,7 +26,9 @@ def check_arg(args=None):
                         required='True')
     parser.add_argument('-r', '--randomforest',
                         help='random forest model',
-                        required='True')  
+                        required='True')
+    parser.add_argument('-u', '--utr5',
+                        help="5' utr (71 nt). default = pET")
     parser.add_argument('-o', '--output',
                         help='Output file name.',
                         default = 'optimized_sequences')
@@ -34,11 +36,13 @@ def check_arg(args=None):
     results = parser.parse_args(args)
     return (results.mrna,
             results.randomforest,
+            results.utr5,
             results.output)
 
 
 def all_features(dataframe):
-    dataframe['analyze'] =  dataframe['sequence'].apply(lambda x:features.Analyze(x))
+    global utr_
+    dataframe['analyze'] =  dataframe['sequence'].apply(lambda x:features.Analyze(x,utr=utr_))
     dataframe['accs'] = dataframe['analyze'].apply(lambda x:x.access_calc())
     dataframe['sec_str'] = dataframe['analyze'].apply(lambda x:x.sec_str())
     dataframe['cai'] = dataframe['analyze'].apply(lambda x:x.cai_heg())
@@ -72,7 +76,10 @@ def main():
         mrna_df = functions.read_fasta(m)
     else:
         mrna_df = pd.read_csv(m) 
-        
+    
+    
+    utr_ = u.lower()
+    print("using ",utr_," as the 5' utr", flush = True)
     #first we find good sequences from the given list via random forest
     #then those good sequences can be optimized further by simulated annealing
     
@@ -94,7 +101,7 @@ def main():
     #we keep threshold of 0.9 i.e.. anything above or equal to 0.9 is 1, rest are 0
     mrna_df['rf_scores'] = mrna_df['rf_input'].apply(lambda x:rf_model.predict_proba([x])[0])
     mrna_df['rf_results'] = mrna_df['rf_input'].apply(lambda x: 1 if \
-                                                      rf_model.predict_proba([x])[0][1] >=0.9 else 0)
+                                                      rf_model.predict_proba([x])[0][1] >=0.99 else 0)
     
     filename = mypath + o+ 'mrna_analysis' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
     mrna_df.to_csv(filename,sep=',', encoding='utf-8', index=False)
@@ -186,7 +193,9 @@ def main():
 
 
 if __name__ == '__main__':
-    m,r,o= check_arg(sys.argv[1:])
+    m,r,u,o= check_arg(sys.argv[1:])
+    if u is None or len(u) < 71:
+        u = 'aggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacc'
     main()
         
 
