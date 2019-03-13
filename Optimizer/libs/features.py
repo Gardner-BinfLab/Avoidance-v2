@@ -59,7 +59,7 @@ class Analyze():
         utr = self.utr
         positions = self.positions
         sequence = self.sequence
-        utr = utr[:positions[0]]
+        utr = utr[positions[0]:]
         seq = sequence[:positions[1]]
         total_sequence = utr+seq
         ss,mfe = RNA.fold(total_sequence)
