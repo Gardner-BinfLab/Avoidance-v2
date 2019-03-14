@@ -28,6 +28,7 @@ def check_arg(args=None):
                         help='random forest model',
                         required='True')
     parser.add_argument('-u', '--utr5',
+                        type=str,
                         help="5' utr (71 nt). default = pET")
     parser.add_argument('-s','--simanneal',
                         help='simulated annealing',
