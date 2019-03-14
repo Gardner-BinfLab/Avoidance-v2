@@ -106,9 +106,7 @@ class Analyze():
         return avoidance
         
         
-    def access_calc(self, length=30,
-                    utr='aggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacc'\
-                   ):
+    def access_calc(self, length=30):
 
 
         tmp = os.path.join(tempfile.gettempdir(), 'plfold')
@@ -116,8 +114,9 @@ class Analyze():
             os.makedirs(tmp)
         except FileExistsError:
             pass
+        
 
-        sequence= utr.lower()+self.sequence.lower()
+        sequence= self.utr.lower()+self.sequence.lower()
         new_string = ''.join(secrets.choice(string.ascii_uppercase + string.digits)\
                              for _ in range(10))
         seq_accession = '>'+new_string+'\n'
