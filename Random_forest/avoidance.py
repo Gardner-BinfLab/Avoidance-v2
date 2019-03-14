@@ -125,8 +125,8 @@ def main():
     
     print('\nAssigning mRNA:ncRNA interactions...')
     startTime = datetime.now()
-    ncrna['ncrna_seq'] = ncrna.index + '\n' + ncrna['sequence'].map(str) + '\n'
-    mrna['mrna_seq'] = mrna.index + ':break' + '\n' + mrna['sequence'].map(str).str[:length] + '\n'
+    ncrna['ncrna_seq'] = ncrna.index.map(str) + '\n' + ncrna['sequence'].map(str) + '\n'
+    mrna['mrna_seq'] = mrna.index.map(str) + ':break' + '\n' + mrna['sequence'].map(str).str[:length] + '\n'
     mrna_seq = [rows['mrna_seq'] for index,rows in mrna.iterrows()]
     ncrna_seq = [rows['ncrna_seq'] for index,rows in ncrna.iterrows()]
     index = pd.MultiIndex.from_product([ncrna_seq, mrna_seq], names = ['ncrna', 'mrna'])
