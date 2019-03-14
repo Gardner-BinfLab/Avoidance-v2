@@ -29,14 +29,19 @@ def check_arg(args=None):
                         required='True')
     parser.add_argument('-u', '--utr5',
                         help="5' utr (71 nt). default = pET")
+    parser.add_argument('-s','--simanneal',
+                        help='simulated annealing',
+                        action="store_true")
     parser.add_argument('-o', '--output',
-                        help='Output file name.',
+                        help='output file name.',
                         default = 'optimized_sequences')
+
 
     results = parser.parse_args(args)
     return (results.mrna,
             results.randomforest,
             results.utr5,
+            results.simanneal,
             results.output)
 
 
@@ -145,40 +150,46 @@ def main():
                       np.std(backgnd_seq['accs'].values) 
     
     
-    #optimization begins
-    print('optimization started..this may take a while..', flush=True)
-    count = 0
-    new_sequences = []
-    for sequence in choosen_seq['sequence'] :
-        message='at sequence :'+ str(count)
-        functions.progress(count,choosen_seq.shape[0],message)
-        
-        optimization = features.Optimize(sequence,cai_mean, cai_std,gc_cont_mean,\
-                 gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,100)
-        
-        
-        pools = Pool(10)
-        pool_results = []
-        for result in pools.starmap(optimization.simulated_anneal,\
-                                    [() for _ in range(10)]):
-            pool_results.append(result)
-        pools.close()
-        pools.join()
-        
-        
-        new_sequences.append(pool_results)
-        count+=1
-        message='at sequence :'+ str(count)
-        functions.progress(count,choosen_seq.shape[0],message)
-        
     
-    #wew! finally we reached at the end
-    print('optimization completed! exporting sequences...',flush=True)    
-    final_sequences = pd.DataFrame({'sequence':[seq for sublist in new_sequences\
-                                                for seq in sublist]})
-    
-    filename = mypath + o +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
-    final_sequences.to_csv(filename,sep=',', encoding='utf-8', index=False)
+    if s is True:
+        #optimization begins
+        print('optimization started..this may take a while..', flush=True)
+        count = 0
+        new_sequences = []
+        for sequence in choosen_seq['sequence'] :
+            message='at sequence :'+ str(count)
+            functions.progress(count,choosen_seq.shape[0],message)
+
+            optimization = features.Optimize(sequence,cai_mean, cai_std,gc_cont_mean,\
+                     gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,100)
+
+
+            pools = Pool(10)
+            pool_results = []
+            for result in pools.starmap(optimization.simulated_anneal,\
+                                        [() for _ in range(10)]):
+                pool_results.append(result)
+            pools.close()
+            pools.join()
+
+
+            new_sequences.append(pool_results)
+            count+=1
+            message='at sequence :'+ str(count)
+            functions.progress(count,choosen_seq.shape[0],message)
+
+
+        #wew! finally we reached at the end
+        print('optimization completed! exporting sequences...',flush=True)    
+        final_sequences = pd.DataFrame({'sequence':[seq for sublist in new_sequences\
+                                                    for seq in sublist]})
+
+        filename = mypath + o +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
+        final_sequences.to_csv(filename,sep=',', encoding='utf-8', index=False)
+        
+    else:
+        pass
+        
     print('full process was completed successfully!', flush = True)
     
                                     
@@ -192,11 +203,13 @@ def main():
 
 
 if __name__ == '__main__':
-    m,r,u,o= check_arg(sys.argv[1:])
+    m,r,u,s,o= check_arg(sys.argv[1:])
     if u is None or len(u) < 71:
         u = 'aggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacc'
     utr_ = u.lower()
-    print("using ",utr_," as the 5' utr", flush = True)
+    print("using ",utr_," as the 5' utr..", flush = True)
+    if s is False:
+        print('not doing simulated annealing..', flush = True)
     main()
         
 
