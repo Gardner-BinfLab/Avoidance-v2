@@ -122,36 +122,42 @@ def main():
         print('done!',flush=True)
     
     
-    ##Now we generate 1000 random synonymous variants as a background
-    #check if we already have background sequences and features
-    if path.exists('background_sequences.csv'):
-        print('previous background found! using it..', flush=True)
-        backgnd_seq=pd.read_csv('background_sequences.csv')
-    else:
-        print('generating 1000 random synonymous sequences..', flush=True)
-        backgnd_seq = functions.syn_background(mrna_df['sequence'][0],1000)
-
-        #calculate features for background
-        print('calculating features for background sequences..', flush=True)
-        backgnd_seq = parallelize_df(backgnd_seq,all_features)
-        backgnd_seq.to_csv('background_sequences.csv',index=False)
-    
-    
-    #for z scores
-    cai_mean, cai_std = np.mean(backgnd_seq['cai'].values),\
-                        np.std(backgnd_seq['cai'].values)
-    gc_cont_mean, gc_cont_std = np.mean(backgnd_seq['gc_cont'].values),\
-                                np.std(backgnd_seq['gc_cont'].values)
-    ss_mean, ss_std = np.mean(backgnd_seq['sec_str'].values),\
-                      np.std(backgnd_seq['sec_str'].values)
-    avd_mean, avd_std = np.mean(backgnd_seq['avd'].values),\
-                      np.std(backgnd_seq['avd'].values)
-    accs_mean, accs_std = np.mean(backgnd_seq['accs'].values),\
-                      np.std(backgnd_seq['accs'].values) 
-    
     
     
     if s is True:
+        
+        ##Now we generate 1000 random synonymous variants as a background
+        #check if we already have background sequences and features
+        if path.exists('background_sequences.csv'):
+            print('previous background found! using it..', flush=True)
+            backgnd_seq=pd.read_csv('background_sequences.csv')
+        else:
+            print('generating 1000 random synonymous sequences..', flush=True)
+            backgnd_seq = functions.syn_background(mrna_df['sequence'][0],1000)
+
+            #calculate features for background
+            print('calculating features for background sequences..', flush=True)
+            backgnd_seq = parallelize_df(backgnd_seq,all_features)
+            backgnd_seq.to_csv('background_sequences.csv',index=False)
+
+
+        #for z scores
+        cai_mean, cai_std = np.mean(backgnd_seq['cai'].values),\
+                            np.std(backgnd_seq['cai'].values)
+        gc_cont_mean, gc_cont_std = np.mean(backgnd_seq['gc_cont'].values),\
+                                    np.std(backgnd_seq['gc_cont'].values)
+        ss_mean, ss_std = np.mean(backgnd_seq['sec_str'].values),\
+                          np.std(backgnd_seq['sec_str'].values)
+        avd_mean, avd_std = np.mean(backgnd_seq['avd'].values),\
+                          np.std(backgnd_seq['avd'].values)
+        accs_mean, accs_std = np.mean(backgnd_seq['accs'].values),\
+                          np.std(backgnd_seq['accs'].values) 
+
+        
+        
+        
+        
+        
         #optimization begins
         print('optimization started..this may take a while..', flush=True)
         count = 0
