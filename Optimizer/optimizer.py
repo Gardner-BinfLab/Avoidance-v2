@@ -161,17 +161,18 @@ def main():
         
         ##Now we generate 1000 random synonymous variants as a background
         #check if we already have background sequences and features
-        if path.exists('background_sequences.csv'):
-            print('previous background found! using it..', flush=True)
-            backgnd_seq=pd.read_csv('background_sequences.csv')
-        else:
-            print('generating 1000 random synonymous sequences..', flush=True)
-            backgnd_seq = functions.syn_background(mrna_df['sequence'][0],1000)
+        #if path.exists('background_sequences.csv'):
+        #    print('previous background found! using it..', flush=True)
+        #    backgnd_seq=pd.read_csv('background_sequences.csv')
+        #else:
+        print('generating 1000 random synonymous sequences as background..', flush=True)
+        backgnd_seq = functions.syn_background(mrna_df['sequence'][0],1000)
 
-            #calculate features for background
-            print('calculating features for background sequences..', flush=True)
-            backgnd_seq = parallelize_df(backgnd_seq,all_features)
-            backgnd_seq.to_csv('background_sequences.csv',index=False)
+        #calculate features for background
+        print('calculating features for background sequences..', flush=True)
+        backgnd_seq = parallelize_df(backgnd_seq,all_features)
+        background_name = 'background_sequences_'+o+'.csv'
+        backgnd_seq.to_csv(background_name,index=False)
 
 
         #for z scores
