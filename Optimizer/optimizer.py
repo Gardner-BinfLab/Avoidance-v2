@@ -104,22 +104,54 @@ def main():
                            for x in range(mrna_df.shape[0])]
     #we keep threshold of 0.9 i.e.. anything above or equal to 0.9 is 1, rest are 0
     mrna_df['rf_scores'] = mrna_df['rf_input'].apply(lambda x:rf_model.predict_proba([x])[0])
-    mrna_df['rf_results'] = mrna_df['rf_input'].apply(lambda x: 1 if \
+    mrna_df['rf_results_thr_0_99'] = mrna_df['rf_input'].apply(lambda x: 1 if \
                                                       rf_model.predict_proba([x])[0][1] >=0.99 else 0)
+    mrna_df['rf_results_thr_0_95'] = mrna_df['rf_input'].apply(lambda x: 1 if \
+                                                      rf_model.predict_proba([x])[0][1] >=0.95 else 0)
+    mrna_df['rf_results_thr_0_90'] = mrna_df['rf_input'].apply(lambda x: 1 if \
+                                                      rf_model.predict_proba([x])[0][1] >=0.90 else 0)
+    
+    
     
     filename = mypath + o+ 'mrna_analysis' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
     mrna_df.to_csv(filename,sep=',', encoding='utf-8', index=False)
     
     #pick those sequences with 1 from Random forest
-    choosen_seq = mrna_df.loc[(mrna_df['rf_results'] == 1)].reset_index(drop=True)
-    if choosen_seq.shape[0] == 0:
-        print('failed to find any good sequences at this stage..',flush=True)
-        print('optimizing all of provided sequence instead..', flush=True)
-        choosen_seq = mrna_df
+    choosen_seq_0_99 = mrna_df.loc[(mrna_df['rf_results_thr_0_99'] == 1)].reset_index(drop=True)
+    choosen_seq_0_95 = mrna_df.loc[(mrna_df['rf_results_thr_0_95'] == 1)].reset_index(drop=True)
+    choosen_seq_0_90 = mrna_df.loc[(mrna_df['rf_results_thr_0_90'] == 1)].reset_index(drop=True)
+    
+    print('at 99% threshold we got ',choosen_seq_0_99.shape[0],'sequences', flush=True)
+    print('at 95% threshold we got ',choosen_seq_0_95.shape[0],'sequences', flush=True)
+    print('at 90% threshold we got ',choosen_seq_0_90.shape[0],'sequences', flush=True)
+
+    
+    filename = mypath + o+ '_choosen_at_threshold_99' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
+    choosen_seq_0_99.to_csv(filename,sep=',', encoding='utf-8', index=False)
+    filename = mypath + o+ '_choosen_at_threshold_95' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
+    choosen_seq_0_95.to_csv(filename,sep=',', encoding='utf-8', index=False)
+    filename = mypath + o+ '_choosen_at_threshold_90' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
+    choosen_seq_0_90.to_csv(filename,sep=',', encoding='utf-8', index=False)
+    
+    
+    if choosen_seq_0_99.shape[0] == 0:
+        print('failed to find any good sequences at threshold of 0.99..',flush=True)
+        choosen_seq = choosen_seq_0_95
+        if choosen_seq_0_95.shape[0] == 0:
+            print('failed to find any good sequences at threshold of 0.95..',flush=True)
+            choosen_seq = choosen_seq_0_90
+            if choosen_seq_0_90.shape[0] == 0:
+                print('failed to find any good sequences at threshold of 0.90..',flush=True)
+                print('optimizing all of provided sequence instead..', flush=True)
+                choosen_seq =  mrna_df
+            else:
+                print('sequences from 90% threshold was choosen for optimization..', flush = True)
+        else:
+            print('sequences from 95% threshold was choosen for optimization..', flush = True)
     else:
-        filename = mypath + o+ 'selected_sequences' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
-        choosen_seq.to_csv(filename,sep=',', encoding='utf-8', index=False)
-        print('done!',flush=True)
+        choosen_seq = choosen_seq_0_99
+        print('sequences from 99% threshold was choosen for optimization..', flush = True)
+
     
     
     
