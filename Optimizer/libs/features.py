@@ -114,9 +114,9 @@ class Analyze():
             os.makedirs(tmp)
         except FileExistsError:
             pass
-        
+        utr = self.utr
 
-        sequence= self.utr.lower()+self.sequence.lower()
+        sequence= utr.lower()+self.sequence.lower()
         new_string = ''.join(secrets.choice(string.ascii_uppercase + string.digits)\
                              for _ in range(10))
         seq_accession = '>'+new_string+'\n'
