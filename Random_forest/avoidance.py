@@ -26,7 +26,7 @@ def valid_file(param):
 
 
 def check_arg(args=None):
-    parser = argparse.ArgumentParser(description='RNAup wrapper using multiprocesses')
+    parser = argparse.ArgumentParser(description='RNAup wrapper using multiprocessing')
     parser.add_argument('-m', '--mrna',
                         type=valid_file,
                         metavar='STR',
@@ -38,11 +38,11 @@ def check_arg(args=None):
                         help='ncRNA sequences in fasta or csv format',
                         required='True')
     parser.add_argument('-b', '--batch',
-                        help='Switch on batch processing for one ncRNA against many mRNAs',
+                        help='Switch on batch processing mode for one ncRNA against many mRNAs',
                         action="store_true")
     parser.add_argument('-l', '--length',
-                        metavar='INT',
-                        help='First N nt of mRNAs to calculate interactions for. Default = 30 nt')
+                        metavar='INT/STR',
+                        help='First N nt of mRNAs to calculate interactions for. A string input will switch on full-length mode. Default = 30 nt')
     parser.add_argument('-o', '--output',
                         metavar='STR',
                         help='Output file name',
