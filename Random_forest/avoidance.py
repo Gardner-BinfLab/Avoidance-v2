@@ -10,6 +10,7 @@ import pandas as pd
 import multiprocessing
 import threading
 from threading import Semaphore
+from itertools import cycle, islice
 from datetime import datetime
 from multiprocessing import Pool
 from subprocess import run, PIPE
@@ -36,6 +37,9 @@ def check_arg(args=None):
                         metavar='STR',
                         help='ncRNA sequences in fasta or csv format',
                         required='True')
+    parser.add_argument('-b', '--batch',
+                        help='Switch on batch processing for one ncRNA against many mRNAs',
+                        action="store_true")
     parser.add_argument('-l', '--length',
                         metavar='INT',
                         help='First N nt of mRNAs to calculate interactions for. Default = 30 nt')
@@ -51,6 +55,7 @@ def check_arg(args=None):
     results = parser.parse_args(args)
     return (results.mrna,
             results.ncrna,
+            results.batch,
             results.length,
             results.output,
             results.processes)
@@ -125,29 +130,60 @@ def main():
     
     print('\nAssigning mRNA:ncRNA interactions...')
     startTime = datetime.now()
-    ncrna['ncrna_seq'] = ncrna.index.map(str) + '\n' + ncrna['sequence'].map(str) + '\n'
-    mrna['mrna_seq'] = mrna.index.map(str) + ':break' + '\n' + mrna['sequence'].map(str).str[:length] + '\n'
-    mrna_seq = [rows['mrna_seq'] for index,rows in mrna.iterrows()]
-    ncrna_seq = [rows['ncrna_seq'] for index,rows in ncrna.iterrows()]
-    index = pd.MultiIndex.from_product([ncrna_seq, mrna_seq], names = ['ncrna', 'mrna'])
-    sequence_df = pd.DataFrame(index = index).reset_index()
-    df = sequence_df.pivot(index='ncrna',columns='mrna',values='mrna')
-    df['interaction_first'] = df.reset_index().values.sum(axis=1)
-    print('\nWe took', datetime.now() - startTime, 'to assign these interactions!', flush=True)
-  
-    print('\nCalculating interactions using', p, 'processes...', flush=True)
-    print_time()
-    groups = df.shape[0]
-    my_pool = Pool(p)
-    interactions = []
-    progress(0,groups)
-    for i in my_pool.imap_unordered(interaction_calc, df['interaction_first']):
-        interactions.append(i)
-        progress(len(interactions), groups)
+    
+    if b is True: #one ncRNA vs multi mRNAs
+        ncrna = ncrna.reset_index().reset_index().rename(index=str, columns={'index': 'interaction'})
+               
+        label = (x for x in cycle(list(range(0,p))))
+        label = pd.DataFrame({'label': list(islice(label, len(mrna)))})
+        df = pd.concat([label, mrna.reset_index()], axis=1)
+        df['mrna'] = df['accession'] + ':break' + '\n' + df['sequence'].map(str).str[:length] + '\n'
+        df = df.groupby('label')['mrna'].apply(''.join).to_frame().reset_index()
+        df.insert(2, 'interaction', 0)
+        df = pd.merge(df, ncrna, on='interaction')
+        df['fasta'] = df['accession'] + '\n' + df['sequence'] + '\n' + df['mrna']
+        fasta = df['fasta'].tolist()
+        print('\nWe took', datetime.now() - startTime, 'to assign these interactions!', flush=True)
+
+        print('\nCalculating interactions using', p, 'processes...', flush=True)
+        print_time()
+        my_pool = Pool(p)
+        interactions = []
+        progress(0, len(fasta))
+        for i in my_pool.imap_unordered(interaction_calc, fasta):
+            interactions.append(i)
+            progress(len(interactions), len(fasta))
+
+        _stop_timer.set()
+        my_pool.close()
+        my_pool.join()        
         
-    _stop_timer.set()
-    my_pool.close()
-    my_pool.join()
+
+        
+    else: #multiple ncRNAs and mRNAs
+        ncrna['ncrna_seq'] = ncrna.index.map(str) + '\n' + ncrna['sequence'].map(str) + '\n'
+        mrna['mrna_seq'] = mrna.index.map(str) + ':break' + '\n' + mrna['sequence'].map(str).str[:length] + '\n'
+        mrna_seq = [rows['mrna_seq'] for index,rows in mrna.iterrows()]
+        ncrna_seq = [rows['ncrna_seq'] for index,rows in ncrna.iterrows()]
+        index = pd.MultiIndex.from_product([ncrna_seq, mrna_seq], names = ['ncrna', 'mrna'])
+        sequence_df = pd.DataFrame(index = index).reset_index()
+        df = sequence_df.pivot(index='ncrna',columns='mrna',values='mrna')
+        df['interaction_first'] = df.reset_index().values.sum(axis=1)
+        print('\nWe took', datetime.now() - startTime, 'to assign these interactions!', flush=True)
+
+        print('\nCalculating interactions using', p, 'processes...', flush=True)
+        print_time()
+        groups = df.shape[0]
+        my_pool = Pool(p)
+        interactions = []
+        progress(0,groups)
+        for i in my_pool.imap_unordered(interaction_calc, df['interaction_first']):
+            interactions.append(i)
+            progress(len(interactions), groups)
+
+        _stop_timer.set()
+        my_pool.close()
+        my_pool.join()
 
     #parsing RNAup output
     mrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+:break)')[0].str.replace('>', '').str.replace(':break', '').to_frame().reset_index()
@@ -165,7 +201,7 @@ def main():
 
 
 if __name__ == "__main__":
-    m,n,l,o,p = check_arg(sys.argv[1:])
+    m,n,b,l,o,p = check_arg(sys.argv[1:])
     if p is None:
         p = 16
     if l is None:
@@ -177,5 +213,5 @@ if __name__ == "__main__":
             print('Calculations are of the first', length,'nt of mRNAs.', flush = True)
         except ValueError:
             length = None
-            print('Calculations are of full length.', flush = True)
+            print('Calculations are of full-length.', flush = True)
     main()
