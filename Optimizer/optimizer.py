@@ -143,7 +143,7 @@ def main():
             print('previous background found! using it..', flush=True)
             backgnd_seq=pd.read_csv(background_name)
         else:
-            print('generating 1000 random synonymous sequences as background..', flush=True)
+            print('generating 1000 random synonymous sequences for a background model..', flush=True)
             backgnd_seq = functions.syn_background(mrna_df['sequence'][0],1000)
 
             #calculate features for background
