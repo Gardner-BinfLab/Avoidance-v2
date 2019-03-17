@@ -129,7 +129,8 @@ def main():
     choosen_seq = mrna_df_sorted[:c]
     print('the max predicted probability of sequences being highly expressed is ',\
           choosen_seq['rf_scores'][0],flush=True)
-    
+    filename = mypath + '_choosen_' +o+'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
+    choosen_seq.to_csv(filename,sep=',', encoding='utf-8', index=False)
     
     
     
