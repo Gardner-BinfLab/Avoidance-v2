@@ -126,11 +126,11 @@ def main():
     mrna_df_sorted.to_csv(filename,sep=',', encoding='utf-8', index=False)
     
     #pick top 10 sequences from the analyzed sequences
-    choosen_seq = mrna_df_sorted[:c]
+    chosen_seq = mrna_df_sorted[:c]
     print('the max predicted probability of sequences being highly expressed is ',\
-          choosen_seq['rf_scores'][0],flush=True)
-    filename = mypath + '_choosen_' +o+'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
-    choosen_seq.to_csv(filename,sep=',', encoding='utf-8', index=False)
+          chosen_seq['rf_scores'][0],flush=True)
+    filename = mypath + '_chosen_' +o+'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
+    chosen_seq.to_csv(filename,sep=',', encoding='utf-8', index=False)
     
     
     
@@ -175,9 +175,9 @@ def main():
         print('optimization started..this may take a while..', flush=True)
         count = 0
         new_sequences = []
-        for sequence in choosen_seq['sequence']:
+        for sequence in chosen_seq['sequence']:
             message='at sequence :'+ str(count)
-            functions.progress(count,choosen_seq.shape[0],message)
+            functions.progress(count,chosen_seq.shape[0],message)
 
             optimization = features.Optimize(sequence,cai_mean, cai_std,gc_cont_mean,\
                      gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,200)
@@ -194,7 +194,7 @@ def main():
             new_sequences.append(pool_results)
             count+=1
             message='at sequence :'+ str(count)
-            functions.progress(count,choosen_seq.shape[0],message)
+            functions.progress(count,chosen_seq.shape[0],message)
 
 
         #wew! finally we reached at the end
