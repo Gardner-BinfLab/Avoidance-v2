@@ -10,6 +10,8 @@ from libs import functions,data,features
 from multiprocessing import Pool, cpu_count
 #from functools import partial
 
+#SA=Simulated Annealing
+
 
 def valid_file(param):
     base, ext = os.path.splitext(param)
@@ -19,7 +21,7 @@ def valid_file(param):
 
 
 def check_arg(args=None):
-    parser = argparse.ArgumentParser(description='Training script')
+    parser = argparse.ArgumentParser(description='optimizer script')
     parser.add_argument('-m', '--mrna',
                         type=valid_file,
                         help='mrna sequence from hmm in csv or fasta.',
@@ -31,8 +33,20 @@ def check_arg(args=None):
                         type=str,
                         help="5' utr (71 nt). default = pET")
     parser.add_argument('-s','--simanneal',
-                        help='simulated annealing',
+                        help='simulated annealing. pass this arg to do SA.',
                         action="store_true")
+    parser.add_argument('-c','--count',
+                        help='num of top sequences to pick for SA. default=10',
+                        type=int,
+                        default=10)
+    parser.add_argument('-g','--gen',
+                        help='num of times of SA per sequence. each SA gives one sequence. default 1',
+                        type=int,
+                        default=1)
+    parser.add_argument('-n','--niter',
+                        help='num itr in SA. default 200',
+                        type=int,
+                        default=200)
     parser.add_argument('-o', '--output',
                         help='output file name.',
                         default = 'optimized_sequences')
@@ -43,6 +57,9 @@ def check_arg(args=None):
             results.randomforest,
             results.utr5,
             results.simanneal,
+            results.count,
+            results.gen,
+            results.niter,
             results.output)
 
 
@@ -100,59 +117,20 @@ def main():
     print('done!',flush=True)
     
     
-    print('selecting good sequences..', flush=True)
+    print('selecting',c,'good sequences..', flush=True)
     mrna_df['rf_input'] = [mrna_df[['accs','sec_str','cai','gc_cont','avd']].values[x]\
                            for x in range(mrna_df.shape[0])]
     #we keep threshold of 0.9 i.e.. anything above or equal to 0.9 is 1, rest are 0
-    mrna_df['rf_scores'] = mrna_df['rf_input'].apply(lambda x:rf_model.predict_proba([x])[0])
-    mrna_df['rf_results_thr_0_99'] = mrna_df['rf_input'].apply(lambda x: 1 if \
-                                                      rf_model.predict_proba([x])[0][1] >=0.99 else 0)
-    mrna_df['rf_results_thr_0_95'] = mrna_df['rf_input'].apply(lambda x: 1 if \
-                                                      rf_model.predict_proba([x])[0][1] >=0.95 else 0)
-    mrna_df['rf_results_thr_0_90'] = mrna_df['rf_input'].apply(lambda x: 1 if \
-                                                      rf_model.predict_proba([x])[0][1] >=0.90 else 0)
-    
-    
-    
+    mrna_df['rf_scores'] = mrna_df['rf_input'].apply(lambda x:rf_model.predict_proba([x])[0][1])
+    mrna_df_sorted = mrna_df.sort_values('rf_scores',ascending=False).reset_index(drop=True)  
     filename = mypath + o+ 'mrna_analysis' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
-    mrna_df.to_csv(filename,sep=',', encoding='utf-8', index=False)
+    mrna_df_sorted.to_csv(filename,sep=',', encoding='utf-8', index=False)
     
-    #pick those sequences with 1 from Random forest
-    choosen_seq_0_99 = mrna_df.loc[(mrna_df['rf_results_thr_0_99'] == 1)].reset_index(drop=True)
-    choosen_seq_0_95 = mrna_df.loc[(mrna_df['rf_results_thr_0_95'] == 1)].reset_index(drop=True)
-    choosen_seq_0_90 = mrna_df.loc[(mrna_df['rf_results_thr_0_90'] == 1)].reset_index(drop=True)
+    #pick top 10 sequences from the analyzed sequences
+    choosen_seq = mrna_df_sorted[:c]
+    print('the max predicted probability of sequences being highly expressed is ',\
+          choosen_seq['rf_scores'][0],flush=True)
     
-    print('at 99% threshold we got ',choosen_seq_0_99.shape[0],'sequences', flush=True)
-    print('at 95% threshold we got ',choosen_seq_0_95.shape[0],'sequences', flush=True)
-    print('at 90% threshold we got ',choosen_seq_0_90.shape[0],'sequences', flush=True)
-
-    
-    filename = mypath + o+ '_choosen_at_threshold_99' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
-    choosen_seq_0_99.to_csv(filename,sep=',', encoding='utf-8', index=False)
-    filename = mypath + o+ '_choosen_at_threshold_95' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
-    choosen_seq_0_95.to_csv(filename,sep=',', encoding='utf-8', index=False)
-    filename = mypath + o+ '_choosen_at_threshold_90' +'_'+time.strftime("%Y%m%d-%H%M%S")+'.csv'
-    choosen_seq_0_90.to_csv(filename,sep=',', encoding='utf-8', index=False)
-    
-    
-    if choosen_seq_0_99.shape[0] == 0:
-        print('failed to find any good sequences at threshold of 0.99..',flush=True)
-        choosen_seq = choosen_seq_0_95
-        if choosen_seq_0_95.shape[0] == 0:
-            print('failed to find any good sequences at threshold of 0.95..',flush=True)
-            choosen_seq = choosen_seq_0_90
-            if choosen_seq_0_90.shape[0] == 0:
-                print('failed to find any good sequences at threshold of 0.90..',flush=True)
-                print('optimizing all of provided sequence instead..', flush=True)
-                choosen_seq =  mrna_df
-            else:
-                print('sequences from 90% threshold was choosen for optimization..', flush = True)
-        else:
-            print('sequences from 95% threshold was choosen for optimization..', flush = True)
-    else:
-        choosen_seq = choosen_seq_0_99
-        print('sequences from 99% threshold was choosen for optimization..', flush = True)
-
     
     
     
@@ -161,18 +139,19 @@ def main():
         
         ##Now we generate 1000 random synonymous variants as a background
         #check if we already have background sequences and features
-        #if path.exists('background_sequences.csv'):
-        #    print('previous background found! using it..', flush=True)
-        #    backgnd_seq=pd.read_csv('background_sequences.csv')
-        #else:
-        print('generating 1000 random synonymous sequences as background..', flush=True)
-        backgnd_seq = functions.syn_background(mrna_df['sequence'][0],1000)
-
-        #calculate features for background
-        print('calculating features for background sequences..', flush=True)
-        backgnd_seq = parallelize_df(backgnd_seq,all_features)
         background_name = 'background_sequences_'+o+'.csv'
-        backgnd_seq.to_csv(background_name,index=False)
+        if path.exists(background_name):
+            print('previous background found! using it..', flush=True)
+            backgnd_seq=pd.read_csv(background_name)
+        else:
+            print('generating 1000 random synonymous sequences as background..', flush=True)
+            backgnd_seq = functions.syn_background(mrna_df['sequence'][0],1000)
+
+            #calculate features for background
+            print('calculating features for background sequences..', flush=True)
+            backgnd_seq = parallelize_df(backgnd_seq,all_features)
+
+            backgnd_seq.to_csv(background_name,index=False)
 
 
         #for z scores
@@ -196,18 +175,17 @@ def main():
         print('optimization started..this may take a while..', flush=True)
         count = 0
         new_sequences = []
-        for sequence in choosen_seq['sequence'] :
+        for sequence in choosen_seq['sequence']:
             message='at sequence :'+ str(count)
             functions.progress(count,choosen_seq.shape[0],message)
 
             optimization = features.Optimize(sequence,cai_mean, cai_std,gc_cont_mean,\
-                     gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,100)
+                     gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,500)
 
-
-            pools = Pool(10)
+            pools = Pool(g)
             pool_results = []
             for result in pools.starmap(optimization.simulated_anneal,\
-                                        [() for _ in range(10)]):
+                                        [() for _ in range(g)]):
                 pool_results.append(result)
             pools.close()
             pools.join()
@@ -231,7 +209,7 @@ def main():
         pass
         
     print('full process was completed successfully!', flush = True)
-    
+    print(time.strftime("%Y%m%d-%H%M%S"))
                                     
 
 
@@ -243,8 +221,10 @@ def main():
 
 
 if __name__ == '__main__':
-    m,r,u,s,o= check_arg(sys.argv[1:])
-    if u is None or len(u) < 71:
+    m,r,u,s,c,g,n,o= check_arg(sys.argv[1:])
+    print('================================================')
+    print(time.strftime("%Y%m%d-%H%M%S"))
+    if u is None or len(u)!=71 :
         u = 'aggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacc'
     utr_ = u.lower()
     print("using ",utr_," as the 5' utr..", flush = True)
