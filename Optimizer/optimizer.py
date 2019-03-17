@@ -40,7 +40,7 @@ def check_arg(args=None):
                         type=int,
                         default=10)
     parser.add_argument('-g','--gen',
-                        help='num of times of SA per sequence. each SA gives one sequence. default 1',
+                        help='number of new sequences to generate per sequence. Default: 1',
                         type=int,
                         default=1)
     parser.add_argument('-n','--niter',
