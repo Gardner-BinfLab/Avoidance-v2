@@ -12,9 +12,11 @@ This script selects and possibly further optimizes the sequences generated from 
 
 ```-r RANDOMFOREST ``` : trained random forest model. Details on how to do so are [here.](https://github.com/Gardner-BinfLab/Avoidance-v2/tree/master/Random_forest)
 
-```[-u UTR5]``` : 5′ UTR (71 nucleotides only!). Deafult is the pET vector 'aggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacc'. 
 
 **optional args**
+
+```[-u UTR5]``` : 5′ UTR (71 nucleotides only!). Deafult is the pET vector 'aggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacc'. 
+
 
 ```[-s]``` : this switches simulated annealing (SA) on. Default: no SA
 
