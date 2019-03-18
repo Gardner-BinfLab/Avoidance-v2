@@ -180,7 +180,7 @@ def main():
             functions.progress(count,chosen_seq.shape[0],message)
 
             optimization = features.Optimize(sequence,cai_mean, cai_std,gc_cont_mean,\
-                     gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,200)
+                     gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,accs_mean,accs_std,n)
 
             pools = Pool(g)
             pool_results = []
