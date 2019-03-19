@@ -49,8 +49,9 @@ def main():
     sequence = s.lower()
     #remove start and end
     input_sequence = sequence[3:-3]
+    poss_term = 'ttttt'
     syn_sequences = []
-    for seq in range(n):
+    while True:
         length = functions.sequence_length(input_sequence)
         codons = functions.splitter(input_sequence,length)
         chain = ''
@@ -77,9 +78,21 @@ def main():
 
             #for random sequences
             #chain+=choice(prob_data.index,p=prob_data.loc[:,i])
+        final_seq = sequence.upper()[:3] + chain.upper() + sequence.upper()[-3:]
+        if 'ttttt' not in final_seq and\
+        'cacctgc' not in final_seq and \
+        'gcaggtg' not in final_seq and \
+        'ggtctc' not in final_seq and\
+        'gagacc' not in final_seq and\
+        'cgtctc' not in final_seq and\
+        'gagacg' not in final_seq:
+            syn_sequences.append(final_seq)
+            functions.progress(len(syn_sequences),n)
 
-        syn_sequences.append(sequence.upper()[:3] + chain.upper() + sequence.upper()[-3:])
-        functions.progress(seq,n)
+        
+        
+        if len(syn_sequences) == n:
+            break
     
     print("\nExporting sequences...")
     dataframe = pd.DataFrame(syn_sequences,columns=['sequence'])
