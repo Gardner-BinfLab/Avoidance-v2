@@ -104,8 +104,8 @@ def openen(seq):
 
 
 
-def openen43(file):
-    w = pd.read_csv(file, sep='\t', skiprows=2, header=None)[71:101][43].sum()
+def parse(file):
+    w = pd.read_csv(file, sep='\t', skiprows=2, header=None)[85:95][50].sum() #[71:101][43]
     return file.replace('_openen',''), w
 
 
@@ -149,13 +149,13 @@ def main():
     print('\nParsing _openen using', p, 'processes...')
     _openen = (df['accession'].str.replace('>', '') + '_openen').tolist()
     p2 = Pool(p)
-    plfold =  p2.imap_unordered(openen43, _openen)
+    plfold =  p2.imap_unordered(parse, _openen)
     p2.close()
     p2.join()
     
     results = list(plfold)
     d = pd.DataFrame(results)
-    d.columns = ['Accession', 'openen43']    
+    d.columns = ['Accession', 'openen']    
     filename = o + '.out'
     d.to_csv(filename, sep='\t', index=False, encoding='utf-8')
     
