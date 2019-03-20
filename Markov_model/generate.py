@@ -32,6 +32,16 @@ def check_arg(args=None):
             results.n,
             results.output)
 
+
+def sites_check(sequence):
+    if 'ttttt' not in sequence and 'cacctgc' not in sequence and\
+    'gcaggtg' not in sequence and 'ggtctc' not in sequence and\
+    'gagacc' not in sequence and 'cgtctc' not in sequence and\
+    'gagacg' not in sequence:
+        return False
+    else:
+        return True
+
     
 def main():
     
@@ -49,8 +59,8 @@ def main():
     sequence = s.lower()
     #remove start and end
     input_sequence = sequence[3:-3]
-    poss_term = 'ttttt'
     syn_sequences = []
+    #failed_count = 1
     while True:
         length = functions.sequence_length(input_sequence)
         codons = functions.splitter(input_sequence,length)
@@ -79,17 +89,11 @@ def main():
             #for random sequences
             #chain+=choice(prob_data.index,p=prob_data.loc[:,i])
         final_seq = sequence[:3] + chain + sequence[-3:]
-        if 'ttttt' not in final_seq and\
-        'cacctgc' not in final_seq and \
-        'gcaggtg' not in final_seq and \
-        'ggtctc' not in final_seq and\
-        'gagacc' not in final_seq and\
-        'cgtctc' not in final_seq and\
-        'gagacg' not in final_seq:
+        if sites_check(final_seq) is False:
             syn_sequences.append(final_seq.upper())
             functions.progress(len(syn_sequences),n)
+            
 
-        
         
         if len(syn_sequences) == n:
             break
