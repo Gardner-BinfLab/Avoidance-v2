@@ -78,7 +78,7 @@ def main():
 
             #for random sequences
             #chain+=choice(prob_data.index,p=prob_data.loc[:,i])
-        final_seq = sequence.upper()[:3] + chain.upper() + sequence.upper()[-3:]
+        final_seq = sequence[:3] + chain + sequence[-3:]
         if 'ttttt' not in final_seq and\
         'cacctgc' not in final_seq and \
         'gcaggtg' not in final_seq and \
@@ -86,7 +86,7 @@ def main():
         'gagacc' not in final_seq and\
         'cgtctc' not in final_seq and\
         'gagacg' not in final_seq:
-            syn_sequences.append(final_seq)
+            syn_sequences.append(final_seq.upper())
             functions.progress(len(syn_sequences),n)
 
         
