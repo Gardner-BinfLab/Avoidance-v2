@@ -35,7 +35,8 @@ def check_arg(args=None):
 
 def sites_check(sequence):
     sequence = sequence.lower()
-    if 'ttttt' not in sequence and 'cacctgc' not in sequence and\
+    #if 'ttttt' not in sequence and 'cacctgc' not in sequence and\
+    if 'cacctgc' not in sequence and\
     'gcaggtg' not in sequence and 'ggtctc' not in sequence and\
     'gagacc' not in sequence and 'cgtctc' not in sequence and\
     'gagacg' not in sequence:
