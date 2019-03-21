@@ -2,13 +2,13 @@
 import os
 import RNA
 #from vienna import RNA
-import secrets,string #python 3.6+
+import secrets, string #python 3.6+
 import tempfile
 import numpy as np
 import pandas as pd
-from libs import data,functions,codon_usage
+from libs import data, functions
 import subprocess
-from subprocess import run,PIPE
+from subprocess import run, PIPE
 
 
 script_dir = os.path.dirname(__file__)
@@ -20,8 +20,8 @@ class Analyze():
     '''analyze sequence features
     '''
     def __init__(self,sequence,positions=(-30,30),\
-                 utr='aggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacc'):
-        self.sequence = sequence.lower()
+                 utr='GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACAT'):
+        self.sequence = sequence.upper()
         self.utr = utr
         self.positions = positions
         
@@ -30,9 +30,10 @@ class Analyze():
     def cai(self):
         seq = self.sequence
         given_seq = functions.splitter(seq,len(seq))
+        excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
         try:
             cai_values = [np.log(data.cai_table[codon]) for codon\
-                          in given_seq]
+                          in given_seq if codon not in excluded_codons]
             score = np.exp(np.mean(cai_values))
         except KeyError:
             print('strange sequence or corrupted cai table!')
@@ -42,17 +43,10 @@ class Analyze():
     
     def gc_cont(self):
         seq = self.sequence
-        g_count = seq.count('g')
-        c_count = seq.count('c')
+        g_count = seq.count('G')
+        c_count = seq.count('C')
         gc_cont = (g_count + c_count)/len(seq)
         return gc_cont
-
-    def cai_heg(self):
-        seq = self.sequence
-        heg = codon_usage.CodonAdaptationIndex()
-        heg.set_cai_index(data.cai_heg)
-        return heg.cai_for_gene(seq)
-
 
     
     def sec_str(self):
@@ -116,7 +110,7 @@ class Analyze():
             pass
         utr = self.utr
 
-        sequence= utr.lower()+self.sequence.lower()
+        sequence= utr.upper()+self.sequence.upper()
         new_string = ''.join(secrets.choice(string.ascii_uppercase + string.digits)\
                              for _ in range(10))
         seq_accession = '>'+new_string+'\n'
@@ -146,7 +140,7 @@ class Optimize:
                  gc_cont_std,ss_mean, ss_std, avd_mean, avd_std,\
                  accs_mean,accs_std,niter=1000):
         
-        self.sequence = sequence.lower()
+        self.sequence = sequence.upper()
         self.cai_mean = cai_mean
         self.cai_std = cai_std
         self.gc_cont_mean = gc_cont_mean
