@@ -68,7 +68,7 @@ def all_features(dataframe):
     dataframe['analyze'] =  dataframe['sequence'].apply(lambda x:features.Analyze(x,utr=utr_))
     dataframe['accs'] = dataframe['analyze'].apply(lambda x:x.access_calc())
     dataframe['sec_str'] = dataframe['analyze'].apply(lambda x:x.sec_str())
-    dataframe['cai'] = dataframe['analyze'].apply(lambda x:x.cai_heg())
+    dataframe['cai'] = dataframe['analyze'].apply(lambda x:x.cai())
     dataframe['gc_cont'] = dataframe['analyze'].apply(lambda x:x.gc_cont())
     dataframe['avd'] = dataframe['analyze'].apply(lambda x:x.avoidance_opt())
     
