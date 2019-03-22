@@ -71,11 +71,12 @@ def cost_rna(seq):
     seq = list(''.join(codons))
     try:
         cost_base = [data.cost_rna[base] for base in seq]
-        score = np.mean(cost_base)
+        score = np.sum(cost_base)
     except KeyError:
         print('strange sequence or corrupted ribonucleotide cost table!')
         return 0
     return score
+
 
 def cost_protein(seq):
     seq = seq.upper()
@@ -85,11 +86,12 @@ def cost_protein(seq):
     try:
         amino_acids = [data.codon2aa[codon] for codon in codons]
         cost = [data.cost_aa[aa] for aa in amino_acids]
-        score = np.mean(cost)
+        score = np.sum(cost)
     except KeyError:
         print('strange sequence or corrupted amino acid cost table!')
         return 0
     return score
+
 
 def cost_codon(seq):
     seq = seq.upper()
