@@ -70,7 +70,7 @@ def cost_rna(seq):
     seq = list(''.join(codons))
     try:
         cost_base = [data.cost_rna[base] for base in seq]
-        score = np.mean(cost_nt)
+        score = np.mean(cost_base)
     except KeyError:
         print('strange sequence or corrupted cost RNA table!')
         return 0
