@@ -64,16 +64,15 @@ def splitter(sequence,length):
 
 
 def cost_rna(seq):
-    seq = seq.upper()
     given_seq = functions.splitter(seq,len(seq))
     excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
     codons = [codon for codon in given_seq if codon not in excluded_codons]
     seq = list(''.join(codons))
     try:
-        cost_base = [np.log(data.cost_rna[base]) for base in seq]
-        score = np.exp(np.mean(cost_base))
+        cost_base = [data.cost_rna[base] for base in seq]
+        score = np.mean(cost_nt)
     except KeyError:
-        print('strange sequence or corrupted cost table!')
+        print('strange sequence or corrupted cost RNA table!')
         return 0
     return score
 
@@ -98,7 +97,7 @@ def gc(seq):
     excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
     codons = [codon for codon in given_seq if codon not in excluded_codons]
     seq = list(''.join(codons))
-    d = pd.DataFrame(base for base in seq[3:-3])[0].value_counts().to_frame()
+    d = pd.DataFrame(base for base in seq)[0].value_counts().to_frame()
     score = d.loc[['G','C']][0].sum() / d[0].sum()
     return score
 
