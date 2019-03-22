@@ -1,26 +1,44 @@
-import datetime
+
+
 import sys
-import RNA
+import subprocess
+import datetime
 import pandas as pd
 import numpy as np
 from libs import data
 from numpy.random import choice
+from multiprocessing import Pool
+from subprocess import run, PIPE 
 
 
-def progress(iteration, total):   
+def progress(iteration,total,message=None):
+    if message is None:
+        message = ''
     bars_string = int(float(iteration) / float(total) * 50.)
-    sys.stdout.write(
-        "\r|%-50s| %d%% (%s/%s)" % (
-            '█'*bars_string+ "░" * (50 - bars_string), float(iteration) / float(total) * 100,
-            iteration,
-            total
-        ) 
-    )
-    sys.stdout.flush()
+    print("\r|%-50s| %d%% (%s/%s) %s "% ('█'*bars_string+ "░" * \
+                                     (50 - bars_string), float(iteration) / float(total) * 100,\
+                                     iteration,total,message),end='\r',flush=True)
+
     if iteration == total:
-        print(' Completed!') 
+        print('\nCompleted!') 
 
 
+        
+        
+        
+        
+def read_fasta(f):
+    fasta_df = pd.read_csv(f,sep='>', lineterminator='>',header=None)
+    fasta_df[['accession','sequence']]=fasta_df[0].str.split('\n', 1, expand=True)
+    fasta_df['accession'] = '>'+fasta_df['accession']
+    fasta_df['sequence'] = fasta_df['sequence'].replace('\n','', regex=True)
+    fasta_df.drop(0, axis=1, inplace=True)
+    fasta_df.set_index('accession',inplace=True)
+    fasta_df = fasta_df[fasta_df.sequence != '']
+    final_df = fasta_df.dropna()
+    return final_df
+        
+        
 def sequence_length(seq):
     '''
     returns length of sequence in multiple of 3 by chopping extra positions
@@ -30,7 +48,8 @@ def sequence_length(seq):
     else:
         length = len(seq)
     return length
-        
+
+
 def splitter(sequence,length):
     '''
     split sequence to codons
@@ -45,223 +64,107 @@ def splitter(sequence,length):
     return split_func(sequence,3)
 
 
-def fasta_to_dataframe(input_file):
-    '''
-    convert fasta to pandas dataframe
-    '''
-    sequence_df = pd.DataFrame(columns=[1,0])
-    fasta = []
-    test = []
-    with open(input_file) as file:
-        for line in file:
-            line = line.strip()
-            if not line:
-               continue
-            if line.startswith(">"):
-                active_sequence_name = line[1:]
-                sequence_df.loc[line,1] = line[1:]
-                if active_sequence_name not in fasta:
-                    test.append(''.join(fasta))
-                    fasta = []
-                continue
-            sequence = line
-            fasta.append(sequence)
-    if fasta:
-        test.append(''.join(fasta))
-    for i, row in enumerate(test):
-        sequence_df[0][i-1] = row
-    return(sequence_df)
+def multiprocess_wrapper(function,input_dataframe):
+    pools = Pool(input_dataframe.shape[0])
+    pool_results = []
+    for result in pools.imap_unordered(function, \
+                                         input_dataframe):
+        pool_results.append(result)
+
+
+
+    pools.close()
+    pools.join()
+    return pool_results
+
+
+
+def interaction_calc(seq):
+    proc = run(['RNAup', '-b','-o'], stdout=PIPE,stderr=subprocess.DEVNULL,
+               input=seq,encoding = 'utf-8')
+    return str(proc.stdout).replace("\\n"," ").replace("b'","")
 
 
 
 
-def positionwise_codons(sequences,length_to_train,trainall=False):
+def rnaup_result_parser(raw_result_list,mrna_dataframe=None):
+    '''return max interaction and a dataframe of all interactions
     '''
-    returns dictionary of positions(index) with codons.
-    this will be converted to pandas dataframe soon
-    ***deprecated. use codons_to_df**
-    '''
-    codon_dict={} 
-    for sequence in sequences:
-        length = sequence_length(sequence) if trainall==True or \
-                 len(sequence)<length_to_train else length_to_train 
-        codon_list = splitter(sequence.lower(),length)
-        for i in range(len(codon_list)):
-            try:
-                codon_dict.setdefault(i, [])
-                codon_dict[i].append(codon_list[i])
-            except KeyError:
-                codon_dict[i] = codon_list[i]
-
-    return codon_dict
-
-def codons_to_df(sequences,length_to_train,trainall=False):
-    '''
-    returns a dataframe of codons in given sequences
-    position is column and sequence number is index
-    '''
-    codon_df = pd.DataFrame()
-    index = 0
-    skipped = 0
-    for sequence in sequences:
-        try:
-            length = sequence_length(sequence) if trainall==True or \
-                     len(sequence)<length_to_train else length_to_train
-        except TypeError:
-            print("Something's wrong with the input sequences.\n")
-            break
-                  
-        codon_list = splitter(sequence.lower().replace('u','t'),length)
-        stop = ['tag','taa','tga']
-        if bool(set(stop).intersection(codon_list[:len(codon_list)-1])) == False:
-            for i in range(len(codon_list)):
-                codon_df.at[index,i]=codon_list[i]
-            
-        else:
-            print('\nStop codon encountered somewhere before the last position.')
-            skipped += 1
-        progress(index,len(sequences)-1)
-        index += 1
-    if skipped > 0:
-        print(skipped, 'sequence(s) were skipped because we encountered stop codons.')
+    #check if we are supplied a list (like for many sequences)
+    #or single item like(for one seq vs several other seq)
+    try:
+        results_list = raw_result_list.copy()
+    except AttributeError:
+        results_list = [raw_result_list]
     
-
-    return codon_df
-
-
-def calc_cond_prob(codon_df):
-    '''
-    returns a first order conditional probability of codons
-    '''
-    cond_prob_df = []
-    for i in range(len(codon_df.columns)-1): #conditional except last one
-        cond_prob_df.append((codon_df.groupby([i, i+1]).count()\
-                             / codon_df.groupby(i).count()))
-        progress(i,len(codon_df.columns)-2)
-    return cond_prob_df
-
-
-
     
-def train(codon_df):
+    interaction_df = pd.DataFrame({'unparsed_results':results_list})
+    interaction_df[['accession','RNAup_output']] = interaction_df\
+                                                   ['unparsed_results']\
+                                                   .str.split(':break',1,\
+                                                              expand=True)
+    results_temp_df = pd.Series(interaction_df['RNAup_output']\
+                                .str.extractall(r'((?<=\:).*?(?==))')[0])\
+                                .str.split(pat='(', n=-1, expand=True)\
+                                .drop(0, 1).astype(np.float64).unstack()
+    if mrna_dataframe is not None:
+        results_temp_df.columns = mrna_dataframe.index
+    result_df = pd.concat([interaction_df, results_temp_df], axis=1)
+    return results_temp_df,result_df
+
+
+
+def rand_background(sequence,n=1000):
+    '''random background
     '''
-    uses the codon dataframe to calculate probabilities
-    index is the codon name and column number is the position
+       
+    length = sequence_length(sequence)
+    codons = [k for k,v in data.codon2aa.items()]
+    backgnd_seq = pd.DataFrame({'sequence':[''.join(np.random.choice(codons,length))\
+                                            for _ in range(n)]})
+          
+    return backgnd_seq
+
+
+
+def syn_background(sequence,n=1000):
+    '''synonymous background
     '''
-    codons = [key for key,value in data.codon2aa.items()]
-    prob_df = pd.DataFrame(index=[codons])
-    for i in range(len(codon_df.columns)):
-        prob_df[i]=np.nan*len(prob_df)
-        probs=codon_df.groupby(i).size().\
-                                      div(codon_df[i].count())
-        for item in codon_df[i]:
-            if str(item)!= 'nan':
-                prob_df[i].loc[item]=probs.loc[item]
-        progress(i,len(codon_df.columns)-1)    
-    return prob_df
+    sequence = sequence.lower()   
+    length = sequence_length(sequence)
+    codons = splitter(sequence,length)
+    syn_seq = []
+    for j in range(n):
+        chain=''
+        for i in range(len(codons)):
+            possible_codons = data.aa2codon[data.codon2aa[codons[i]]]
+            chain+=np.random.choice(possible_codons)
+        syn_seq.append(chain)
+    backgnd_seq = pd.DataFrame({'sequence':syn_seq})
+          
+    return backgnd_seq
 
 
-def score(sequence_df,prob_data,back_prob_data):
+
+
+
+
+
+def substitute_codon(sequence,num_of_subst=10):
+    '''randomly substitute codons along the sequence at random positions
     '''
-    bitscore a list of sequences using a foreground and a background model
-    '''
-    sequence_score=pd.DataFrame(columns=['scores'],index=list(range(len(sequence_df))))
-    length_to_score = max([len(sequence_df[0][i]) for i in range(len(sequence_df))]) #score for full length
-    for seq in range(len(sequence_df)):
-        sequence = sequence_df[0][seq].lower()
-        length = sequence_length(sequence) if len(sequence)<length_to_score\
-                 else length_to_score
-        codons = splitter(sequence,length)
-        scores_df = pd.DataFrame(columns=['scores'],index=codons)
-        back_scores_df = pd.DataFrame(columns=['scores'],index=codons)
-        stop = ['tag','taa','tga']
-        if bool(set(stop).intersection(codons[:len(codons)-1])) == False:
-            scores_df = pd.DataFrame(columns=['scores'],index=codons)
-            back_scores_df = pd.DataFrame(columns=['scores'],index=codons)
-            for i in range(len(codons)):
-                try:
-                    if i < len(prob_data.columns)-1: #1 for average
-                        scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],i])[0]
-                        back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],i])[0]
-                    else:
-                        scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'codon_prob'])[0]
-                        back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'codon_prob'])[0]
-
-
-                except RuntimeWarning: #catch for log zero error
-                    scores_df.loc[codons[i],'scores'] = np.log2(prob_data.loc[codons[i],'codon_prob'])[0]
-                    back_scores_df.loc[codons[i],'scores'] = np.log2(back_prob_data.loc[codons[i],'codon_prob'])[0]
-        else:
-            print('\nStop codons encountered before the last position for sequence : ', seq)
-            pass
-
-        sequence_score.loc[seq,'scores'] = scores_df.sum()[0] - back_scores_df.sum()[0] 
-        progress(seq,len(sequence_df))
-        
-    return sequence_score
-
-
-
-
-def rna_ss(seq):
-    '''calculates minimum free energy of sequence using RNAlib
-    '''
-    ss,mfe = RNA.fold(seq)
-    return mfe
-
-
-def substitute_codon(sequence,prob_df,length_to_count = 30,subst = 2):
-    '''synonymously mutate sequence. The probability of codon from the model is used as a 
-    weght to randomly pick the new codon. 
-    length_to_count = length to consider for substitution. Default = 10 codons
-    subst = max number of codons to substitute. Default = 2 substitutions
-    '''
-    length = sequence_length(sequence) if len(sequence)<length_to_count else length_to_count
+       
+    length = sequence_length(sequence)
+    #num_of_subst = np.random.choice(length)
     new_seq = sequence
-    for i in range(subst):
-        codons = functions.splitter(new_seq,length)
-        subst_codon_position = choice(list(range(len(codons)))) #randomly choose pos to mutate
+    for i in range(num_of_subst):
+        codons = splitter(new_seq,length)
+        subst_codon_position = np.random.choice(list(range(len(codons)))) 
         subst_synonymous_codons = data.aa2codon[data.codon2aa[codons[subst_codon_position]]]
-
-        #with probs of codon as weights for random picking
-        try:
-            probs_of_codons_for_subst = prob_df.loc[subst_synonymous_codons,subst_codon_position]
-        except IndexError:
-            probs_of_codons_for_subst = prob_df.loc[subst_synonymous_codons,'codon_prob']
-
-        probs_sum = sum(probs_of_codons_for_subst)
-        subst_codon = choice(subst_synonymous_codons, p = [float(i)/probs_sum\
-                                                            for i in probs_of_codons_for_subst])
-
-
-        #without weights
-        #mutated_codon = random.choice(mutable_synonymous_codons)
-        new_seq = new_seq[:subst_codon_position*3]+ subst_codon + sequence[subst_codon_position*3+3:]
-        
-        
+        subst_codon = np.random.choice(subst_synonymous_codons)
+        new_seq = new_seq[:subst_codon_position*3]+ subst_codon +\
+                    new_seq[subst_codon_position*3+3:]
+          
     return new_seq
 
-
-def sim_anneal(sequence,prob_df,length = 30,niter=100):
-    '''
-    preforms a simulated annealing to maximize the mfe of sequence
-    '''
-    utr='ggggaattgtgagcggataacaattcccctctagaaataattttgtttaactttaagaaggagatatacat'
-    seq = sequence[:length] 
-    temp = np.linspace(1,0.001,niter)
-    scurr = seq
-    sbest = seq
-    for i in range(niter):
-        T = temp[i]
-        snew = substitute_codon(sbest,prob_df,length)[:length]
-        if rna_ss(utr[-length:]+ snew) >= rna_ss(utr[-length:] + scurr):
-                scurr = snew
-                if rna_ss(utr[-length:]+scurr)>=rna_ss(utr[-length:]+sbest):
-                    sbest = snew
-        elif np.exp(-(rna_ss(utr[-length:]+scurr)-rna_ss(utr[-length:]+snew))/T) <= np.random.rand(1)[0]:
-            scurr = snew
-        functions.progress(i,niter)
-    print('\nmfe is',rna_ss(utr[-length:]+sbest),sbest)
-    annealed_seq = sbest + sequence[length:]
-    return annealed_seq
 
