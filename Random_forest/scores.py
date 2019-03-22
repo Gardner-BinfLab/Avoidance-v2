@@ -5,7 +5,7 @@ import sys
 import argparse
 import numpy as np
 import pandas as pd
-from libs import codon_usage, data
+from libs import data, functions, features
 
 
 def valid_file(param):
@@ -22,11 +22,11 @@ def check_arg(args=None):
                         metavar='STR',
                         help='CDS of interest in fasta format',
                         required='True')
-    parser.add_argument('-r', '--reference',
-                        type=valid_file,
-                        metavar='STR',
-                        help='reference CDS in fasta format',
-                        required='True')
+#     parser.add_argument('-r', '--reference',
+#                         type=valid_file,
+#                         metavar='STR',
+#                         help='reference CDS in fasta format',
+#                         required='True')
     parser.add_argument('-o', '--output',
                         metavar='STR',
                         help='Output file name',
@@ -34,7 +34,7 @@ def check_arg(args=None):
 
     results = parser.parse_args(args)
     return (results.input,
-            results.reference,
+#             results.reference,
             results.output)
 
 
@@ -63,11 +63,28 @@ def splitter(sequence,length):
     return split_func(sequence,3)
 
 
-def cost(seq):
-    seq = seq.lower()
-    given_seq = splitter(seq,len(seq))
+def cost_rna(seq):
+    seq = seq.upper()
+    given_seq = functions.splitter(seq,len(seq))
+    excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
+    codons = [codon for codon in given_seq if codon not in excluded_codons]
+    seq = list(''.join(codons))
     try:
-        cost_values = [np.log(data.cost_table[codon]) for codon in given_seq[1:-1]] #except the start and stop codons
+        cost_base = [np.log(data.cost_rna[base]) for base in seq]
+        score = np.exp(np.mean(cost_base))
+    except KeyError:
+        print('strange sequence or corrupted cost table!')
+        return 0
+    return score
+
+
+def cost(seq):
+    seq = seq.upper()
+    given_seq = splitter(seq,len(seq))
+    excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
+    codons = [codon for codon in given_seq if codon not in excluded_codons]
+    try:
+        cost_values = [np.log(data.cost_table[codon]) for codon in codons] #except the start and stop codons
         score = np.exp(np.mean(cost_values))
     except KeyError:
         print('strange sequence or corrupted cost table!')
@@ -77,8 +94,11 @@ def cost(seq):
 
 def gc(seq):
     seq = seq.upper()
-    given_seq = list(seq)
-    d = pd.DataFrame(base for base in given_seq[3:-3])[0].value_counts().to_frame()
+    given_seq = functions.splitter(seq,len(seq))
+    excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
+    codons = [codon for codon in given_seq if codon not in excluded_codons]
+    seq = list(''.join(codons))
+    d = pd.DataFrame(base for base in seq[3:-3])[0].value_counts().to_frame()
     score = d.loc[['G','C']][0].sum() / d[0].sum()
     return score
 
@@ -86,8 +106,10 @@ def gc(seq):
 def gc3c(seq):
     seq = seq.upper()
     given_seq = splitter(seq,len(seq))
+    excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
+    codons = [codon for codon in given_seq if codon not in excluded_codons]
     try:
-        d = pd.DataFrame(codon[2] for codon in given_seq[1:-1])[0].value_counts().to_frame()
+        d = pd.DataFrame(codon[2] for codon in codons)[0].value_counts().to_frame()
         score = d.loc[['G','C']][0].sum() / d[0].sum()
     except KeyError:
         print('None of G or C are in the position 3 of all codons!')
@@ -95,18 +117,18 @@ def gc3c(seq):
     return score
 
 
-def run(seq, ref):
-    heg = codon_usage.CodonAdaptationIndex()
-    heg.generate_rscu(ref)
+def run(seq):
+#     heg = codon_usage.CodonAdaptationIndex()
+#     heg.generate_rscu(ref)
     for i in seq:
-        yield gc(i), gc3c(i), codon_usage.CodonAdaptationIndex().cai_for_gene(i), heg.cai_for_gene(i), cost(i), i
+        yield gc(i), gc3c(i), features.Analyze(i).cai(), cost_rna(i), cost(i), i
 
 
 def main():
     input = fasta_to_dataframe(i)
 
-    d = pd.DataFrame(run(list(input['Sequence']), r)) # list(input['sequence'].map(str).str[3:-3])
-    d.columns = ['GC','GC3C','CAI','CAI_HEG','Biosynthetic_cost','Sequence']
+    d = pd.DataFrame(run(list(input['Sequence'])))
+    d.columns = ['GC','GC3C','CAI','Cost_RNA','Biosynthetic_cost','Sequence']
     d = pd.merge(input.reset_index(), d, on='Sequence').iloc[:,[0,2,3,4,5,6]]
     d = d.loc[d['Biosynthetic_cost'] != 0]
     filename = o + '.out'
@@ -115,7 +137,7 @@ def main():
 
 
 if __name__ == "__main__":
-    i,r,o = check_arg(sys.argv[1:])
+    i,o = check_arg(sys.argv[1:])
     main()
 
 
