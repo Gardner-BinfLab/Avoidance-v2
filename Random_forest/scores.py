@@ -64,6 +64,7 @@ def splitter(sequence,length):
 
 
 def cost_rna(seq):
+    seq = seq.upper()
     given_seq = functions.splitter(seq,len(seq))
     excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
     codons = [codon for codon in given_seq if codon not in excluded_codons]
@@ -72,12 +73,25 @@ def cost_rna(seq):
         cost_base = [data.cost_rna[base] for base in seq]
         score = np.mean(cost_base)
     except KeyError:
-        print('strange sequence or corrupted cost RNA table!')
+        print('strange sequence or corrupted ribonucleotide cost table!')
         return 0
     return score
 
+def cost_protein(seq):
+    seq = seq.upper()
+    given_seq = functions.splitter(seq,len(seq))
+    excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
+    codons = [codon for codon in given_seq if codon not in excluded_codons]
+    try:
+        amino_acids = [data.codon2aa[codon] for codon in codons]
+        cost = [data.cost_aa[aa] for aa in amino_acids]
+        score = np.mean(cost)
+    except KeyError:
+        print('strange sequence or corrupted amino acid cost table!')
+        return 0
+    return score
 
-def cost(seq):
+def cost_codon(seq):
     seq = seq.upper()
     given_seq = splitter(seq,len(seq))
     excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
@@ -120,16 +134,16 @@ def run(seq):
 #     heg = codon_usage.CodonAdaptationIndex()
 #     heg.generate_rscu(ref)
     for i in seq:
-        yield gc(i), gc3c(i), features.Analyze(i).cai(), cost_rna(i), cost(i), i
+        yield gc(i), gc3c(i), features.Analyze(i).cai(), cost_codon(i), cost_rna(i), cost_protein(i), i
 
 
 def main():
     input = fasta_to_dataframe(i)
 
     d = pd.DataFrame(run(list(input['Sequence'])))
-    d.columns = ['GC','GC3C','CAI','Cost_RNA','Biosynthetic_cost','Sequence']
-    d = pd.merge(input.reset_index(), d, on='Sequence').iloc[:,[0,2,3,4,5,6]]
-    d = d.loc[d['Biosynthetic_cost'] != 0]
+    d.columns = ['GC','GC3C','CAI','Cost_codon','Cost_RNA','Cost_protein','Sequence']
+    d = pd.merge(input.reset_index(), d, on='Sequence').iloc[:,[0,2,3,4,5,6,7]]
+    d = d.loc[d['Cost_codon'] != 0]
     filename = o + '.out'
     d.to_csv(filename, index=False, sep='\t', encoding='utf-8')
 
