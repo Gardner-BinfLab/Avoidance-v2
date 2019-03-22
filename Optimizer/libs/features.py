@@ -31,9 +31,9 @@ class Analyze():
         seq = self.sequence
         given_seq = functions.splitter(seq,len(seq))
         excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
+        codons = [codon for codon in given_seq if codon not in excluded_codons]
         try:
-            cai_values = [np.log(data.cai_table[codon]) for codon\
-                          in given_seq if codon not in excluded_codons]
+            cai_values = [np.log(data.cai_table[codon]) for codon in codons]
             score = np.exp(np.mean(cai_values))
         except KeyError:
             print('strange sequence or corrupted cai table!')

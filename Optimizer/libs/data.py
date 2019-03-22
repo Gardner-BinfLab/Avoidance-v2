@@ -154,6 +154,36 @@ cai_table = { 'TTT' : 0.296,
               'AAA' : 1 }
 
 
+# bioenergetic cost
+# Michael Lynch and Georgi K. Marinov
+# https://doi.org/10.1073/pnas.1514974112
+cost_aa = { 'A' : 11.7,
+            'C' : 24.7,
+            'D' : 12.7,
+            'E' : 15.3,
+            'F' : 52.0,
+            'G' : 11.7,
+            'H' : 38.3,
+            'I' : 32.3,
+            'K' : 30.3,
+            'L' : 27.3,
+            'M' : 34.3,
+            'N' : 14.7,
+            'P' : 20.3,
+            'Q' : 16.3,
+            'R' : 27.3,
+            'S' : 11.7,
+            'T' : 18.7,
+            'V' : 23.3,
+            'W' : 74.3,
+            'Y' : 50.0 }
+    
+cost_rna = { 'A' : 49.7, 
+             'C' : 46.7,
+             'G' : 50.7,
+             'T' : 45.7 }
+
+
 # Relative codon biosynthetic cost
 # calculated as described by Seward and Kelly
 # https://doi.org/10.1186/s13059-018-1480-7
