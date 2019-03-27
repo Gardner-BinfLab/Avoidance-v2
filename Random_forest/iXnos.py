@@ -73,11 +73,11 @@ def progress(iteration, total):
         
 def fasta_to_dataframe(f):
     fasta_df = pd.read_csv(f,sep='>', lineterminator='>',header=None)
-    fasta_df[['accession','sequence']]=fasta_df[0].str.split('\n', 1, expand=True)
-    fasta_df['accession'] = fasta_df['accession']
+    fasta_df[['Accession','sequence']]=fasta_df[0].str.split('\n', 1, expand=True)
+    fasta_df['Accession'] = fasta_df['Accession']
     fasta_df['sequence'] = fasta_df['sequence'].replace('\n','', regex=True)
     fasta_df.drop(0, axis=1, inplace=True)
-    fasta_df.set_index('accession',inplace=True)
+    fasta_df.set_index('Accession',inplace=True)
     fasta_df = fasta_df[fasta_df.sequence != '']
     final_df = fasta_df.dropna()
     return final_df
@@ -110,10 +110,10 @@ def main():
     for j in mp.imap_unordered(nn_score, cds):
         results.append(j)
         progress(len(results), len(cds))
-    
+
     scores = list(results)
     scores = pd.DataFrame(scores)
-    scores.columns = ['sequence', 'score']
+    scores.columns = ['sequence', 'iXnos']
     d = pd.merge(seq, scores, on='sequence').drop('sequence', axis=1)
     filename = o + '.out'
     d.to_csv(filename, sep='\t', index=False, encoding='utf-8')
