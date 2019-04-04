@@ -76,7 +76,7 @@ class Analyze():
         ncrna['input'] = ncrna['merge'] +'\n'+ mrna_input
         rnaup_res = functions.multiprocess_wrapper(functions.interaction_calc,\
                                                    ncrna['input'])
-        avoidance = np.max(functions.rnaup_result_parser(rnaup_res)[0].values)
+        avoidance = np.min(functions.rnaup_result_parser(rnaup_res)[0].values)
         return avoidance
     
     def avoidance_opt(self):
