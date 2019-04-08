@@ -1,0 +1,554 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>avoidance2 package &mdash; avoidance2 0.0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="avoidance2" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> avoidance2
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">avoidance2</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">avoidance2 package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-avoidance2.classifier">avoidance2.classifier module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-avoidance2.config">avoidance2.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-avoidance2.data">avoidance2.data module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-avoidance2.features">avoidance2.features module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-avoidance2.functions">avoidance2.functions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-avoidance2.markov">avoidance2.markov module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-avoidance2.optimization">avoidance2.optimization module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-avoidance2.score">avoidance2.score module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-avoidance2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">avoidance2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">avoidance2</a> &raquo;</li>
+        
+      <li>avoidance2 package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/avoidance2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="avoidance2-package">
+<h1>avoidance2 package<a class="headerlink" href="#avoidance2-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-avoidance2.classifier">
+<span id="avoidance2-classifier-module"></span><h2>avoidance2.classifier module<a class="headerlink" href="#module-avoidance2.classifier" title="Permalink to this headline">¶</a></h2>
+<p>Created on Sat Mar 30 16:55:27 2019</p>
+<p>&#64;author: bikash</p>
+<dl class="class">
+<dt id="avoidance2.classifier.RandomForest">
+<em class="property">class </em><code class="descclassname">avoidance2.classifier.</code><code class="descname">RandomForest</code><span class="sig-paren">(</span><em>input_file=None</em>, <em>n_est=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.classifier.RandomForest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Random forest classifier</p>
+<dl class="staticmethod">
+<dt id="avoidance2.classifier.RandomForest.auc">
+<em class="property">static </em><code class="descname">auc</code><span class="sig-paren">(</span><em>X_test</em>, <em>y_test</em>, <em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.classifier.RandomForest.auc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Area under a ROC curve</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="avoidance2.classifier.RandomForest.build_model">
+<code class="descname">build_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.classifier.RandomForest.build_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a random forest classifier.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-avoidance2.config">
+<span id="avoidance2-config-module"></span><h2>avoidance2.config module<a class="headerlink" href="#module-avoidance2.config" title="Permalink to this headline">¶</a></h2>
+<p>Created on Thu Mar 28 10:05:41 2019</p>
+<p>&#64;author: bikash</p>
+</div>
+<div class="section" id="module-avoidance2.data">
+<span id="avoidance2-data-module"></span><h2>avoidance2.data module<a class="headerlink" href="#module-avoidance2.data" title="Permalink to this headline">¶</a></h2>
+<p>Created on Mon Mar 25 10:45:45 2019</p>
+<p>&#64;author: bikash</p>
+</div>
+<div class="section" id="module-avoidance2.features">
+<span id="avoidance2-features-module"></span><h2>avoidance2.features module<a class="headerlink" href="#module-avoidance2.features" title="Permalink to this headline">¶</a></h2>
+<p>Created on Mon Mar 25 18:51:16 2019</p>
+<p>&#64;author: bikash</p>
+<dl class="class">
+<dt id="avoidance2.features.AnalyzeDataFrameFeatures">
+<em class="property">class </em><code class="descclassname">avoidance2.features.</code><code class="descname">AnalyzeDataFrameFeatures</code><span class="sig-paren">(</span><em>input_file=None</em>, <em>utr=None</em>, <em>positions=None</em>, <em>ncrna_file=None</em>, <em>length=None</em>, <em>multiprocess=True</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.features.AnalyzeDataFrameFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Calculates features for sequences in a dataframe</p>
+<dl class="method">
+<dt id="avoidance2.features.AnalyzeDataFrameFeatures.features">
+<code class="descname">features</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.features.AnalyzeDataFrameFeatures.features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates all features for given sequences</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="avoidance2.features.AnalyzeDataFrameFeatures.mean_and_sd">
+<code class="descname">mean_and_sd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.features.AnalyzeDataFrameFeatures.mean_and_sd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates mean and standard deviation of features in a dataframe</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="avoidance2.features.AnalyzeSequenceFeatures">
+<em class="property">class </em><code class="descclassname">avoidance2.features.</code><code class="descname">AnalyzeSequenceFeatures</code><span class="sig-paren">(</span><em>seq</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.features.AnalyzeSequenceFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Analyze sequence features</p>
+<dl class="method">
+<dt id="avoidance2.features.AnalyzeSequenceFeatures.access_calc">
+<code class="descname">access_calc</code><span class="sig-paren">(</span><em>length=None</em>, <em>utr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.features.AnalyzeSequenceFeatures.access_calc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sequence accessibility</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="avoidance2.features.AnalyzeSequenceFeatures.avoidance">
+<code class="descname">avoidance</code><span class="sig-paren">(</span><em>ncrna_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.features.AnalyzeSequenceFeatures.avoidance" title="Permalink to this definition">¶</a></dt>
+<dd><p>This cats ncrnas and computes interaction for single mrna
+so is a single process</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="avoidance2.features.AnalyzeSequenceFeatures.cai">
+<code class="descname">cai</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.features.AnalyzeSequenceFeatures.cai" title="Permalink to this definition">¶</a></dt>
+<dd><p>Codon adaptation index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="avoidance2.features.AnalyzeSequenceFeatures.gc_cont">
+<code class="descname">gc_cont</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.features.AnalyzeSequenceFeatures.gc_cont" title="Permalink to this definition">¶</a></dt>
+<dd><p>G+C content</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="avoidance2.features.AnalyzeSequenceFeatures.sec_str">
+<code class="descname">sec_str</code><span class="sig-paren">(</span><em>utr=None</em>, <em>positions=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.features.AnalyzeSequenceFeatures.sec_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Secondary structure of specified position in sequence.
+Default position is -30 to 30 with 0 as start codon</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-avoidance2.functions">
+<span id="avoidance2-functions-module"></span><h2>avoidance2.functions module<a class="headerlink" href="#module-avoidance2.functions" title="Permalink to this headline">¶</a></h2>
+<p>Created on Sat Mar 23 11:30:45 2019</p>
+<p>&#64;author: bikash</p>
+<dl class="function">
+<dt id="avoidance2.functions.accession_gen">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">accession_gen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.accession_gen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random accession numbers</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.csv_reader">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">csv_reader</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.csv_reader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read csv and returns sequences in uppercase</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.fasta_reader">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">fasta_reader</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.fasta_reader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts .fasta to a pandas dataframe with accession as index
+and sequence in a column ‘sequence’</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.file_check">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">file_check</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.file_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check wether we are given a proper file or not and parse that file
+accordingly.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.interaction_calc">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">interaction_calc</code><span class="sig-paren">(</span><em>seq</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.interaction_calc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs RNAup and returns its output.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.parallelize_df">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">parallelize_df</code><span class="sig-paren">(</span><em>df</em>, <em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.parallelize_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>parallelizes operations on a dataframe by splitting it to chunks</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.progress">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">progress</code><span class="sig-paren">(</span><em>iteration</em>, <em>total</em>, <em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple progressbar</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.rand_background">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">rand_background</code><span class="sig-paren">(</span><em>seq</em>, <em>num=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.rand_background" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random background</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.rms_check">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">rms_check</code><span class="sig-paren">(</span><em>seq_df</em>, <em>rms=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.rms_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restriction modification sites checking.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.rnaup_result_parser">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">rnaup_result_parser</code><span class="sig-paren">(</span><em>raw_result_list</em>, <em>mrna_dataframe=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.rnaup_result_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns parsed interaction and a dataframe of all interactions
+as a tuple, first element is the parsed scores only, second is
+full table of results with sequences accession and RNAup output.
+You will rarely need the second element. It is mainly for debug purposes.
+note: this function is for one mrna vs one or multiple ncrna</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.sequence_df_features">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">sequence_df_features</code><span class="sig-paren">(</span><em>utr=None</em>, <em>positions=None</em>, <em>ncrna_file=None</em>, <em>length=None</em>, <em>input_df=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.sequence_df_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates all features of sequences in a dataframe.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.sequence_length">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">sequence_length</code><span class="sig-paren">(</span><em>seq</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.sequence_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns length of sequence in multiple of 3 by chopping extra positions</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.splitter">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">splitter</code><span class="sig-paren">(</span><em>seq</em>, <em>length=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.splitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split sequence to codons</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.substitute_codon">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">substitute_codon</code><span class="sig-paren">(</span><em>seq</em>, <em>num_of_subst=10</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.substitute_codon" title="Permalink to this definition">¶</a></dt>
+<dd><p>randomly substitute codons along the sequence at random positions</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="avoidance2.functions.syn_background">
+<code class="descclassname">avoidance2.functions.</code><code class="descname">syn_background</code><span class="sig-paren">(</span><em>seq</em>, <em>n=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.functions.syn_background" title="Permalink to this definition">¶</a></dt>
+<dd><p>Randon synonymous background</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-avoidance2.markov">
+<span id="avoidance2-markov-module"></span><h2>avoidance2.markov module<a class="headerlink" href="#module-avoidance2.markov" title="Permalink to this headline">¶</a></h2>
+<p>Created on Sun Mar 24 12:49:12 2019</p>
+<p>&#64;author: bikash</p>
+<dl class="class">
+<dt id="avoidance2.markov.MarkovModel">
+<em class="property">class </em><code class="descclassname">avoidance2.markov.</code><code class="descname">MarkovModel</code><span class="sig-paren">(</span><em>input_file=None</em>, <em>nostartstop=True</em>, <em>length=32</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.markov.MarkovModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is used to train a Markov model using the input sequence.
+By default, we train for length 32 codons. The start codon and stop codon
+are stripped by default, but if your sequences are already free from them,
+you can use nostartstop=False.</p>
+<dl class="method">
+<dt id="avoidance2.markov.MarkovModel.codons_to_df">
+<code class="descname">codons_to_df</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.markov.MarkovModel.codons_to_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dataframe of codons in given sequences. position is column
+and sequence number is index.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="avoidance2.markov.MarkovModel.generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><em>sequence</em>, <em>model=None</em>, <em>num_seq=10000</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.markov.MarkovModel.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate synonymous sequences to a given sequence using a Markov
+model</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="avoidance2.markov.MarkovModel.get_probs">
+<em class="property">static </em><code class="descname">get_probs</code><span class="sig-paren">(</span><em>possible_codons</em>, <em>index</em>, <em>prob_df</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.markov.MarkovModel.get_probs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tries to extract probabilities of possible codons for substitution
+at given index(position along the sequence) using a probability table.
+First a lookup at that position is done, if that fails, we lookup to
+‘codon_prob’ column which is the overall probability of that codon in
+the training sequence (priors). If that fails, we return a random probability
+using 1D Dirichlet distribution.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="avoidance2.markov.MarkovModel.train">
+<code class="descname">train</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.markov.MarkovModel.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the codon dataframe to calculate probabilities
+codon name is the index and column number is the position of codon
+along the sequence.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="avoidance2.markov.MarkovModel.validate_model">
+<em class="property">static </em><code class="descname">validate_model</code><span class="sig-paren">(</span><em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.markov.MarkovModel.validate_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the given Markov model is usable.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-avoidance2.optimization">
+<span id="avoidance2-optimization-module"></span><h2>avoidance2.optimization module<a class="headerlink" href="#module-avoidance2.optimization" title="Permalink to this headline">¶</a></h2>
+<p>Created on Fri Mar 29 13:47:59 2019</p>
+<p>&#64;author: bikash</p>
+<dl class="class">
+<dt id="avoidance2.optimization.Optimizer">
+<em class="property">class </em><code class="descclassname">avoidance2.optimization.</code><code class="descname">Optimizer</code><span class="sig-paren">(</span><em>seq=None</em>, <em>rf_model=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.optimization.Optimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Optimizes the sequence using simulated annealing</p>
+<dl class="method">
+<dt id="avoidance2.optimization.Optimizer.background_features">
+<code class="descname">background_features</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.optimization.Optimizer.background_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates features for background sequences.
+Currently, the background is random synonymous sequences.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="avoidance2.optimization.Optimizer.cost_function">
+<code class="descname">cost_function</code><a class="headerlink" href="#avoidance2.optimization.Optimizer.cost_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates z scores of a given sequence based upon a group of
+sequences given to Optimizer class.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="avoidance2.optimization.Optimizer.cost_function_old">
+<code class="descname">cost_function_old</code><a class="headerlink" href="#avoidance2.optimization.Optimizer.cost_function_old" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates z scores of a given sequence based upon a group of
+sequences given to Optimizer class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="avoidance2.optimization.Optimizer.simulated_anneal">
+<code class="descname">simulated_anneal</code><span class="sig-paren">(</span><em>itr=100</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.optimization.Optimizer.simulated_anneal" title="Permalink to this definition">¶</a></dt>
+<dd><p>preforms a simulated annealing</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="avoidance2.optimization.Optimizer.validate_model">
+<em class="property">static </em><code class="descname">validate_model</code><span class="sig-paren">(</span><em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.optimization.Optimizer.validate_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the given random forest classifier is usable.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-avoidance2.score">
+<span id="avoidance2-score-module"></span><h2>avoidance2.score module<a class="headerlink" href="#module-avoidance2.score" title="Permalink to this headline">¶</a></h2>
+<p>Created on Mon Mar 25 21:06:17 2019</p>
+<p>&#64;author: bikash</p>
+<dl class="class">
+<dt id="avoidance2.score.Score">
+<em class="property">class </em><code class="descclassname">avoidance2.score.</code><code class="descname">Score</code><span class="sig-paren">(</span><em>input_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.score.Score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Scores sequences based on their features using a random forest model.</p>
+<dl class="method">
+<dt id="avoidance2.score.Score.score_seq">
+<code class="descname">score_seq</code><span class="sig-paren">(</span><em>rf=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.score.Score.score_seq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scores sequence based on random forest classifier</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="avoidance2.score.Score.select_seq">
+<code class="descname">select_seq</code><span class="sig-paren">(</span><em>num=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.score.Score.select_seq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects high scoring sequences based on classifier scores
+num specifies number of high scoring sequences to select</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="avoidance2.score.Score.validate_model">
+<em class="property">static </em><code class="descname">validate_model</code><span class="sig-paren">(</span><em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#avoidance2.score.Score.validate_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the given random forest classifier is usable.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-avoidance2">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-avoidance2" title="Permalink to this headline">¶</a></h2>
+<p>Created on Thu Mar 28 10:23:39 2019</p>
+<p>&#64;author: bikash</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="modules.html" class="btn btn-neutral float-left" title="avoidance2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Bikash, Lim
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting started &mdash; avoidance2 0.0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="avoidance2" href="modules.html" />
+    <link rel="prev" title="Welcome to avoidance2’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> avoidance2
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sampling-your-first-sequences">Sampling your first sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#computing-features-for-your-sequence">Computing features for your sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-a-random-forest-model">Building a random forest model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scoring-the-sequence-using-random-forest">Scoring the sequence using random forest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optimizing-sequences">Optimizing sequences</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">avoidance2</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">avoidance2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Getting started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p><strong>Prerequisite</strong></p>
+<p>You need to install Python 3.6 and ViennaRNA. Installation guide for ViennaRNA
+is at <a class="reference external" href="https://www.tbi.univie.ac.at/RNA/">their website.</a> Please make sure
+that you install ‘Python 3 bindings’ as well.
+Once those steps are completed, you can install our software with this simple
+command.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">avoidance2</span>
+</pre></div>
+</div>
+<p>Ths will automatically install the dependencies <cite>Pandas 0.23.4</cite> and
+<cite>scikit-learn 0.20.2</cite>.</p>
+</div>
+<div class="section" id="sampling-your-first-sequences">
+<h2>Sampling your first sequences<a class="headerlink" href="#sampling-your-first-sequences" title="Permalink to this headline">¶</a></h2>
+<p>To sample synonymous sequences, first, you need to import MarkovModel from the
+package and initialize it.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">avoidance2.markov</span> <span class="k">import</span> <span class="n">MarkovModel</span>
+<span class="n">my_model</span> <span class="o">=</span> <span class="n">MarkovModel</span><span class="p">()</span> <span class="c1">#initialize</span>
+</pre></div>
+</div>
+<p>Now, given an input sequence, we can sample any number of synonymous sequences.
+In this example, we sample 10 synonymous sequences.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span>my_model.generate(sequence=&#39;ATGCAGCGAGCGAGCGAGCGAGCAGC&#39;, num_seq=10)
+|██████████████████████████████████████| 100% (10/10) Synonymous sequences
+Completed!
+
+                   sequence
+0  ATGCAACGTGCATCTGAACGTAGC
+1  ATGCAACGCGCTAGTGAACGCAGC
+2  ATGCAACGTGCAAGTGAACGTAGC
+3  ATGCAACGTGCTTCTGAGCGTAGC
+4  ATGCAGCGCGCTTCTGAACGCAGC
+5  ATGCAACGAGCGAGTGAGCGAAGC
+6  ATGCAACGTGCTTCGGAACGTAGC
+7  ATGCAAAGAGCTTCTGAAAGAAGC
+8  ATGCAACGTGCGTCTGAGCGTAGC
+9  ATGCAACGAGCGTCTGAGCGAAGC
+</pre></div>
+</div>
+<p>This returns a dataframe of synonymous sequences, which can be easily exported
+to a csv file.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">test_seq</span> <span class="o">=</span> <span class="s1">&#39;ATGCAGCGAGCGAGCGAGCGAGCAGC</span>
+<span class="n">syn_seq</span> <span class="o">=</span> <span class="n">my_model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">sequence</span><span class="o">=</span><span class="n">test_seq</span><span class="p">,</span> <span class="n">num_seq</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">syn_seq</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;syn_seq_test.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example uses the default model provided with the package to generate
+sequences. You can build your own model by using your own sequences. In this
+example, we train the model for upto 50 codons (0 to 49).</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span>from avoidance2.markov import MarkovModel
+new_mm = MarkovModel(input_file=&#39;markov_test.csv&#39;, length=50)
+mm_built = new_mm.train()
+|██████████████████████████████████████| 100% (49/49) Training..
+Completed!
+</pre></div>
+</div>
+<p>This model can be used to generate sequences.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_mm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;ATGAGCGAGCGAGGCGAGCGACGAGCGAGCGACGG&#39;</span><span class="p">,</span> <span class="n">num_seq</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">:</span>
+<span class="ne">UserWarning</span><span class="p">:</span> <span class="n">Out</span> <span class="n">of</span> <span class="mi">10</span> <span class="n">generated</span> <span class="n">sequences</span><span class="p">,</span> <span class="mi">2</span> <span class="n">duplicate</span> <span class="n">sequences</span> <span class="n">were</span>
+<span class="n">removed</span><span class="o">.</span>
+                            <span class="n">sequence</span>
+<span class="mi">0</span>  <span class="n">ATGTCAGAGCGCGGCGAGCGCCGCGCTTCACGG</span>
+<span class="mi">1</span>  <span class="n">ATGTCCGAGCGCGGCGAGCGCCGCGCCTCCCGG</span>
+<span class="mi">2</span>  <span class="n">ATGTCCGAGCGGGGTGAGCGGCGGGCGTCCCGG</span>
+<span class="mi">3</span>  <span class="n">ATGTCCGAGAGGGGCGAGAGGAGGGCGTCCCGG</span>
+<span class="mi">4</span>  <span class="n">ATGTCCGAGAGAGGCGAGAGAAGAGCGTCCCGG</span>
+<span class="mi">5</span>  <span class="n">ATGTCCGAGCGGGGCGAGCGGCGGGCATCCCGG</span>
+<span class="mi">6</span>  <span class="n">ATGTCCGAACGAGGCGAACGACGAGCGTCCCGG</span>
+<span class="mi">7</span>  <span class="n">ATGTCCGAGAGGGGGGAGAGGAGGGCGTCCCGG</span>
+</pre></div>
+</div>
+<p>The built model can be exported for future use using ‘pickle’.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;markov.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mm_built</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Reusing this exported model can be done as follows:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_mm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;ATGAGCGAGCGAGGCGAGCGACGAGCGAGCGACGG&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;markov.pkl&#39;</span><span class="p">,</span>
+ <span class="n">num_seq</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="computing-features-for-your-sequence">
+<h2>Computing features for your sequence<a class="headerlink" href="#computing-features-for-your-sequence" title="Permalink to this headline">¶</a></h2>
+<p>We currently compute codon adaptation index (cai), G+C content (gc_cont),
+secondary structure (sec_str), avoidance (avd) and accessibility (accs).
+To compute features for your sequence, you can do the following:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">avoidance2.features</span> <span class="k">import</span> <span class="n">AnalyzeSequenceFeatures</span>
+<span class="n">sequence</span> <span class="o">=</span> <span class="s1">&#39;ATGAGAGGCGAGCAGAGCGAGCGACGACGACGACGCAGAGCG&#39;</span>
+<span class="n">analysis_</span> <span class="o">=</span> <span class="n">AnalyzeSequenceFeatures</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Your desired features can be found by calling the analysis object that we just
+created.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">analysis_</span><span class="o">.</span><span class="n">cai</span><span class="p">()</span> <span class="c1">#Codon adaptation index</span>
+<span class="p">:</span> <span class="mf">0.04187077422415583</span>
+<span class="n">analysis_</span><span class="o">.</span><span class="n">gc_cont</span><span class="p">()</span> <span class="c1">#G+C content</span>
+<span class="p">:</span> <span class="mf">0.5714285714285714</span>
+<span class="n">analysis_</span><span class="o">.</span><span class="n">sec_str</span><span class="p">()</span> <span class="c1">#Secondary structure</span>
+<span class="p">:</span> <span class="o">-</span><span class="mf">7.199999809265137</span>
+<span class="n">analysis_</span><span class="o">.</span><span class="n">avoidance</span><span class="p">()</span> <span class="c1">#Avoidance</span>
+<span class="p">:</span> <span class="o">-</span><span class="mf">4.82</span>
+<span class="n">analysis_</span><span class="o">.</span><span class="n">access_calc</span><span class="p">()</span> <span class="c1">#Accessibility</span>
+<span class="p">:</span> <span class="mf">287.058339</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="building-a-random-forest-model">
+<h2>Building a random forest model<a class="headerlink" href="#building-a-random-forest-model" title="Permalink to this headline">¶</a></h2>
+<p>Once the features of your sequences are calculated, we can use it to buld a
+random forest. The random forest classifier can be used to rank and predict
+the probability of being expressed.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">avoidance2.classifier</span> <span class="k">import</span> <span class="n">RandomForest</span>
+<span class="n">rfc</span> <span class="o">=</span> <span class="n">RandomForest</span><span class="p">(</span><span class="n">input_file</span><span class="o">=</span><span class="s1">&#39;rf_test.csv&#39;</span><span class="p">)</span> <span class="c1">#initialize the model</span>
+<span class="n">my_rand_f</span> <span class="o">=</span> <span class="n">rfc</span><span class="o">.</span><span class="n">build_model</span><span class="p">()</span> <span class="c1">#build it</span>
+<span class="p">:</span>
+<span class="n">Random</span> <span class="n">forest</span> <span class="n">summary</span><span class="p">:</span>
+<span class="n">n_est</span>    <span class="n">accuracy</span>        <span class="n">AUC</span>
+<span class="o">=====</span>    <span class="o">========</span>        <span class="o">====</span>
+<span class="mi">50</span>       <span class="mf">0.650</span>           <span class="mf">0.702</span>
+
+<span class="n">Gini</span> <span class="n">features</span> <span class="n">importance</span><span class="p">:</span>
+<span class="o">==========================</span>
+<span class="p">[</span><span class="s1">&#39;avd&#39;</span><span class="p">,</span> <span class="s1">&#39;cai&#39;</span><span class="p">,</span> <span class="s1">&#39;sec_str&#39;</span><span class="p">,</span> <span class="s1">&#39;gc_cont&#39;</span><span class="p">,</span> <span class="s1">&#39;accs&#39;</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.1609</span> <span class="mf">0.1769</span> <span class="mf">0.1955</span> <span class="mf">0.2324</span> <span class="mf">0.2342</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The built model can be exported for future use using ‘pickle’.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_rfc.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">my_rand_f</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scoring-the-sequence-using-random-forest">
+<h2>Scoring the sequence using random forest<a class="headerlink" href="#scoring-the-sequence-using-random-forest" title="Permalink to this headline">¶</a></h2>
+<p>Sequences whose features are already calculated can be scored by using a
+random forest. This example uses the ‘my_rand_f’ model built above.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">avoidance2.score</span> <span class="k">import</span> <span class="n">Score</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">Score</span><span class="p">(</span><span class="n">input_file</span><span class="o">=</span><span class="s1">&#39;rf_test.csv&#39;</span><span class="p">)</span> <span class="c1">#initalize score</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">score_seq</span><span class="p">(</span><span class="n">rf</span><span class="o">=</span><span class="n">my_rand_f</span><span class="p">)</span> <span class="c1">#scoring using the random forest</span>
+<span class="p">:</span>
+        <span class="n">accession</span>   <span class="o">...</span>   <span class="n">rf_pred</span>
+<span class="mi">0</span>   <span class="o">&gt;</span><span class="n">PaCD00423476</span>   <span class="o">...</span>      <span class="mf">0.26</span>
+<span class="mi">1</span>   <span class="o">&gt;</span><span class="n">PaCD00651452</span>   <span class="o">...</span>      <span class="mf">0.92</span>
+<span class="mi">2</span>   <span class="o">&gt;</span><span class="n">EcCD00344566</span>   <span class="o">...</span>      <span class="mf">0.96</span>
+<span class="mi">3</span>   <span class="o">&gt;</span><span class="n">HmCD00598756</span>   <span class="o">...</span>      <span class="mf">0.32</span>
+<span class="mi">4</span>   <span class="o">&gt;</span><span class="n">AtCD00589313</span>   <span class="o">...</span>      <span class="mf">0.78</span>
+<span class="mi">5</span>   <span class="o">&gt;</span><span class="n">HmCD00536337</span>   <span class="o">...</span>      <span class="mf">0.96</span>
+<span class="o">...</span> <span class="o">...</span>             <span class="o">...</span>      <span class="o">...</span>
+</pre></div>
+</div>
+<p>Once the sequences are scored, you can just pick the top ‘n’ number of
+sequences, if you wish.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">select_seq</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1">#picking 5 top sequences</span>
+<span class="p">:</span><span class="n">The</span> <span class="nb">max</span> <span class="n">scores</span> <span class="n">of</span> <span class="n">current</span> <span class="n">selected</span> <span class="n">seqences</span> <span class="ow">is</span> <span class="mf">1.0</span><span class="o">.</span>
+       <span class="n">accession</span>   <span class="o">...</span>   <span class="n">rf_pred</span>
+<span class="mi">0</span>  <span class="o">&gt;</span><span class="n">BsCD00605596</span>   <span class="o">...</span>       <span class="mf">1.0</span>
+<span class="mi">1</span>  <span class="o">&gt;</span><span class="n">VpCD00334889</span>   <span class="o">...</span>       <span class="mf">1.0</span>
+<span class="mi">2</span>  <span class="o">&gt;</span><span class="n">SoCD00338340</span>   <span class="o">...</span>       <span class="mf">1.0</span>
+<span class="mi">3</span>  <span class="o">&gt;</span><span class="n">BtCD00339745</span>   <span class="o">...</span>       <span class="mf">1.0</span>
+<span class="mi">4</span>  <span class="o">&gt;</span><span class="n">MmCD00540649</span>   <span class="o">...</span>       <span class="mf">1.0</span>
+</pre></div>
+</div>
+<p>This is a dataframe which can be exported easily as above.</p>
+</div>
+<div class="section" id="optimizing-sequences">
+<h2>Optimizing sequences<a class="headerlink" href="#optimizing-sequences" title="Permalink to this headline">¶</a></h2>
+<p>If your sequences are scoring lower, you can optimize them further. The
+optimization by simulated annealing. We will take the sequence ‘&gt;PaCD00423476’
+which scored 0.26 in our model.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">avoidance2.optimization</span> <span class="k">import</span> <span class="n">Optimizer</span>
+<span class="n">poor_seq</span> <span class="o">=</span> <span class="s1">&#39;ATGGCCCATGCCGCGGCGGTCGAGGAAAACCAGTTGCAGTCGCTGAAGGACGT...&#39;</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">Optimizer</span><span class="p">(</span><span class="n">poor_seq</span><span class="p">,</span> <span class="n">my_rand_f</span><span class="p">)</span> <span class="c1">#using the previous random forest model</span>
+<span class="n">optimized_seq</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">simulated_anneal</span><span class="p">(</span><span class="n">itr</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#10 iterations</span>
+
+<span class="n">Simulated</span> <span class="n">annealing</span> <span class="n">progress</span><span class="p">:</span>
+<span class="nb">iter</span>    <span class="n">current</span> <span class="n">cost</span>    <span class="n">best</span> <span class="n">cost</span>
+<span class="o">====</span>    <span class="o">============</span>    <span class="o">=========</span>
+<span class="mi">9</span>        <span class="mf">1.00000000</span>      <span class="mf">1.00000000</span>
+</pre></div>
+</div>
+<p>Our optimized sequence has scored 1 on the random forest!</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="avoidance2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to avoidance2’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Bikash, Lim
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: avoidance2
+Version: 0.0.0.8
+Summary: Core algorithms for RNA sampling and optimization
+Home-page: https://github.com/Gardner-BinfLab/Avoidance-v2
+Author: Bikash<bikash.bhandari@postgrad.otago.ac.nz>, Lim<chunshen.lim@otago.ac.nz>
+Author-email: mk.bikash@gmail.com
+License: UNKNOWN
+Description: # Avoidance2 
+        
+        This includes all core algorithms and features required to sample and optimize 
+        RNAs.
+        
+Keywords: RNA,MarkovModel,Optimization
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown

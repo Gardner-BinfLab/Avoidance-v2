@@ -1,0 +1,2 @@
+include avoidance2/*.pkl
+include avoidance2/ncrna.fa
