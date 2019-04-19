@@ -141,19 +141,17 @@ def openen(W, u, seq):
 
 
 
-def sum_openen(i, j, l, file):
-    w = pd.read_csv(file, sep='\t', skiprows=2, header=None)[i:j][l].sum()
-    return file.replace('_openen',''), w
+def sum_openen(i, j, l, f):
+    w = pd.read_csv(f, sep='\t', skiprows=2, header=None)[i:j][l].sum()
+    return f.replace('_openen',''), w
 
 
 
-def stack_openen(f):
+def stack_openen(i, f):
     n = f.replace('_openen', '').split()
     n = pd.DataFrame(n)
-    n.columns = ['id']#given that the 5UTR length is i
-#sum opening energy from position i to j ntdefault=71, of CDS at l
-#optimum at i=71, j=101, l=43
-    d = pd.read_csv(f, sep='\t', skiprows=2, nrows=235, header=None)
+    n.columns = ['id']
+    d = pd.read_csv(f, sep='\t', skiprows=2, nrows=(i+100), header=None) #read in 5UTR length + 100 lines
     d = d.set_index(0).stack().to_frame()
     d = d[0].apply(lambda x: round(x, 4)).to_list()
     d = pd.DataFrame(d).T
@@ -187,11 +185,11 @@ def main():
             fasta = df.groupby('label')['fasta'].apply(''.join).tolist()
         else:
             try:
-                int(u)
+                int(U)
                 df['fasta'] = df['Accession'] + '\n' + seq['Sequence'] + '\n'
                 fasta = df.groupby('label')['fasta'].apply(''.join).tolist()
             except ValueError:     
-                df['fasta'] = df['Accession'] + '\n' + u + seq['Sequence'] + '\n'
+                df['fasta'] = df['Accession'] + '\n' + U + seq['Sequence'] + '\n'
                 fasta = df.groupby('label')['fasta'].apply(''.join).tolist()
         
         groups = len(fasta)
@@ -231,11 +229,12 @@ def main():
     if S is True:
         print('\nParsing _openen using', p, 'processes...')
         print_time()
-
+        
+        stack_func = partial(stack_openen, i)
         d = pd.DataFrame()
         p3 = Pool(p)
         progress(0, len(_openen))
-        for b in p3.imap_unordered(stack_openen, _openen):
+        for b in p3.imap_unordered(stack_func, _openen):
             d = pd.concat([d, b], ignore_index=True)
             progress(len(d), len(_openen))
         
@@ -247,7 +246,7 @@ def main():
         d.to_pickle(filename)
     
     else:
-        print('\nSkipped parsing (no option -t given)!', flush = True)
+        print('\nSkipped parsing (no option -S given)!', flush = True)
 
 
     if r is True:
