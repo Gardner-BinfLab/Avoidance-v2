@@ -33,7 +33,7 @@ def check_arg(args=None):
                         metavar='STR',
                         help='Sequences in fasta or csv format',
                         required='True')
-    parser.add_argument('-U', '--utr5',
+    parser.add_argument('-U', '--utr',
                         metavar='STR/INT',
                         help='Use an integer if 5UTR presence, e.g., -U 1. Use your own 5UTR sequence if your plasmid backbone is not of pET vector. Default = GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACAT')
     parser.add_argument('-x', '--execute',
@@ -46,44 +46,51 @@ def check_arg(args=None):
     parser.add_argument('-u', '--ulength',
                         default='210',
                         metavar='INT',
-                        help='Compute the mean probability that regions of length 1 to a given length are unpaired. An RNAplfold option. Default = 210') 
-    parser.add_argument('-c', '--calculate',
-                        help='Calculate sum of opening energy. Output .out, a tab delimited file',
-                        action="store_true") 
-    parser.add_argument('-i', '--ipos',
+                        help='Compute the mean probability that subsegments of length 1 to a given length are unpaired. An RNAplfold option. Default = 210')
+    parser.add_argument('-S', '--stack',
+                        help='Stack _openen dataframes to single-column dataframes, concatenate them as a single pandas dataframe and output it as a .pkl pickle file. Requires i and j options',
+                        action="store_true")
+    parser.add_argument('-n', '--utrlength',
                         type=int,
                         metavar='INT',
                         default=71,
-                        help='Position i of an input sequence. Related to option -c. e.g., if the length of 5UTR is 71 and l of choice is 43, to calculate sum of the opening energy of the first 30 nt of CDS use option -i 71 -j 101 -l 43. Default = 71')
-    parser.add_argument('-j', '--jpos',
+                        help='The length of 5UTR. Related to option -S and -e. Default = 71')
+    parser.add_argument('-t', '--distance',
                         type=int,
-                        default=101,
+                        default=100,
                         metavar='INT',
-                        help='Position j of an input sequence. Related to option -c. Default = 101')
+                        help='Downstream distance to start codon to include when stacking. Related to option -S. Default = 100')
+    parser.add_argument('-e', '--parse',
+                        help='Parsing _openen dataframes to get opening energy of unpaired subsegments. Requires i and l options',
+                        action="store_true")
+    parser.add_argument('-i', '--ipos',
+                        type=int,
+                        default=18,
+                        metavar='INT',
+                        help='Position i centered at start codon of an input sequence. Related to option -e. Default = 101')                
     parser.add_argument('-l', '--length',
                         type=int,
-                        default=43,
+                        default=48,
                         metavar='INT',
-                        help='l in _openen file. Related to option -c. Default = 43')
-    parser.add_argument('-S', '--stack',
-                        help='Stack _openen files to single columns and concatenate them as a pandas dataframe. Output .pkl, a pandas dataframe in pickle format',
-                        action="store_true")
+                        help='Subsegment l as in _openen file. Related to option -e. Default = 48')                                
     parser.add_argument('-r', '--remove',
                         help='Remove _openen and .ps files',
                         action="store_true")
     parser.add_argument('-o', '--output',
                         metavar='STR',
                         default='openen', 
-                        help='Output file name for .out and .pkl. Related to option -c and -S. Default = openen')
+                        help='Output file name for .pkl. Related to -S. Default = openen')
     parser.add_argument('-p', '--processes',
                         type=int,
                         metavar='INT',
                         help='Number of processes to spawn. Default = half of the number of CPU')
 
     results = parser.parse_args(args)
-    return (results.sequence, results.execute, results.winsize, results.ulength, \
-            results.calculate, results.ipos, results.jpos, results.length, \
-            results.utr5, results.stack, results.remove, results.output, results.processes)
+    return (results.sequence, results.utr, \
+            results.execute, results.winsize, results.ulength, \
+            results.stack, results.utrlength, results.distance, \
+            results.parse, results.ipos, results.length, \
+            results.remove, results.output, results.processes)
 
 
 screen_lock = Semaphore(value=1)
@@ -141,23 +148,23 @@ def openen(W, u, seq):
 
 
 
-def sum_openen(i, j, l, f):
-    w = pd.read_csv(f, sep='\t', skiprows=2, header=None)[i:j][l].sum()
-    return f.replace('_openen',''), w
+def parse_openen(l, n, i, f):
+    d = pd.read_csv(f, sep='\t', skiprows=2, header=None)[l][n+i-1]
+    return f.replace('_openen',''), d
 
 
 
-def stack_openen(i, f):
-    n = f.replace('_openen', '').split()
-    n = pd.DataFrame(n)
-    n.columns = ['id']
-    d = pd.read_csv(f, sep='\t', skiprows=2, nrows=(i+100), header=None) #read in 5UTR length + 100 lines
+def stack_openen(n, t, f):
+    seqname = f.replace('_openen', '').split()
+    seqname = pd.DataFrame(seqname)
+    seqname.columns = ['id']
+    d = pd.read_csv(f, sep='\t', skiprows=2, nrows=(n+t), header=None) #read in 5UTR length + t lines
     d = d.set_index(0).stack().to_frame()
     d = d[0].apply(lambda x: round(x, 4)).to_list()
     d = pd.DataFrame(d).T
-    d = pd.concat([n,d], axis=1)
+    d = pd.concat([seqname,d], axis=1)
     return d
-default=71,
+
 
         
 def main():
@@ -169,7 +176,7 @@ def main():
 
     startTime = datetime.now()
 
-    label = (n for n in cycle(list(range(0,p))))
+    label = (z for z in cycle(list(range(0,p))))
     label = pd.DataFrame({'label': list(islice(label, len(seq)))})
     df = pd.concat([label, seq], axis=1)
     _openen = (df['Accession'].str.replace('>', '') + '_openen').tolist()
@@ -180,8 +187,8 @@ def main():
         print_time()
         
         if U is None:
-            utr5 = 'GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACAT'
-            df['fasta'] = df['Accession'] + '\n' + utr5 + seq['Sequence'] + '\n'
+            utr = 'GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACAT'
+            df['fasta'] = df['Accession'] + '\n' + utr + seq['Sequence'] + '\n'
             fasta = df.groupby('label')['fasta'].apply(''.join).tolist()
         else:
             try:
@@ -206,36 +213,19 @@ def main():
         p1.join()    
                 
     else:
-        print('\nSkipped RNAplfold (no option -x given)!', flush = True)  
-
-
-    if c is True:
-        print('\nCalculating sum of opening energy using', p, 'processes...')
-        sum_func = partial(sum_openen, i, j, l)
-        p2 = Pool(p)
-        plfold =  p2.imap_unordered(sum_func, _openen)
-        p2.close()
-        p2.join()
-        
-        results = list(plfold)
-        d = pd.DataFrame(results)
-        d.columns = ['Accession', 'openen']    
-        filename = o + '.out'
-        d.to_csv(filename, sep='\t', index=False, encoding='utf-8')
-    else:
-        print('\nSkipped calculation (no option -c given)!', flush = True)  
+        print('\nSkipped RNAplfold (no option -x given!)', flush = True)  
 
 
     if S is True:
-        print('\nParsing _openen using', p, 'processes...')
+        print('\nStacking _openen files and merging using', p, 'processes...')
         print_time()
         
-        stack_func = partial(stack_openen, i)
+        stack_func = partial(stack_openen, n, t)
         d = pd.DataFrame()
         p3 = Pool(p)
         progress(0, len(_openen))
         for b in p3.imap_unordered(stack_func, _openen):
-            d = pd.concat([d, b], ignore_index=True)
+            d = pd.concat([d, b], sort=True)
             progress(len(d), len(_openen))
         
         _stop_timer.set()    
@@ -246,9 +236,26 @@ def main():
         d.to_pickle(filename)
     
     else:
-        print('\nSkipped parsing (no option -S given)!', flush = True)
+        print('\nSkipped stacking (no option -S given!)', flush = True)
 
 
+    if e is True:
+        print('\nParsing _openen files using', p, 'processes...')
+        parse_func = partial(parse_openen, l, n, i)
+        p2 = Pool(p)
+        plfold =  p2.imap_unordered(parse_func, _openen)
+        p2.close()
+        p2.join()
+        
+        results = list(plfold)
+        d = pd.DataFrame(results)
+        d.columns = ['Accession', 'openen']    
+        filename = o + '.out'
+        d.to_csv(filename, sep='\t', index=False, encoding='utf-8')
+    else:
+        print('\nSkipped parsing (no option -e given!)', flush = True)
+        
+        
     if r is True:
         print('\nRemoving temporary files...')
         ps = (df['Accession'].str.replace('>', '') + '_dp.ps').tolist()
@@ -259,7 +266,7 @@ def main():
         p4.join()
     
     else:
-        print('\nSkipped removing _openen and .ps files (no option -r given)!', flush = True)
+        print('\n_openen and .ps available (no option -r given!)', flush = True)
 
 
     print('\nTime taken', datetime.now() - startTime, flush = True)
@@ -267,10 +274,10 @@ def main():
 
 
 if __name__ == "__main__":
-    s, x, W, u, c, i, j, l, U, S, r, o, p = check_arg(sys.argv[1:])
+    s, U, x, W, u, S, n, t, e, i, l, r, o, p = check_arg(sys.argv[1:])
     if U is None:
-        utr5 = 'GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACAT'
-        print('\n5UTR is', utr5, flush = True)
+        utr = 'GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACAT'
+        print('\n5UTR is', utr, flush = True)
     else:
         try:
             int(U)
