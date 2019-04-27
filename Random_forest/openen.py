@@ -226,8 +226,7 @@ def main():
             d = pd.concat([d, stack_openen(n, t, b)], sort=True)
             progress(len(d), len(_openen))
         
-        _stop_timer.set()
-        
+        _stop_timer.set()       
         filename = o + '.pkl'
         d.to_pickle(filename)
     
