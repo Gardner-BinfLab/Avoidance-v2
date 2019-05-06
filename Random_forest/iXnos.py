@@ -8,6 +8,7 @@ import time
 import argparse
 import itertools
 import subprocess
+import numpy as np
 import pandas as pd
 import multiprocessing
 import threading
@@ -73,11 +74,11 @@ def progress(iteration, total):
         
 def fasta_to_dataframe(f):
     fasta_df = pd.read_csv(f,sep='>', lineterminator='>',header=None)
-    fasta_df[['Accession','sequence']]=fasta_df[0].str.split('\n', 1, expand=True)
-    fasta_df['Accession'] = fasta_df['Accession']
+    fasta_df[['accession','sequence']]=fasta_df[0].str.split('\n', 1, expand=True)
+    fasta_df['accession'] = fasta_df['accession']
     fasta_df['sequence'] = fasta_df['sequence'].replace('\n','', regex=True)
     fasta_df.drop(0, axis=1, inplace=True)
-    fasta_df.set_index('Accession',inplace=True)
+    fasta_df.set_index('accession',inplace=True)
     fasta_df = fasta_df[fasta_df.sequence != '']
     final_df = fasta_df.dropna()
     return final_df
@@ -115,6 +116,9 @@ def main():
     scores = pd.DataFrame(scores)
     scores.columns = ['sequence', 'iXnos']
     d = pd.merge(seq, scores, on='sequence').drop('sequence', axis=1)
+    scores = pd.DataFrame(d['iXnos'].tolist()).mean(axis=1, skipna=True)
+    d = pd.concat([d, scores],axis=1).drop('iXnos', axis=1)
+    d.columns = ['Accession', 'iXnos']
     filename = o + '.out'
     d.to_csv(filename, sep='\t', index=False, encoding='utf-8')
     

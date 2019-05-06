@@ -67,7 +67,7 @@ def check_arg(args=None):
                         type=int,
                         default=18,
                         metavar='INT',
-                        help='Position i centered at start codon of an input sequence. Related to option -e. Default = 101')                
+                        help='Position i centered at start codon of an input sequence. Related to option -e. Default = 18')                
     parser.add_argument('-l', '--length',
                         type=int,
                         default=48,
@@ -226,7 +226,7 @@ def main():
             d = pd.concat([d, stack_openen(n, t, b)], sort=True)
             progress(len(d), len(_openen))
         
-        _stop_timer.set()       
+        _stop_timer.set()
         filename = o + '.pkl'
         d.to_pickle(filename)
     
@@ -281,5 +281,5 @@ if __name__ == "__main__":
             print('\n5UTR is', U, flush = True)
                 
     if p is None:
-        p = int(multiprocessing.cpu_count()/2)
+        p = 4
     main()
