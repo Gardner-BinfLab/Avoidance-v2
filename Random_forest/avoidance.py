@@ -107,8 +107,7 @@ def fasta_to_dataframe(f):
 
 
 def interaction_calc(seq):
-    proc = run(['RNAup', '-b', '-o', '--interaction_first'], stdout=PIPE, stderr=subprocess.DEVNULL,
-               input=str.encode(seq)) #input is a stdin object so encode input str
+    proc = run(['RNAup', '-b', '-o', '--interaction_first'], stdout=PIPE, stderr=subprocess.DEVNULL, input=str.encode(seq))
     return str(proc.stdout).replace("\\n", " ").replace("b'", "")
 
 
@@ -186,6 +185,7 @@ def main():
         my_pool.join()
 
     #parsing RNAup output
+    print('Finish multiprocessing! Parsing RNAup output...', flush = True)
     mrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+:break)')[0].str.replace('>', '').str.replace(':break', '').to_frame().reset_index()
     ncrna_id = pd.Series(interactions).str.extractall(r'(>[\S]+)')[0].str.replace('>', '').to_frame().loc[pd.IndexSlice[:, 0], :].reset_index()
     binding_energy = pd.Series(interactions).str.extractall(r'(\([\S]+\.[0-9]+)')[0].str.replace('(', '').to_frame().reset_index()
