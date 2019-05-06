@@ -67,7 +67,7 @@ def check_arg(args=None):
                         type=int,
                         default=18,
                         metavar='INT',
-                        help='Position i centered at start codon of an input sequence. Related to option -e. Default = 101')                
+                        help='Position i centered at start codon of an input sequence. Related to option -e. Default = 18')                
     parser.add_argument('-l', '--length',
                         type=int,
                         default=48,
@@ -99,7 +99,7 @@ def time_count():
     starttime = datetime.now()
     while not _stop_timer.isSet():
         screen_lock.acquire()
-        time_message = '\r' + str(datetime.now() - starttime)
+        time_message = '\r' + str(datetime.now() - starttime)[:-7]
         sys.stdout.write(time_message)
         sys.stdout.flush()
         screen_lock.release()
@@ -217,20 +217,16 @@ def main():
 
 
     if S is True:
-        print('\nStacking _openen files and merging using', p, 'processes...')
+        print('\nStacking _openen files and merging')
         print_time()
         
-        stack_func = partial(stack_openen, n, t)
         d = pd.DataFrame()
-        p3 = Pool(p)
         progress(0, len(_openen))
-        for b in p3.imap_unordered(stack_func, _openen):
-            d = pd.concat([d, b], sort=True)
+        for b in _openen:
+            d = pd.concat([d, stack_openen(n, t, b)], sort=True)
             progress(len(d), len(_openen))
         
-        _stop_timer.set()    
-        p3.close()
-        p3.join()
+        _stop_timer.set()
         
         filename = o + '.pkl'
         d.to_pickle(filename)
@@ -286,5 +282,5 @@ if __name__ == "__main__":
             print('\n5UTR is', U, flush = True)
                 
     if p is None:
-        p = int(multiprocessing.cpu_count()/2)
+        p = 4
     main()
