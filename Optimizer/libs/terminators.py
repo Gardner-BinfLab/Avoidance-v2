@@ -105,6 +105,8 @@ class AnalyseTerminators:
         #no hits are replaced by very high E-value
         final_results['Min_E_val'].fillna(10000, inplace=True)
 
-        return final_results.sort_values(['Hits', 'Min_E_val'],\
+        
+        self.results = final_results.sort_values(['Hits', 'Min_E_val'],\
                                          ascending=[True, False]).\
                                          reset_index(drop=True)
+        return self.results
