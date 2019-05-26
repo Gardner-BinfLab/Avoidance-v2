@@ -46,7 +46,7 @@ class Analyze():
         split_func = lambda sequence, n: [sequence[i:i+n] for\
                     i in range(0, len(sequence)-len(sequence)%3, n)]
         given_seq = split_func(seq,3)
-        excluded_codons = {'ATG'}
+        excluded_codons = {'ATG', 'TGG', 'TGA', 'TAA', 'TAG'}
         codons = [codon for codon in given_seq if codon not in excluded_codons]
         try:
             tai_values = [np.log(data.TAI[codon]) for codon in codons]
