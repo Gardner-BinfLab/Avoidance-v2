@@ -21,6 +21,7 @@ class AnalyseTerminators:
         self.cm = cm
         self.tempdir = os.path.join(tempfile.gettempdir(), 'cmsearch')
         self.tempfname = pd.util.testing.rands_array(15, 1)[0]
+        self.cm_output = None
         self.results = None
 
 
@@ -59,19 +60,19 @@ class AnalyseTerminators:
         proc = run(['cmsearch', '--max', self.cm, inp_f],\
                    stdout=PIPE, stderr=DEVNULL, encoding='utf-8')
         os.remove(inp_f)
-        self.results = str(proc.stdout)
+        self.cm_output = str(proc.stdout)
 
 
-    def parse_cmsearch_res(self):
+    def term_check(self):
         '''Parse results from cmsearch.
         It chops the table from cmsearch output and returns the dataframe
         with number of hits and E values.
         Note: No hits will have zero hits and high E value.
         '''
-        if self.results is None:
+        if self.cm_output is None:
             self.run_cmsearch()
 
-        tmp_res = self.results.split('Hit scores:')[1].\
+        tmp_res = self.cm_output.split('Hit scores:')[1].\
                     split('Hit alignments:')[0].split('\n')
         cmsearch_table = list(filter(None, tmp_res))[3:]
 
@@ -105,8 +106,8 @@ class AnalyseTerminators:
         #no hits are replaced by very high E-value
         final_results['Min_E_val'].fillna(10000, inplace=True)
 
-        
         self.results = final_results.sort_values(['Hits', 'Min_E_val'],\
                                          ascending=[True, False]).\
                                          reset_index(drop=True)
         return self.results
+
