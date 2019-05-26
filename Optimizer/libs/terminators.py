@@ -13,6 +13,7 @@ import pandas as pd
 
 class AnalyseTerminators:
     '''Analyses terminators for a dataframe of sequences using cmsearch
+    Takes sequence dataframe and location of cm file.
     '''
 
 
