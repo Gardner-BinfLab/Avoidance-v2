@@ -172,7 +172,9 @@ def main():
     if ext.lower() in ('.fasta', '.fa', '.fas', '.fna'):
         seq = fasta_to_dataframe(s).reset_index()
     else:
-        seq = pd.read_csv(s, skiprows=1, header=None)
+        seq = pd.read_csv(s)
+        seq.columns = ['Accession','Sequence']
+        seq['Accession'] = '>' + seq['Accession']
 
     startTime = datetime.now()
 
